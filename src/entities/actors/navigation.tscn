@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://cxsy8f0k8tin5" path="res://src/entities/actors/navigation.gd" id="1_wq58a"]
 
 [node name="Navigation" type="NavigationAgent3D" unique_id=1481448506]
-target_desired_distance = 0.25
+path_desired_distance = 0.3
+target_desired_distance = 0.1
 path_height_offset = 0.2
 navigation_layers = 0
 script = ExtResource("1_wq58a")
