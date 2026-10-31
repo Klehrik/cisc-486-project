@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://dpsggs70yyy5d"]
+
+[ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="1_4m8ck"]
+[ext_resource type="Script" uid="uid://yevlo2600s0j" path="res://src/entities/player/player.gd" id="1_muk8e"]
+[ext_resource type="Script" uid="uid://bvnfpkhnbs5d0" path="res://src/entities/player/free.gd" id="2_vt6n5"]
+[ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="2_wrxq6"]
+[ext_resource type="Script" uid="uid://c16r0sc3rwsij" path="res://src/entities/player/wallhug.gd" id="5_ketdh"]
+[ext_resource type="Script" uid="uid://dv54tpjrqyfsj" path="res://src/entities/player/roll.gd" id="6_0mfjg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xftk2"]
+next_pass = SubResource("StandardMaterial3D_wrxq6")
+albedo_color = Color(0.33999997, 0.56000006, 1, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vt6n5"]
+radius = 0.25
+height = 0.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_muk8e"]
+radius = 0.25
+height = 0.9
+
+[node name="Player" type="CharacterBody3D" unique_id=2050928230 groups=["Team 1"]]
+collision_layer = 0
+script = ExtResource("1_muk8e")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=244478287]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+material_override = SubResource("StandardMaterial3D_xftk2")
+mesh = SubResource("CapsuleMesh_vt6n5")
+
+[node name="Collisionbox" type="CollisionShape3D" parent="." unique_id=1633532552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_muk8e")
+
+[node name="Physics" type="Node" parent="." unique_id=1862717885]
+script = ExtResource("2_wrxq6")
+metadata/_custom_type_script = "uid://csbqc7mofua04"
+
+[node name="StateMachine" type="Node" parent="." unique_id=22716293]
+script = ExtResource("1_4m8ck")
+metadata/_custom_type_script = "uid://dkkpvddn7shsf"
+
+[node name="Free" type="Node" parent="StateMachine" unique_id=1556845814]
+script = ExtResource("2_vt6n5")
+metadata/_custom_type_script = "uid://dpfrtwak0x200"
+
+[node name="Wallhug" type="Node" parent="StateMachine" unique_id=1099199133]
+script = ExtResource("5_ketdh")
+metadata/_custom_type_script = "uid://dpfrtwak0x200"
+
+[node name="Roll" type="Node" parent="StateMachine" unique_id=515694526]
+script = ExtResource("6_0mfjg")
+metadata/_custom_type_script = "uid://dpfrtwak0x200"

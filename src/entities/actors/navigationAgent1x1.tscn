@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dtknkuui6o157"]
+
+[ext_resource type="Script" uid="uid://cxsy8f0k8tin5" path="res://src/entities/actors/navigation.gd" id="1_7xahr"]
+
+[node name="Navigation" type="NavigationAgent3D" unique_id=1481448506]
+target_desired_distance = 0.25
+script = ExtResource("1_7xahr")

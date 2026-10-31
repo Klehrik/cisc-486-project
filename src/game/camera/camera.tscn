@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dyrpyquqcdtlu"]
+
+[ext_resource type="Script" uid="uid://1xpbt1x4bls6" path="res://src/game/camera/camera.gd" id="1_xftk2"]
+
+[node name="Camera" type="Node3D" unique_id=167082799]
+transform = Transform3D(0.7071067, -0.4999999, 0.4999999, 0, 0.7071067, 0.7071067, -0.7071067, -0.4999999, 0.4999999, 0, 0, 0)
+script = ExtResource("1_xftk2")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=418396334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+fov = 20.0
+size = 12.0
+far = 200.0

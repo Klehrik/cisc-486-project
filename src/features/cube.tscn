@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bwe1i3pc2a17m"]
+
+[node name="Cube" type="CSGBox3D" unique_id=1945132013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
+use_collision = true
+collision_mask = 0

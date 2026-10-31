@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cser2vxuh44ym"]
+
+[ext_resource type="Texture2D" uid="uid://bl7o31ve7ye4p" path="res://assets/grid.png" id="1_a1tgf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xae44"]
+albedo_texture = ExtResource("1_a1tgf")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ti7x4"]
+size = Vector2(24, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ti7x4"]
+size = Vector3(24, 1, 24)
+
+[node name="Chunk" type="Node3D" unique_id=1359292382]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1998131090]
+collision_mask = 0
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=1077566768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+material_override = SubResource("StandardMaterial3D_xae44")
+mesh = SubResource("PlaneMesh_ti7x4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=25955586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, -12)
+shape = SubResource("BoxShape3D_ti7x4")

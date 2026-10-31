@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://bjhjemeu7ldcf"]
+
+[ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="1_nvc6t"]
+[ext_resource type="Script" uid="uid://cjyxoh8xnx2ps" path="res://src/entities/actors/testEnemy/testEnemy.gd" id="1_xnoka"]
+[ext_resource type="Script" uid="uid://bj88r2knis8o3" path="res://src/entities/actors/vision.gd" id="2_ufnas"]
+[ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="4_b3f5s"]
+[ext_resource type="Script" uid="uid://d4f27se7ry07h" path="res://src/entities/actors/patrol.gd" id="6_fi8qt"]
+[ext_resource type="PackedScene" uid="uid://dtknkuui6o157" path="res://src/entities/actors/navigationAgent1x1.tscn" id="6_rhha5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xtfm"]
+next_pass = SubResource("StandardMaterial3D_wrxq6")
+albedo_color = Color(0.84, 0.27593997, 0.17639998, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nvc6t"]
+radius = 0.25
+height = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnoka"]
+next_pass = SubResource("StandardMaterial3D_wrxq6")
+albedo_color = Color(0.94, 0.8157633, 0.36659998, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xnoka"]
+size = Vector3(0.25, 0.2, 0.4)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2xtfm"]
+radius = 0.25
+height = 0.9
+
+[node name="TestEnemy" type="CharacterBody3D" unique_id=1515710965]
+script = ExtResource("1_xnoka")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1618840813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+material_override = SubResource("StandardMaterial3D_2xtfm")
+mesh = SubResource("CapsuleMesh_nvc6t")
+
+[node name="Facing" type="MeshInstance3D" parent="Mesh" unique_id=1135535935]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, -0.34957576)
+material_override = SubResource("StandardMaterial3D_xnoka")
+mesh = SubResource("BoxMesh_xnoka")
+
+[node name="Collisionbox" type="CollisionShape3D" parent="." unique_id=1869774656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_2xtfm")
+
+[node name="Physics" type="Node" parent="." unique_id=1537637639]
+script = ExtResource("1_nvc6t")
+metadata/_custom_type_script = "uid://csbqc7mofua04"
+
+[node name="Vision" type="Marker3D" parent="." unique_id=1111753005]
+script = ExtResource("2_ufnas")
+metadata/_custom_type_script = "uid://bj88r2knis8o3"
+
+[node name="NavigationAgent1x1" parent="." unique_id=1481448506 instance=ExtResource("6_rhha5")]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1579975439]
+script = ExtResource("4_b3f5s")
+metadata/_custom_type_script = "uid://dkkpvddn7shsf"
+
+[node name="Patrol" type="Node" parent="StateMachine" unique_id=1752799035]
+script = ExtResource("6_fi8qt")
+linger_time = null
+metadata/_custom_type_script = "uid://d4f27se7ry07h"
+
+[connection signal="detected" from="Vision" to="." method="_on_vision_detected"]

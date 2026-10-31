@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://co7qrtbgq4kl8"]
+
+[ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/world.gd" id="1_thycv"]
+[ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="2_38auj"]
+[ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera.tscn" id="2_drn54"]
+[ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="4_tkkm2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hnva"]
+
+[sub_resource type="Sky" id="Sky_drn54"]
+sky_material = SubResource("ProceduralSkyMaterial_1hnva")
+
+[sub_resource type="Environment" id="Environment_c83cc"]
+background_mode = 2
+background_color = Color(0, 0, 0.5647059, 1)
+sky = SubResource("Sky_drn54")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_drn54"]
+vertices = PackedVector3Array(0.5, 0.75, -23.5, 0.5, 0.75, -0.5, 23.5, 0.75, -0.5, 23.5, 0.75, -23.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_source_geometry_mode = 1
+
+[node name="World" type="Node3D" unique_id=1197728645]
+script = ExtResource("1_thycv")
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=867605058]
+environment = SubResource("Environment_c83cc")
+
+[node name="Light" type="DirectionalLight3D" parent="." unique_id=205991507]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.0895996, 0)
+
+[node name="Camera" parent="." unique_id=167082799 instance=ExtResource("2_drn54")]
+
+[node name="Player" parent="." unique_id=2050928230 instance=ExtResource("2_38auj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=874287626]
+navigation_mesh = SubResource("NavigationMesh_drn54")
+
+[node name="Map" type="Node3D" parent="." unique_id=773448822 groups=["navigation_mesh_source_group"]]
+
+[node name="Chunk" parent="Map" unique_id=1359292382 instance=ExtResource("4_tkkm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
