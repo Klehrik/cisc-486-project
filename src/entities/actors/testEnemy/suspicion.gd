@@ -1,6 +1,6 @@
 extends State
 
-const speed := 1.5
+const speed := 2.0
 const search_radius := 6.0	## Area to search around target last seen position (in metres)
 
 var time: float
