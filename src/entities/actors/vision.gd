@@ -15,7 +15,7 @@ signal detected(target: Node3D)	## Emitted when a target is detected
 var _fov_dot_product := cos(deg_to_rad(45.0))
 
 func _physics_process(delta: float) -> void:
-	# Scan for targets
+	# Scan for targets within view
 	if enabled:
 		var targets := get_tree().get_nodes_in_group(group)
 		for t in targets:
@@ -23,11 +23,13 @@ func _physics_process(delta: float) -> void:
 				detected.emit(t)
 				return
 
-func can_see_point(target: Vector3, ignore_distance: bool = false) -> bool:
-	return within_cone(target, ignore_distance) and unobstructed(target)
+## [code]true[/code] if the point is visible [br](within vision cone AND unobstructed)
+func can_see_point(pos: Vector3, ignore_distance: bool = false) -> bool:
+	return is_within_cone(pos, ignore_distance) and is_unobstructed(pos)
 
-func within_cone(target: Vector3, ignore_distance: bool = false) -> bool:
-	var vec := target - global_position
+## [code]true[/code] if the point is within the vision cone
+func is_within_cone(pos: Vector3, ignore_distance: bool = false) -> bool:
+	var vec := pos - global_position
 	if !ignore_distance and vec.length() > range:
 		return false
 	var facing := -global_transform.basis.z.normalized()
@@ -36,8 +38,8 @@ func within_cone(target: Vector3, ignore_distance: bool = false) -> bool:
 		return false
 	return true
 
-func unobstructed(target: Vector3) -> bool:
+## [code]true[/code] if the point is unobstructed from this position
+func is_unobstructed(pos: Vector3) -> bool:
 	var space_state := get_world_3d().direct_space_state
-	var y_offset 	:= Vector3.UP * 0.2
-	var query 		:= PhysicsRayQueryParameters3D.create(global_position + y_offset, target + y_offset, collision_mask)
+	var query 		:= PhysicsRayQueryParameters3D.create(global_position, pos, collision_mask)
 	return space_state.intersect_ray(query).is_empty()

@@ -5,6 +5,8 @@ var states: Dictionary[String, State] = {}
 var current: State = null
 
 func _ready() -> void:
+	await owner.ready
+	
 	# Register State child nodes and
 	# start at the first/topmost one
 	var first: State = null

@@ -1,18 +1,24 @@
 class_name Navigation
 extends NavigationAgent3D
 
-signal moved(direction: Vector3, delta: float)
+# Path Height is >0 to compensate for the NavigationRegion mesh floating above the ground
 
-@export var speed := 1.5
+signal moved(direction: Vector3, delta: float)	## Emitted every frame while navigating
+
+@export var speed := 1.5	## Modified by states
+@export_flags_3d_navigation var _navigation_layers: int
 
 var is_navigating := false
 
 @onready var _owner: CharacterBody3D = owner
+@onready var physics: Physics = owner.find_children("*", "Physics").get(0)
+
+func _ready() -> void:
+	navigation_layers = _navigation_layers
 
 func _physics_process(delta: float) -> void:
-	var physics: Physics = _owner.get_node("Physics")
 	if not physics:
-		return
+		assert(false, "Entity does not have Physics component.")
 	
 	# Move to target point
 	var move_vec := Vector3.ZERO
@@ -25,12 +31,13 @@ func _physics_process(delta: float) -> void:
 		physics.move_vec = Vector3.ZERO
 		is_navigating = false
 
-func navigate_to_point(target: Vector3) -> void:
-	target_position = target
+## Begin navigating to a point
+func navigate_to_point(pos: Vector3) -> void:
+	target_position = pos
 	is_navigating = true
 
+## Returns the next path point while navigating, [br]or [code]Vector3.INF[/code] if not
 func get_next() -> Vector3:
 	if not is_navigation_finished():
-		var next := get_next_path_position()
-		return Vector3(next.x, 0, next.z)	# The NavMesh is floating off the ground for some reason
+		return get_next_path_position()
 	return Vector3.INF

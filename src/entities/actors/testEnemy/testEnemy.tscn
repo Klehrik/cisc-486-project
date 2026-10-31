@@ -1,13 +1,6 @@
-[gd_scene format=3 uid="uid://bjhjemeu7ldcf"]
+[gd_scene format=3 uid="uid://3ewhlfmd0wte"]
 
-[ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="1_nvc6t"]
-[ext_resource type="Script" uid="uid://cjyxoh8xnx2ps" path="res://src/entities/actors/testEnemy/testEnemy.gd" id="1_xnoka"]
-[ext_resource type="Script" uid="uid://bj88r2knis8o3" path="res://src/entities/actors/vision.gd" id="2_ufnas"]
-[ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="4_b3f5s"]
-[ext_resource type="Script" uid="uid://d4f27se7ry07h" path="res://src/entities/actors/testEnemy/patrol.gd" id="6_fi8qt"]
-[ext_resource type="PackedScene" uid="uid://dtknkuui6o157" path="res://src/entities/actors/navigationAgent1x1.tscn" id="6_rhha5"]
-[ext_resource type="Script" uid="uid://cg0dbbc87idrq" path="res://src/entities/actors/testEnemy/alert.gd" id="7_mvba4"]
-[ext_resource type="Script" uid="uid://kqb8vunonu2" path="res://src/entities/actors/testEnemy/suspicion.gd" id="8_l8gp1"]
+[ext_resource type="PackedScene" uid="uid://csga642phph1t" path="res://src/entities/actors/baseEnemy/baseEnemy.tscn" id="1_lvma2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
 render_priority = 1
@@ -20,81 +13,45 @@ stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xtfm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvma2"]
 next_pass = SubResource("StandardMaterial3D_wrxq6")
-albedo_color = Color(0.84, 0.27593997, 0.17639998, 1)
+albedo_color = Color(0.87, 0.30261496, 0.07829998, 1)
 stencil_mode = 2
 stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_nvc6t"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kj1fl"]
 radius = 0.25
 height = 0.9
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnoka"]
-next_pass = SubResource("StandardMaterial3D_wrxq6")
-albedo_color = Color(0.94, 0.8157633, 0.36659998, 1)
-stencil_mode = 2
-stencil_flags = 2
-stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj1fl"]
+albedo_color = Color(0.89, 0.74048007, 0.14240003, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_xnoka"]
-size = Vector3(0.25, 0.2, 0.4)
+[sub_resource type="BoxMesh" id="BoxMesh_c83cc"]
+size = Vector3(0.3, 0.2, 0.5)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2xtfm"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwp56"]
 radius = 0.25
 height = 0.9
 
-[node name="TestEnemy" type="CharacterBody3D" unique_id=1515710965 groups=["Team 2"]]
-collision_layer = 0
-script = ExtResource("1_xnoka")
+[node name="TestEnemy" unique_id=1653461897 instance=ExtResource("1_lvma2")]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1618840813]
+[node name="Mesh" type="MeshInstance3D" parent="." index="0" unique_id=1913652117]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
-material_override = SubResource("StandardMaterial3D_2xtfm")
-mesh = SubResource("CapsuleMesh_nvc6t")
+material_override = SubResource("StandardMaterial3D_lvma2")
+mesh = SubResource("CapsuleMesh_kj1fl")
 
-[node name="Facing" type="MeshInstance3D" parent="Mesh" unique_id=1135535935]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19999999, -0.34957576)
-material_override = SubResource("StandardMaterial3D_xnoka")
-mesh = SubResource("BoxMesh_xnoka")
+[node name="Eyes" type="MeshInstance3D" parent="Mesh" index="0" unique_id=1010764013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.2)
+material_override = SubResource("StandardMaterial3D_kj1fl")
+mesh = SubResource("BoxMesh_c83cc")
 
-[node name="Collisionbox" type="CollisionShape3D" parent="." unique_id=1869774656]
+[node name="Collisionbox" type="CollisionShape3D" parent="." index="1" unique_id=1321256304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
-shape = SubResource("CapsuleShape3D_2xtfm")
+shape = SubResource("CapsuleShape3D_pwp56")
 
-[node name="Physics" type="Node" parent="." unique_id=1537637639]
-script = ExtResource("1_nvc6t")
-metadata/_custom_type_script = "uid://csbqc7mofua04"
+[node name="Vision" parent="." index="3" unique_id=86178474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Vision" type="Marker3D" parent="." unique_id=1111753005]
-script = ExtResource("2_ufnas")
-metadata/_custom_type_script = "uid://bj88r2knis8o3"
-
-[node name="Navigation" parent="." unique_id=1481448506 instance=ExtResource("6_rhha5")]
-path_desired_distance = 0.3
-target_desired_distance = 0.1
-
-[node name="StateMachine" type="Node" parent="." unique_id=1579975439]
-script = ExtResource("4_b3f5s")
-metadata/_custom_type_script = "uid://dkkpvddn7shsf"
-
-[node name="Patrol" type="Node" parent="StateMachine" unique_id=1544298149]
-script = ExtResource("6_fi8qt")
-metadata/_custom_type_script = "uid://dpfrtwak0x200"
-
-[node name="Alert" type="Node" parent="StateMachine" unique_id=90611396]
-script = ExtResource("7_mvba4")
-metadata/_custom_type_script = "uid://dpfrtwak0x200"
-
-[node name="Suspicion" type="Node" parent="StateMachine" unique_id=2061392551]
-script = ExtResource("8_l8gp1")
-metadata/_custom_type_script = "uid://dpfrtwak0x200"
-
-[node name="Label3D" type="Label3D" parent="." unique_id=1945472828]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-billboard = 1
-font_size = 192
-
-[connection signal="detected" from="Vision" to="." method="_on_vision_detected"]
-[connection signal="moved" from="Navigation" to="." method="_on_navigation_moved"]
+[node name="Navigation" parent="." index="4" unique_id=1481448506]
+_navigation_layers = 1
