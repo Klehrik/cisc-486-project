@@ -95,6 +95,9 @@ func get_relative(vec: Vector3) -> Vector3:
 func get_original(vec: Vector3) -> Vector3:
 	return vec.rotated(Vector3.UP, -rotation.y)
 
+func project_position(pos: Vector2) -> Vector3:
+	return $Camera3D.project_position(pos, $Camera3D.position.z)
+
 func add_target(target: Node3D, priority: int = 0) -> void:
 	var t = targets.find_custom(func(a): return a[0] == target)
 	if t < 0:
