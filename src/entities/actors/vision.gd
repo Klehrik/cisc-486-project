@@ -41,5 +41,6 @@ func is_within_cone(pos: Vector3, ignore_distance: bool = false) -> bool:
 ## [code]true[/code] if the point is unobstructed from this position
 func is_unobstructed(pos: Vector3) -> bool:
 	var space_state := get_world_3d().direct_space_state
-	var query 		:= PhysicsRayQueryParameters3D.create(global_position, pos, collision_mask)
+	var y_offset	:= Vector3.UP * 0.2
+	var query 		:= PhysicsRayQueryParameters3D.create(global_position + y_offset, pos + y_offset, collision_mask)
 	return space_state.intersect_ray(query).is_empty()

@@ -42,7 +42,7 @@ func on_process(delta: float) -> void:
 			var pos = _owner.target_last_seen + Vector3.FORWARD.rotated(Vector3.UP, randf_range(-PI, PI)) * randf_range(0, search_radius)
 			var map := _owner.get_world_3d().get_navigation_map()
 			var region_pos := NavigationServer3D.map_get_closest_point(map, pos)
-			region_pos.y = 0
+			region_pos.y = 0	## NavMap floats above the ground a bit
 			_owner.navigation.navigate_to_point(region_pos)
 	
 	suspicion -= delta

@@ -6,3 +6,6 @@
 - Refactor TestEnemy components(?)
 	- things feel kind of all over the place
 - Need better standardization for the vectors that need to be 'y = 0'd
+
+- Need to make Vision work based on its placement and not at every enemy's feet
+	- Vision.is_unobstructed should not need to add y+0.2

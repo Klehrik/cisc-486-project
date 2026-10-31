@@ -31,6 +31,7 @@ func alert(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
 	self.target = target
 	if last_seen_pos != Vector3.INF:
 		target_last_seen = last_seen_pos
+		navigation.navigate_to_point(last_seen_pos)
 
 func _on_vision_detected(target: Node3D) -> void:
 	alert(target)
