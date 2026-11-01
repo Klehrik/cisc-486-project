@@ -56,6 +56,7 @@ func handle_camera_wallhug() -> bool:
 		if Input.is_action_pressed("Pitch"):
 			wallhug.rotation.x = deg_to_rad(-40.0)
 			wallhug.offset     = Vector3.UP * 4
+			wallhug.dist_scale = 0.7
 		else:
 			wallhug.reset()
 			
@@ -75,3 +76,7 @@ func is_pushing_against_wall() -> bool:
 		return false
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
 	return input_vec != Vector2.ZERO
+
+func _on_hurtbox_body_entered(body: Node3D) -> void:
+	# Temp
+	get_tree().reload_current_scene()

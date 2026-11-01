@@ -9,3 +9,8 @@
 
 - Need to make Vision work based on its placement and not at every enemy's feet
 	- Vision.is_unobstructed should not need to add y+0.2
+- Ally alert should place them in Suspicion first
+	- They only alert after seeing the target themselves
+	- Suspicion will need to be tweaked to travel directly to last_seen_pos first
+
+- Speech text popups

@@ -33,8 +33,12 @@ height = 0.9
 radius = 0.25
 height = 0.9
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c83cc"]
+radius = 0.25
+height = 0.9
+
 [node name="Player" type="CharacterBody3D" unique_id=2050928230 groups=["Team 1"]]
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("1_muk8e")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=244478287]
@@ -45,6 +49,15 @@ mesh = SubResource("CapsuleMesh_vt6n5")
 [node name="Collisionbox" type="CollisionShape3D" parent="." unique_id=1633532552]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_muk8e")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1239405939]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1379928767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_c83cc")
+debug_color = Color(0.7, 0, 0, 0.41960785)
 
 [node name="Physics" type="Node" parent="." unique_id=1862717885]
 script = ExtResource("2_wrxq6")
@@ -65,3 +78,5 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 [node name="Roll" type="Node" parent="StateMachine" unique_id=515694526]
 script = ExtResource("6_0mfjg")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

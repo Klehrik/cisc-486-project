@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://ctlagq0867cjx" path="res://src/entities/actors/baseEnemy/baseSuspicion.gd" id="8_g02qm"]
 
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1653461897 groups=["Team 2"]]
-collision_layer = 0
+collision_layer = 4
 script = ExtResource("1_0bmes")
 
 [node name="Physics" type="Node" parent="." unique_id=1829006441]
