@@ -73,7 +73,6 @@ navigation_layers = 2
 
 [node name="TestEnemy" parent="Enemies" unique_id=1653461897 instance=ExtResource("4_ws5b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
-collision_layer = 0
 
 [node name="Path" type="Node3D" parent="Enemies/TestEnemy" unique_id=1667702929]
 script = ExtResource("5_f5g00")
@@ -93,7 +92,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="TestEnemy2" parent="Enemies" unique_id=412430998 instance=ExtResource("4_ws5b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -3)
-collision_layer = 0
 
 [node name="Path" type="Node3D" parent="Enemies/TestEnemy2" unique_id=1408579305]
 script = ExtResource("5_f5g00")
@@ -112,7 +110,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -7.5)
 
 [node name="TestEnemy3" parent="Enemies" unique_id=4771906 instance=ExtResource("4_ws5b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 0, -22)
-collision_layer = 0
 
 [node name="Path" type="Node3D" parent="Enemies/TestEnemy3" unique_id=1453550866]
 script = ExtResource("5_f5g00")
@@ -129,7 +126,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
 [node name="TestEnemy4" parent="Enemies" unique_id=48961940 instance=ExtResource("4_ws5b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -13.5)
-collision_layer = 0
 
 [node name="Path" type="Node3D" parent="Enemies/TestEnemy4" unique_id=1598846636]
 script = ExtResource("5_f5g00")
