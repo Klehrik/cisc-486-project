@@ -49,6 +49,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 billboard = 1
 font_size = 192
 
+[connection signal="notify" from="." to="StateMachine/Patrol" method="_on_base_enemy_notify"]
+[connection signal="notify" from="." to="StateMachine/Suspicion" method="_on_base_enemy_notify"]
+[connection signal="notify" from="." to="StateMachine/Alert" method="_on_base_enemy_notify"]
+[connection signal="notify" from="." to="StateMachine/Search" method="_on_base_enemy_notify"]
 [connection signal="detected" from="Vision" to="StateMachine/Patrol" method="_on_vision_detected"]
 [connection signal="detected" from="Vision" to="StateMachine/Search" method="_on_vision_detected"]
 [connection signal="moved" from="Navigation" to="." method="_on_navigation_moved"]

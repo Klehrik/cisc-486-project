@@ -13,12 +13,14 @@ func _ready() -> void:
 		nodes.append(node.global_position)
 		node.queue_free()
 
+## Returns the current node in the path.
 func get_current() -> Vector3:
 	if nodes.is_empty():
 		return Vector3.INF
 	current = max(current, 0)
 	return nodes[current]
-	
+
+## Returns the next node in the path and progresses forward.
 func get_next() -> Vector3:
 	current += 1
 	var last := len(nodes) - 1
@@ -29,7 +31,7 @@ func get_next() -> Vector3:
 			current = min(1, last)
 	return nodes[current]
 
-## Resets [code]get_next()[/code] to the closest node to the given position
+## Resets [code]get_next()[/code] to the closest node to the given position.
 func reset_to_nearest_node(position: Vector3) -> void:
 	var dist := INF
 	for i in range(0, len(nodes)):

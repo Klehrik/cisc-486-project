@@ -33,12 +33,17 @@ func on_process(delta: float) -> void:
 		_owner.target_last_seen = target_pos
 		_owner.navigation.navigate_to_point(target_pos)
 		
-		# Alert nearby allies in view
+		# Notify nearby allies in view
 		for ally: BaseEnemy in get_tree().get_nodes_in_group("Team 2"):
 			if ally != self and _owner.vision.is_unobstructed(ally.global_position):
-				ally.alert(target, target_pos)
+				ally.notify.emit(target, target_pos)
 		
 	else:
 		if not _owner.navigation.is_navigating:
 			parent.switch("Search")
 			return
+
+func _on_base_enemy_notify(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
+	if is_current_state:
+		_owner.target = target
+		_owner.target_last_seen = last_seen_pos

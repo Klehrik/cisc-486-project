@@ -1,6 +1,8 @@
 class_name BaseEnemy
 extends CharacterBody3D
 
+signal notify(target: Node3D, last_seen_pos: Vector3)	## Emitted through Alerted allies. [br][code]last_seen_pos[/code] should have a default of [code]Vector3.INF[/code].
+
 var rotation_speed: float			## [code]exp_decay_angle()[/code] rotation rate.
 var target: Node3D					## The target being tracked.
 var target_last_seen := Vector3.INF	## The last seen position of the target.
@@ -24,13 +26,13 @@ func rotate_to_look_at(pos: Vector3, delta: float) -> void:
 	var dest := atan2(-d.x, -d.z)
 	rotation.y = Util.exp_decay_angle(rotation.y, dest, rotation_speed, delta)
 
-func alert(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
-	if stateMachine.current.name != "Alert":
-		stateMachine.switch("Alert")
-	self.target = target
-	if last_seen_pos != Vector3.INF:
-		target_last_seen = last_seen_pos
-		navigation.navigate_to_point(last_seen_pos)
+#func alert(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
+	#if stateMachine.current.name != "Alert":
+		#stateMachine.switch("Alert")
+	#self.target = target
+	#if last_seen_pos != Vector3.INF:
+		#target_last_seen = last_seen_pos
+		#navigation.navigate_to_point(last_seen_pos)
 
 func _on_navigation_moved(direction: Vector3, delta: float) -> void:
 	rotate_to_look_at(global_position + direction, delta)

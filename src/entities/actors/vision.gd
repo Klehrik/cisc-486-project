@@ -1,7 +1,7 @@
 class_name Vision
 extends Marker3D
 
-signal detected(target: Node3D)	## Emitted when a target is detected
+signal detected(target: Node3D)	## Emitted when a target is detected.
 
 @export var enabled := true
 @export var fov   	:= 90.0:	## Total vision cone angle (in degrees)

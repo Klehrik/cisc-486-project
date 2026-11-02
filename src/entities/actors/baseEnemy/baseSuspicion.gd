@@ -30,17 +30,21 @@ func on_process(delta: float) -> void:
 		# Alert once target is directly seen for long enough
 		suspicion += delta
 		if suspicion >= suspicion_time:
-			_owner.alert(target)
+			parent.switch("Alert")
 			return
 		
 	# Track accurately for a bit after target is no longer visible
 	if track > 0:
 		track -= delta
-		
 		_owner.target_last_seen = target_pos
-		_owner.navigation.navigate_to_point(_owner.target_last_seen)
 	
 	# Start Searching once last seen position is reached
+	_owner.navigation.navigate_to_point(_owner.target_last_seen)
 	if _owner.navigation.get_next() == Vector3.INF:
 		parent.switch("Search")
 		return
+
+func _on_base_enemy_notify(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
+	if is_current_state:
+		_owner.target = target
+		_owner.target_last_seen = last_seen_pos
