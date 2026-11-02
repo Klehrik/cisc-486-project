@@ -166,6 +166,7 @@ size = Vector3(0.5, 2, 0.5)
 
 [node name="PoI" type="Marker3D" parent="Map/Chunk/Cube5" unique_id=1648037632]
 script = ExtResource("8_f5g00")
+secondary_target_max_dist = 8.0
 metadata/_custom_type_script = "uid://kgnr0wr5uetg"
 
 [node name="Cube6" parent="Map/Chunk" unique_id=410519611 instance=ExtResource("5_qrfg3")]

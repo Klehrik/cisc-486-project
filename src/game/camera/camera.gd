@@ -3,14 +3,13 @@ extends Node3D
 
 static var instance: Camera
 
-var targets: Array[Array] = []	## List of followable targets [br]If multiple targets, will stay between primary and next nearest (unless primary target is offscreen) [br]Higher values are prioritized for primary and secondary targets
-var slide_speed := 3.5			## Camera [code]exp_decay()[/code] slide speed
-var secondary_target_max_dist := 10.0	## in metres
+var targets: Array[Array] = []			## List of followable targets. [br]If there are multiple targets, the camera will stay between primary and next nearest (unless primary target is offscreen). [br]Higher values are prioritized for primary and secondary targets.
+var slide_speed := 3.5					## Camera [code]exp_decay()[/code] slide speed
 
-var base_orientation: CameraOrientation	## Original camera orientation; do not set
-var base_dist: float					## Base distance ([code]z[/code]) of camera (35.0m)
-var orientations: Array[Array] = [] 	## List of target camera orientations [br]Highest prioritization is used as the current orientation
-var current_dist_scale := 1.0 			## [code]1.0[/code] at base
+var base_orientation: CameraOrientation	## Original camera orientation; do not set.
+var base_dist: float					## Base distance ([code]z[/code]) of camera (35.0m).
+var orientations: Array[Array] = [] 	## List of target camera orientations. [br]Highest prioritization is used as the current orientation.
+var current_dist_scale := 1.0 			## The current camera distance scaling; do not set. [br][code]1.0[/code] at base.
 
 class CameraOrientation:
 	var rotation: Vector3
@@ -71,15 +70,17 @@ func _process(delta: float) -> void:
 			var candidates = targets.filter(func(a): return a[1] == priority)
 			var target2: Node3D
 			var dist := INF
-			for tarray in candidates:
+			for tarray: Array in candidates:
 				var t: Node3D = tarray[0]
 				var d: float = (t.global_position - dest).length_squared()
 				if d < dist:
-					target2 = t
-					dist = d
+					var tpos := t.global_position
+					if (dest - tpos).length() <= tarray[2]:
+						target2 = t
+						dist = d
 			
-			var pos2 := target2.global_position
-			if (dest - pos2).length() <= secondary_target_max_dist:
+			if target2:
+				var pos2 := target2.global_position
 				dest = (dest + pos2) / 2
 		
 		dest += o.offset
@@ -87,29 +88,37 @@ func _process(delta: float) -> void:
 	# Slide to destination
 	position = Util.exp_decay(position, dest, slide_speed, delta)
 
-## Apply camera rotation to vector
+## Returns the vector with camera rotation applied.
 func get_relative(vec: Vector3) -> Vector3:
 	return vec.rotated(Vector3.UP, rotation.y)
 
-## Get original vector from camera-rotated one
+## Returns the original vector from a camera-rotated one.
 func get_original(vec: Vector3) -> Vector3:
 	return vec.rotated(Vector3.UP, -rotation.y)
 
-func project_position(pos: Vector2) -> Vector3:
-	return $Camera3D.project_position(pos, $Camera3D.position.z)
+## Returns the ground position of a screen coordinate.
+func project_position_to_ground(pos: Vector2, ground_y: float = 0.0) -> Vector3:
+	var camera: Camera3D = $Camera3D
+	var origin := camera.project_ray_origin(pos)
+	var normal := camera.project_ray_normal(pos)
+	var t := (ground_y - origin.y) / normal.y
+	return origin + (normal * t)
 
-func add_target(target: Node3D, priority: int = 0) -> void:
+## Registers a new followable camera target. [br]Higher priority is used over lower ones. [br][code]secondary_target_max_dist[/code] is the maximum distance (in metres) from the primary target that camera position averaging can happen.
+func add_target(target: Node3D, priority: int = 0, secondary_target_max_dist: float = 10.0) -> void:
 	var t = targets.find_custom(func(a): return a[0] == target)
 	if t < 0:
 		# Add and sort by highest to lowest priority
-		targets.append([target, priority])
+		targets.append([target, priority, secondary_target_max_dist])
 		targets.sort_custom(func(a, b): return a[1] > b[1])
 
+## Removes a followable camera target.
 func remove_target(target: Node3D) -> void:
 	var t = targets.find_custom(func(a): return a[0] == target)
 	if t >= 0:
 		targets.remove_at(t)
 
+## Registers a new camera orientation. [br]Higher priority is used over lower ones.
 func add_orientation(orientation: CameraOrientation, priority: int = 0) -> void:
 	var t = orientations.find_custom(func(a): return a[0] == orientation)
 	if t < 0:
@@ -117,6 +126,7 @@ func add_orientation(orientation: CameraOrientation, priority: int = 0) -> void:
 		orientations.append([orientation, priority])
 		orientations.sort_custom(func(a, b): return a[1] > b[1])
 
+## Removes a camera orientation.
 func remove_orientation(orientation: CameraOrientation) -> void:
 	var t = orientations.find_custom(func(a): return a[0] == orientation)
 	if t >= 0:
