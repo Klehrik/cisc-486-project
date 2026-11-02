@@ -34,6 +34,11 @@ func _on_vision_detected(target: Node3D) -> void:
 		_owner.target_last_seen = target.global_position
 		parent.switch("Suspicion")
 
+func _on_hearing_heard(pos: Vector3) -> void:
+	if is_current_state:
+		_owner.target_last_seen = pos
+		parent.switch("Suspicion")
+
 func _on_base_enemy_notify(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
 	if is_current_state:
 		_owner.target = target

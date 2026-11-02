@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Util="*uid://c2nmlr73wtq13"
+Event="*uid://bd3v3nfngg8lq"
 
 [display]
 
