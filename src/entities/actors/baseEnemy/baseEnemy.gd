@@ -1,10 +1,9 @@
 class_name BaseEnemy
 extends CharacterBody3D
 
-@export var rotation_speed := 6.0	## [code]exp_decay_angle()[/code] rotation rate
-
-var target: Node3D
-var target_last_seen := Vector3.INF
+var rotation_speed: float			## [code]exp_decay_angle()[/code] rotation rate.
+var target: Node3D					## The target being tracked.
+var target_last_seen := Vector3.INF	## The last seen position of the target.
 
 @onready var physics: Physics 			= find_children("*", "Physics").get(0)
 @onready var vision: Vision 			= find_children("*", "Vision").get(0)
@@ -32,9 +31,6 @@ func alert(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
 	if last_seen_pos != Vector3.INF:
 		target_last_seen = last_seen_pos
 		navigation.navigate_to_point(last_seen_pos)
-
-func _on_vision_detected(target: Node3D) -> void:
-	alert(target)
 
 func _on_navigation_moved(direction: Vector3, delta: float) -> void:
 	rotate_to_look_at(global_position + direction, delta)

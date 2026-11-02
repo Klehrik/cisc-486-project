@@ -26,6 +26,8 @@ func switch(name: String) -> void:
 	var next: State = states.get(name)
 	assert(next, "State '%s' does not exist." % name)
 	if current:
+		current.is_current_state = false
 		current.on_exit()
 	current = next
+	current.is_current_state = true
 	current.on_enter()

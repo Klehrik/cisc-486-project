@@ -1,8 +1,9 @@
 class_name BaseAlert
 extends State
 
-@export var speed 		:= 2.8
-@export var track_time 	:= 1.5	## Time the enemy can track after target is no longer visible (in seconds)
+@export var speed 			:= 2.8	## Movement speed.
+@export var rotation_speed 	:= 12.0	## [code]exp_decay_angle()[/code] rotation rate.
+@export var track_time 		:= 1.5	## Time the enemy can track after target is no longer visible (in seconds).
 
 var track: float
 
@@ -10,6 +11,7 @@ var track: float
 
 func on_enter() -> void:
 	_owner.navigation.speed = speed
+	_owner.rotation_speed = rotation_speed
 	
 	# Temp
 	_owner.get_node("Status").text = "!"
@@ -29,7 +31,6 @@ func on_process(delta: float) -> void:
 		
 		# Rotate and move towards point
 		_owner.target_last_seen = target_pos
-		_owner.rotate_to_look_at(target_pos, delta)
 		_owner.navigation.navigate_to_point(target_pos)
 		
 		# Alert nearby allies in view
@@ -39,8 +40,5 @@ func on_process(delta: float) -> void:
 		
 	else:
 		if not _owner.navigation.is_navigating:
-			parent.switch("Suspicion")
+			parent.switch("Search")
 			return
-
-func on_exit() -> void:
-	_owner.target = null

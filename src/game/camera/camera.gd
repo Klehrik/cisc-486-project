@@ -72,13 +72,11 @@ func _process(delta: float) -> void:
 			var dist := INF
 			for tarray: Array in candidates:
 				var t: Node3D = tarray[0]
-				var d: float = (t.global_position - dest).length_squared()
-				if d < dist:
-					var tpos := t.global_position
-					if (dest - tpos).length() <= tarray[2]:
-						target2 = t
-						dist = d
-			
+				var d: float = (t.global_position - dest).length()
+				if d < dist and d <= tarray[2]:
+					target2 = t
+					dist = d
+					
 			if target2:
 				var pos2 := target2.global_position
 				dest = (dest + pos2) / 2

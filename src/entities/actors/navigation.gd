@@ -31,12 +31,12 @@ func _physics_process(delta: float) -> void:
 		physics.move_vec = Vector3.ZERO
 		is_navigating = false
 
-## Begin navigating to a point
+## Begins navigating to a point.
 func navigate_to_point(pos: Vector3) -> void:
 	target_position = pos
 	is_navigating = true
 
-## Returns the next path point while navigating, [br]or [code]Vector3.INF[/code] if not
+## Returns the next path point while navigating, [br]or [code]Vector3.INF[/code] if not.
 func get_next() -> Vector3:
 	if not is_navigation_finished():
 		return get_next_path_position()
