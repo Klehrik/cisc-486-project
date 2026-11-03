@@ -320,9 +320,11 @@ Pitch={
 
 3d_physics/layer_1="World"
 3d_navigation/layer_1="1x1"
-3d_physics/layer_2="Team 1"
+3d_physics/layer_2="Team 1 Entities"
 3d_navigation/layer_2="2x2"
-3d_physics/layer_3="Team 2"
+3d_physics/layer_3="Team 2 Entities"
+3d_physics/layer_4="Team 1 Attacks"
+3d_physics/layer_5="Team 2 Attacks"
 
 [navigation]
 

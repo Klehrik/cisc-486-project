@@ -3,12 +3,12 @@ extends Node3D
 
 signal detected(target: Node3D)	## Emitted when a target is detected.
 
-@export var fov   	:= 90.0:	## Total vision cone angle (in degrees).
+@export var fov   		 := 90.0:		## Total vision cone angle (in degrees).
 	set(value):
 		fov = value
 		_fov_dot_product = cos(deg_to_rad(value/2))
-@export var range 	:= 8.0		## Maximum vision range (in metres).
-@export var group 	:= "Team 1"	## Scene group to scan for.
+@export var vision_range := 10.0		## Maximum vision range (in metres).
+@export var group 		 := "Team 1"	## Scene group to scan for.
 @export_flags_3d_physics var collision_mask: int = 1	## Obstructions collision mask.
 
 var _fov_dot_product := cos(deg_to_rad(45.0))
@@ -28,7 +28,7 @@ func can_see_point(pos: Vector3, range_multiplier: float = 1.0) -> bool:
 ## Returns [code]true[/code] if the point is within the vision cone.
 func is_within_cone(pos: Vector3, range_multiplier: float = 1.0) -> bool:
 	var vec := pos - global_position
-	if vec.length() > range * range_multiplier:
+	if vec.length() > vision_range * range_multiplier:
 		return false
 	var facing := -global_transform.basis.z.normalized()
 	var dot    := facing.dot(vec.normalized())

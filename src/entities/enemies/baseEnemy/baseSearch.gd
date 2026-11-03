@@ -50,6 +50,7 @@ func on_process(delta: float) -> void:
 	
 	search -= delta
 	if search <= 0:
+		_owner.navigation.stop()
 		_owner.path.reset_to_nearest_node(_owner.global_position)
 		parent.switch("Patrol")
 

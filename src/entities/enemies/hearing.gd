@@ -5,8 +5,8 @@ extends Node3D
 signal heard(pos: Vector3)		## Emitted when a noise is heard.
 
 func _ready() -> void:
-	Event.sound.connect(_on_event_sound)
+	Event.noise.connect(_on_event_noise)
 	
-func _on_event_sound(pos: Vector3, range: float) -> void:
-	if (global_position - pos).length() <= range * strength:
+func _on_event_noise(pos: Vector3, sound_range: float) -> void:
+	if (global_position - pos).length() <= sound_range * strength:
 		heard.emit(pos)

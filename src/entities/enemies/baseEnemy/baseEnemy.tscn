@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://csga642phph1t"]
 
-[ext_resource type="Script" uid="uid://blalt3kjy5etm" path="res://src/entities/actors/baseEnemy/baseEnemy.gd" id="1_0bmes"]
+[ext_resource type="Script" uid="uid://blalt3kjy5etm" path="res://src/entities/enemies/baseEnemy/baseEnemy.gd" id="1_0bmes"]
 [ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="1_f4naf"]
-[ext_resource type="Script" uid="uid://bj88r2knis8o3" path="res://src/entities/actors/vision.gd" id="2_sffbo"]
-[ext_resource type="Script" uid="uid://bpsye83hmac6w" path="res://src/entities/actors/hearing.gd" id="4_4md2a"]
+[ext_resource type="Script" uid="uid://bj88r2knis8o3" path="res://src/entities/enemies/vision.gd" id="2_sffbo"]
+[ext_resource type="Script" uid="uid://bpsye83hmac6w" path="res://src/entities/enemies/hearing.gd" id="4_4md2a"]
 [ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="4_46fc1"]
-[ext_resource type="PackedScene" uid="uid://dtknkuui6o157" path="res://src/entities/actors/navigation.tscn" id="4_g02qm"]
-[ext_resource type="Script" uid="uid://bor8aeixbecpx" path="res://src/entities/actors/baseEnemy/basePatrol.gd" id="5_cak4y"]
-[ext_resource type="Script" uid="uid://b6l6uypu3pal3" path="res://src/entities/actors/baseEnemy/baseAlert.gd" id="7_df8pl"]
-[ext_resource type="Script" uid="uid://ctlagq0867cjx" path="res://src/entities/actors/baseEnemy/baseSuspicion.gd" id="8_g02qm"]
-[ext_resource type="Script" uid="uid://wbkoydw6wu1r" path="res://src/entities/actors/baseEnemy/baseSearch.gd" id="9_fjad2"]
+[ext_resource type="PackedScene" uid="uid://dtknkuui6o157" path="res://src/entities/enemies/navigation.tscn" id="4_g02qm"]
+[ext_resource type="Script" uid="uid://bor8aeixbecpx" path="res://src/entities/enemies/baseEnemy/basePatrol.gd" id="5_cak4y"]
+[ext_resource type="Script" uid="uid://b6l6uypu3pal3" path="res://src/entities/enemies/baseEnemy/baseAlert.gd" id="7_df8pl"]
+[ext_resource type="Script" uid="uid://ctlagq0867cjx" path="res://src/entities/enemies/baseEnemy/baseSuspicion.gd" id="8_g02qm"]
+[ext_resource type="Script" uid="uid://wbkoydw6wu1r" path="res://src/entities/enemies/baseEnemy/baseSearch.gd" id="9_fjad2"]
 
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1653461897 groups=["Team 2"]]
 collision_layer = 4

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3ewhlfmd0wte"]
 
-[ext_resource type="PackedScene" uid="uid://csga642phph1t" path="res://src/entities/actors/baseEnemy/baseEnemy.tscn" id="1_lvma2"]
+[ext_resource type="PackedScene" uid="uid://csga642phph1t" path="res://src/entities/enemies/baseEnemy/baseEnemy.tscn" id="1_lvma2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
 render_priority = 1

@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="2_38auj"]
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_drn54"]
 [ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="4_tkkm2"]
-[ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/actors/testEnemy/testEnemy.tscn" id="4_ws5b0"]
-[ext_resource type="Script" uid="uid://be65y2oihe4a7" path="res://src/entities/actors/path.gd" id="5_f5g00"]
+[ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/enemies/testEnemy/testEnemy.tscn" id="4_ws5b0"]
+[ext_resource type="Script" uid="uid://be65y2oihe4a7" path="res://src/entities/enemies/path.gd" id="5_f5g00"]
 [ext_resource type="PackedScene" uid="uid://bwe1i3pc2a17m" path="res://src/features/cube.tscn" id="5_qrfg3"]
 [ext_resource type="Script" uid="uid://kgnr0wr5uetg" path="res://src/game/camera/PoI.gd" id="8_f5g00"]
+[ext_resource type="PackedScene" uid="uid://6rqxg1g4b108" path="res://src/features/noisy/noisy.tscn" id="9_tqpvw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hnva"]
 
@@ -226,3 +227,6 @@ size = Vector3(5, 3, 3)
 [node name="Cube16" parent="Map/Chunk" unique_id=1099229714 instance=ExtResource("5_qrfg3")]
 transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 10.353554, 1.5, -16.939339)
 size = Vector3(5, 3, 3)
+
+[node name="Noisy" parent="Map/Chunk" unique_id=1056041364 instance=ExtResource("9_tqpvw")]
+transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 2.25, 1, 0, -2)

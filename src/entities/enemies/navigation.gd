@@ -42,3 +42,7 @@ func get_next() -> Vector3:
 	if not is_navigation_finished():
 		return get_next_path_position()
 	return Vector3.INF
+
+## Stops navigation.
+func stop() -> void:
+	target_position = _owner.global_position

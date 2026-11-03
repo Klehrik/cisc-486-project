@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 			$Player.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
 	if Input.is_action_just_pressed("Debug 1"):
-		Event.sound.emit($Player.global_position, 8.0)
+		Event.noise.emit($Player.global_position, 8.0)
 
 func _physics_process(delta: float) -> void:
 	frame += 1

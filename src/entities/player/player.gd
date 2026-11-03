@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 var move_speed := 3.0
+var has_silent_movement := false
 
 var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement.
 var wallhug_normal: Vector3			## Normal of the wall being hugged.
@@ -24,6 +25,7 @@ func _ready() -> void:
 		5.0,
 		true
 	)
+	Event.stepped_on_noisy.connect(_on_event_stepped_on_noisy)
 
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
@@ -83,3 +85,12 @@ func _on_hurtbox_body_entered(body: Node3D) -> void:
 	# Temp
 	await get_tree().process_frame
 	get_tree().reload_current_scene()
+
+func _on_event_stepped_on_noisy(entity: Node3D, sound_range: float) -> void:
+	if has_silent_movement:
+		return
+	if entity != self:
+		return
+	if ($Physics as Physics).move_vec == Vector3.ZERO:
+		return
+	Event.noise.emit(global_position, sound_range)
