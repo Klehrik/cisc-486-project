@@ -3,8 +3,8 @@ extends CharacterBody3D
 
 var move_speed := 3.0
 
-var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement
-var wallhug_normal: Vector3
+var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement.
+var wallhug_normal: Vector3			## Normal of the wall being hugged.
 
 var pitch: Camera.CameraOrientation
 var wallhug: Camera.CameraOrientation
@@ -13,7 +13,9 @@ func _ready() -> void:
 	var camera := Camera.instance
 	camera.add_target(self, 100)
 	pitch = Camera.CameraOrientation.new(
-		Vector3(deg_to_rad(-75.0), camera.base_orientation.rotation.y, camera.base_orientation.rotation.z)
+		Vector3(deg_to_rad(-75.0),
+				camera.base_orientation.rotation.y,
+				camera.base_orientation.rotation.z)
 	)
 	wallhug = Camera.CameraOrientation.new(
 		Vector3(deg_to_rad(-20.0), 0, 0),
@@ -31,7 +33,7 @@ func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var move_dir := Camera.instance.get_relative(Vector3(input_vec.x, 0, input_vec.y))
 	if move_dir != Vector3.ZERO:
 		last_move_dir = move_dir
-	$Physics.move_vec = move_dir * move_speed * speed_multiplier
+	($Physics as Physics).move_vec = move_dir * move_speed * speed_multiplier
 
 func handle_camera_pitch() -> void:
 	var camera := Camera.instance
@@ -79,4 +81,5 @@ func is_pushing_against_wall() -> bool:
 
 func _on_hurtbox_body_entered(body: Node3D) -> void:
 	# Temp
+	await get_tree().process_frame
 	get_tree().reload_current_scene()

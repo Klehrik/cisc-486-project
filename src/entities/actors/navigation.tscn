@@ -4,7 +4,7 @@
 
 [node name="Navigation" type="NavigationAgent3D" unique_id=1481448506]
 path_desired_distance = 0.3
-target_desired_distance = 0.1
+target_desired_distance = 0.2
 path_height_offset = 0.2
 navigation_layers = 0
 script = ExtResource("1_wq58a")

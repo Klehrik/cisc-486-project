@@ -65,5 +65,5 @@ mesh = SubResource("BoxMesh_c83cc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_pwp56")
 
-[node name="Navigation" parent="." index="4" unique_id=1481448506]
+[node name="Navigation" parent="." index="5" unique_id=1481448506]
 _navigation_layers = 1

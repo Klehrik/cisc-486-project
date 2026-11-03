@@ -2,6 +2,7 @@ class_name BaseAlert
 extends State
 
 @export var speed 			:= 2.8	## Movement speed.
+@export var vision_mult		:= 1.5	## Vision range multiplier.
 @export var rotation_speed 	:= 12.0	## [code]exp_decay_angle()[/code] rotation rate.
 @export var track_time 		:= 1.5	## Time the enemy can track after target is no longer visible (in seconds).
 
@@ -22,7 +23,7 @@ func on_process(delta: float) -> void:
 	
 	# Track target if visible
 	var target_pos := target.global_position
-	if _owner.vision.can_see_point(target_pos, true):
+	if _owner.vision.can_see_point(target_pos, vision_mult):
 		track = track_time
 	
 	# Track accurately for a bit after target is no longer visible

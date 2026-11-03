@@ -1,5 +1,5 @@
 class_name Vision
-extends Marker3D
+extends Node3D
 
 signal detected(target: Node3D)	## Emitted when a target is detected.
 
@@ -7,9 +7,9 @@ signal detected(target: Node3D)	## Emitted when a target is detected.
 	set(value):
 		fov = value
 		_fov_dot_product = cos(deg_to_rad(value/2))
-@export var range 	:= 10.0		## Maximum vision range (in metres).
+@export var range 	:= 8.0		## Maximum vision range (in metres).
 @export var group 	:= "Team 1"	## Scene group to scan for.
-@export_flags_3d_physics var collision_mask: int = 1	## Obstructions collision mask
+@export_flags_3d_physics var collision_mask: int = 1	## Obstructions collision mask.
 
 var _fov_dot_product := cos(deg_to_rad(45.0))
 
@@ -21,14 +21,14 @@ func _physics_process(delta: float) -> void:
 			detected.emit(t)
 			return
 
-## [code]true[/code] if the point is visible [br](within vision cone AND unobstructed)
-func can_see_point(pos: Vector3, ignore_distance: bool = false) -> bool:
-	return is_within_cone(pos, ignore_distance) and is_unobstructed(pos)
+## Returns [code]true[/code] if the point is visible [br](within vision cone [i]and[/i] unobstructed).
+func can_see_point(pos: Vector3, range_multiplier: float = 1.0) -> bool:
+	return is_within_cone(pos, range_multiplier) and is_unobstructed(pos)
 
-## [code]true[/code] if the point is within the vision cone
-func is_within_cone(pos: Vector3, ignore_distance: bool = false) -> bool:
+## Returns [code]true[/code] if the point is within the vision cone.
+func is_within_cone(pos: Vector3, range_multiplier: float = 1.0) -> bool:
 	var vec := pos - global_position
-	if !ignore_distance and vec.length() > range:
+	if vec.length() > range * range_multiplier:
 		return false
 	var facing := -global_transform.basis.z.normalized()
 	var dot    := facing.dot(vec.normalized())
@@ -36,7 +36,7 @@ func is_within_cone(pos: Vector3, ignore_distance: bool = false) -> bool:
 		return false
 	return true
 
-## [code]true[/code] if the point is unobstructed from this position
+## Returns [code]true[/code] if the point is unobstructed from this position.
 func is_unobstructed(pos: Vector3) -> bool:
 	var space_state := get_world_3d().direct_space_state
 	var y_offset	:= Vector3.UP * 0.2

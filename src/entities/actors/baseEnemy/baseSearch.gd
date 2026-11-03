@@ -25,7 +25,7 @@ func on_enter() -> void:
 	_owner.target = null
 		
 	# Temp
-	_owner.get_node("Status").text = "?"
+	_owner.get_node("Status").text = "..?"
 
 func on_process(delta: float) -> void:
 	# Move to random spot in search radius

@@ -1,5 +1,5 @@
 class_name Hearing
-extends Marker3D
+extends Node3D
 
 @export var strength := 1.0		## Multiplier for range of incoming sound events.
 signal heard(pos: Vector3)		## Emitted when a noise is heard.

@@ -2,6 +2,7 @@ class_name BaseSuspicion
 extends State
 
 @export var speed 			:= 2.0	## Movement speed.
+@export var vision_mult		:= 1.5	## Vision range multiplier.
 @export var rotation_speed 	:= 12.0	## [code]exp_decay_angle()[/code] rotation rate.
 @export var suspicion_time 	:= 0.5	## Maximum time spent in Suspicion (in seconds) before going full Alert.
 @export var track_time 		:= 1.0	## Time the enemy can track after target is no longer visible (in seconds).
@@ -25,7 +26,7 @@ func on_process(delta: float) -> void:
 	if target:
 		# Track target if visible
 		var target_pos := target.global_position
-		if _owner.vision.can_see_point(target_pos, true):
+		if _owner.vision.can_see_point(target_pos, vision_mult):
 			track = track_time
 			
 			# Alert once target is directly seen for long enough

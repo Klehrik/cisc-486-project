@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://co7qrtbgq4kl8"]
 
-[ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/world.gd" id="1_thycv"]
+[ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/game.gd" id="1_thycv"]
 [ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="2_38auj"]
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_drn54"]
 [ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="4_tkkm2"]

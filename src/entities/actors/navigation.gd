@@ -33,6 +33,8 @@ func _physics_process(delta: float) -> void:
 
 ## Begins navigating to a point.
 func navigate_to_point(pos: Vector3) -> void:
+	if pos == target_position:
+		return
 	target_position = pos
 	is_navigating = true
 

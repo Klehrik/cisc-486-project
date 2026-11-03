@@ -19,11 +19,10 @@ script = ExtResource("1_0bmes")
 script = ExtResource("1_f4naf")
 metadata/_custom_type_script = "uid://csbqc7mofua04"
 
-[node name="Vision" type="Marker3D" parent="." unique_id=86178474]
+[node name="Vision" type="Node3D" parent="." unique_id=136895656]
 script = ExtResource("2_sffbo")
-metadata/_custom_type_script = "uid://bj88r2knis8o3"
 
-[node name="Hearing" type="Marker3D" parent="." unique_id=1774597233]
+[node name="Hearing" type="Node3D" parent="." unique_id=2059369224]
 script = ExtResource("4_4md2a")
 
 [node name="Navigation" parent="." unique_id=1481448506 instance=ExtResource("4_g02qm")]
