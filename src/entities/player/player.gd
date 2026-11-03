@@ -2,9 +2,10 @@ class_name Player
 extends CharacterBody3D
 
 var move_speed := 3.0
-var has_silent_movement := false
+const footstep_dist := 0.5			## How far the player needs to travel to trigger another footstep (in metres).
 
 var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement.
+var last_footstep: Vector3			## Last saved footstep position.
 var wallhug_normal: Vector3			## Normal of the wall being hugged.
 
 var pitch: Camera.CameraOrientation
@@ -25,7 +26,6 @@ func _ready() -> void:
 		5.0,
 		true
 	)
-	Event.stepped_on_noisy.connect(_on_event_stepped_on_noisy)
 
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
@@ -36,6 +36,10 @@ func handle_movement(speed_multiplier: float = 1.0) -> void:
 	if move_dir != Vector3.ZERO:
 		last_move_dir = move_dir
 	($Physics as Physics).move_vec = move_dir * move_speed * speed_multiplier
+	
+	if (global_position - last_footstep).length() > footstep_dist:
+		last_footstep = global_position
+		Event.footstep.emit(self, global_position)
 
 func handle_camera_pitch() -> void:
 	var camera := Camera.instance
@@ -85,12 +89,3 @@ func _on_hurtbox_body_entered(body: Node3D) -> void:
 	# Temp
 	await get_tree().process_frame
 	get_tree().reload_current_scene()
-
-func _on_event_stepped_on_noisy(entity: Node3D, sound_range: float) -> void:
-	if has_silent_movement:
-		return
-	if entity != self:
-		return
-	if ($Physics as Physics).move_vec == Vector3.ZERO:
-		return
-	Event.noise.emit(global_position, sound_range)

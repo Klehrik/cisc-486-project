@@ -6,14 +6,17 @@ extends State
 @export var rotation_speed 	:= 12.0	## [code]exp_decay_angle()[/code] rotation rate.
 @export var suspicion_time 	:= 0.5	## Maximum time spent in Suspicion (in seconds) before going full Alert.
 @export var track_time 		:= 1.0	## Time the enemy can track after target is no longer visible (in seconds).
+@export var delay_time 		:= 0.5	## Delay before moving after entering Suspicion (in seconds).
 
 var suspicion: float
 var track: float
+var delay: float
 
 @onready var _owner: BaseEnemy = owner
 
 func on_enter() -> void:
 	suspicion = 0.0
+	delay = delay_time
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 		
@@ -41,10 +44,13 @@ func on_process(delta: float) -> void:
 			_owner.target_last_seen = target_pos
 	
 	# Start Searching once last seen position is reached
-	_owner.navigation.navigate_to_point(_owner.target_last_seen)
-	if _owner.navigation.get_next() == Vector3.INF:
-		parent.switch("Search")
-		return
+	if delay > 0:
+		delay -= delta
+	else:
+		_owner.navigation.navigate_to_point(_owner.target_last_seen)
+		if _owner.navigation.get_next() == Vector3.INF:
+			parent.switch("Search")
+			return
 
 func _on_vision_detected(target: Node3D) -> void:
 	if is_current_state:
