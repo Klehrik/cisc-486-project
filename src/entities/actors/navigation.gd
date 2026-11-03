@@ -21,7 +21,6 @@ func _physics_process(delta: float) -> void:
 		assert(false, "Entity does not have Physics component.")
 	
 	# Move to target point
-	var move_vec := Vector3.ZERO
 	var next := get_next()
 	if next != Vector3.INF:
 		var move_dir := (next - _owner.global_position).normalized()
