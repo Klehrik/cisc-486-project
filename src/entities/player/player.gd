@@ -78,14 +78,15 @@ func handle_camera_wallhug() -> bool:
 		camera.remove_orientation(wallhug)
 		return false
 
-## [code]true[/code] if touching wall with movement input
+## Returns [code]true[/code] if touching wall with movement input.
 func is_pushing_against_wall() -> bool:
 	if not is_on_wall():
 		return false
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
 	return input_vec != Vector2.ZERO
 
-func _on_hurtbox_body_entered(body: Node3D) -> void:
-	# Temp
-	await get_tree().process_frame
-	get_tree().reload_current_scene()
+func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
+	# DEBUG
+	if hurtbox.health <= 0:
+		await get_tree().process_frame
+		get_tree().reload_current_scene()

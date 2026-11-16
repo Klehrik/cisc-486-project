@@ -1,7 +1,7 @@
 class_name Hitbox
 extends Area3D
 
-signal hit(hurtbox: Hurtbox)	## Emitted when this hitbox enters a hurtbox, before damage application.
+signal hit(hitbox: Hitbox, hurtbox: Hurtbox)	## Emitted when this hitbox enters a hurtbox, before damage application.
 
 var damage   := 0.0:			## Damage of hitbox.
 	get():

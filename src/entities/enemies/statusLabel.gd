@@ -35,6 +35,7 @@ func set_status(status: Status) -> void:
 			label.text  = "?"
 			label.color = Color("fee761")
 
+	# Popup animation
 	label.scale.y = 0
 	var tween := label.create_tween()
 	tween.tween_property(label, "scale:y", 1, 0.2)

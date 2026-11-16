@@ -1,8 +1,8 @@
 class_name Hurtbox
 extends Area3D
 
-signal prehurt(hitbox: Hitbox)	## Emitted when a hitbox enters this hurtbox, before damage application.
-signal hurt(hitbox: Hitbox)		## Emitted when a hitbox enters this hurtbox, after damage application.
+signal prehurt(hurtbox: Hurtbox, hitbox: Hitbox)	## Emitted when a hitbox enters this hurtbox, before damage application.
+signal hurt(hurtbox: Hurtbox, hitbox: Hitbox)		## Emitted when a hitbox enters this hurtbox, after damage application.
 
 @export var health_max: float = 1.0:
 	get():
@@ -24,10 +24,10 @@ func _on_area_entered(area: Area3D) -> void:
 	if area is Hitbox and area not in hitboxes:
 		var hitbox := area as Hitbox
 		hitboxes.append(hitbox)
-		hitbox.hit.emit(self)
-		prehurt.emit(hitbox)
+		hitbox.hit.emit(hitbox, self)
+		prehurt.emit(self, hitbox)
 		health -= hitbox.damage
-		hurt.emit(hitbox)
+		hurt.emit(self, hitbox)
 		
 		# DEBUG
 		print("Ow for ", hitbox.damage, " dmg; health: ", health, " / ", health_max)

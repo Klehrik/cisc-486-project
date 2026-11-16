@@ -15,9 +15,6 @@ func _ready() -> void:
 	var _scale = scale
 	scale = Vector3.ONE
 	
-	#$EditorVisual.scale = _scale
-	#$EditorVisual.position = Vector3(_scale.x / 2, _scale.y / 2, -_scale.z / 2)
-	
 	var hitbox: Area3D = $Hitbox
 	hitbox.position = Vector3(_scale.x / 2, _scale.y / 2, -_scale.z / 2)
 	
