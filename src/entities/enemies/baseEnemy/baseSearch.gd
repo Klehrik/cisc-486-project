@@ -54,6 +54,10 @@ func on_process(delta: float) -> void:
 		_owner.path.reset_to_nearest_node(_owner.global_position)
 		parent.switch("Patrol")
 
+func _on_navigation_moved(direction: Vector3, delta: float) -> void:
+	if is_current_state:
+		_owner.rotate_to_look_at(_owner.global_position + direction, delta)
+	
 func _on_vision_detected(target: Node3D) -> void:
 	if is_current_state:
 		_owner.target = target

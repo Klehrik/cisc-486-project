@@ -26,5 +26,5 @@ func rotate_to_look_at(pos: Vector3, delta: float) -> void:
 	var dest := atan2(-d.x, -d.z)
 	rotation.y = Util.exp_decay_angle(rotation.y, dest, rotation_speed, delta)
 
-func _on_navigation_moved(direction: Vector3, delta: float) -> void:
-	rotate_to_look_at(global_position + direction, delta)
+#func _on_navigation_moved(direction: Vector3, delta: float) -> void:
+#	rotate_to_look_at(global_position + direction, delta)

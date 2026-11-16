@@ -5,6 +5,7 @@ extends State
 @export var vision_mult		:= 1.5	## Vision range multiplier.
 @export var rotation_speed 	:= 12.0	## [code]exp_decay_angle()[/code] rotation rate.
 @export var track_time 		:= 1.5	## Time the enemy can track after target is no longer visible (in seconds).
+@export var stay_away_dist	:= 1.5	## Minimum distance the enemy should stay away from the target (in metres).
 
 var track: float
 
@@ -30,8 +31,12 @@ func on_process(delta: float) -> void:
 	if track > 0:
 		track -= delta
 		
-		# Rotate and move towards point
+		# Rotate and move towards point (maintain min dist from target if >0)
 		_owner.target_last_seen = target_pos
+		_owner.rotate_to_look_at(target_pos, delta)
+		if stay_away_dist > 0:
+			var dir := (_owner.global_position - target_pos).normalized()
+			target_pos += dir * stay_away_dist
 		_owner.navigation.navigate_to_point(target_pos)
 		
 		# Notify nearby allies in view

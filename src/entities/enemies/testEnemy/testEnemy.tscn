@@ -49,6 +49,10 @@ size = Vector3(0.3, 0.2, 0.5)
 radius = 0.25
 height = 0.9
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5d58"]
+radius = 0.25
+height = 0.9
+
 [node name="TestEnemy" unique_id=1653461897 instance=ExtResource("1_lvma2")]
 
 [node name="Mesh" type="MeshInstance3D" parent="." index="0" unique_id=1913652117]
@@ -65,5 +69,13 @@ mesh = SubResource("BoxMesh_c83cc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_pwp56")
 
-[node name="Navigation" parent="." index="5" unique_id=1481448506]
+[node name="Hurtbox" parent="." index="2" unique_id=1950418006]
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0" unique_id=869250974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_d5d58")
+debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
+
+[node name="Navigation" parent="." index="6" unique_id=1481448506]
 _navigation_layers = 1

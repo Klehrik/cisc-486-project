@@ -1,7 +1,7 @@
 class_name Hitbox
 extends Area3D
 
-signal hit(hurtbox: Hurtbox)	## Emitted when this hitbox enters a hurtbox.
+signal hit(hurtbox: Hurtbox)	## Emitted when this hitbox enters a hurtbox, before damage application.
 
 var damage   := 0.0				## Damage of hitbox.
 var kb_vec 	 := Vector3.ZERO	## Knockback vector of hitbox.
@@ -9,9 +9,10 @@ var lifetime := -1.0			## Lifetime of hitbox (in seconds). [br]If [code]-1[/code
 
 @onready var shape: CollisionShape3D = $CollisionShape3D
 
-## Calling this will enable the hitbox; do it last. [br]
-## [code]target[/code] is the position to face.
-func init(pos: Vector3, target: Vector3, size: Vector3) -> void:
+## Calling this will enable the hitbox. [br]
+## [code]target[/code] is the position to face. [br]
+## If [code]centered = false[/code], the starting end aligns with [code]pos[/code].
+func set_orientation(pos: Vector3, target: Vector3, size: Vector3, centered: bool = true) -> void:
 	# Set starting position and orientation
 	global_position = pos
 	look_at(target)
@@ -21,7 +22,8 @@ func init(pos: Vector3, target: Vector3, size: Vector3) -> void:
 	shape.shape.size = size
 	
 	# Offset shape -z so that an end aligns with starting position
-	shape.position.z = -size.z / 2
+	if not centered:
+		shape.position.z = -size.z / 2
 	
 	shape.disabled = false
 

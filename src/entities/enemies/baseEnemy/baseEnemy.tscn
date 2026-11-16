@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="4_46fc1"]
 [ext_resource type="PackedScene" uid="uid://dtknkuui6o157" path="res://src/entities/enemies/navigation.tscn" id="4_g02qm"]
 [ext_resource type="Script" uid="uid://bor8aeixbecpx" path="res://src/entities/enemies/baseEnemy/basePatrol.gd" id="5_cak4y"]
+[ext_resource type="PackedScene" uid="uid://c3vca0rcit22b" path="res://src/entities/hurtbox.tscn" id="6_j1rkh"]
 [ext_resource type="Script" uid="uid://b6l6uypu3pal3" path="res://src/entities/enemies/baseEnemy/baseAlert.gd" id="7_df8pl"]
 [ext_resource type="Script" uid="uid://ctlagq0867cjx" path="res://src/entities/enemies/baseEnemy/baseSuspicion.gd" id="8_g02qm"]
 [ext_resource type="Script" uid="uid://wbkoydw6wu1r" path="res://src/entities/enemies/baseEnemy/baseSearch.gd" id="9_fjad2"]
@@ -14,6 +15,8 @@
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1653461897 groups=["Team 2"]]
 collision_layer = 4
 script = ExtResource("1_0bmes")
+
+[node name="Hurtbox" parent="." unique_id=1950418006 instance=ExtResource("6_j1rkh")]
 
 [node name="Physics" type="Node" parent="." unique_id=1829006441]
 script = ExtResource("1_f4naf")
@@ -62,4 +65,6 @@ font_size = 192
 [connection signal="heard" from="Hearing" to="StateMachine/Patrol" method="_on_hearing_heard"]
 [connection signal="heard" from="Hearing" to="StateMachine/Suspicion" method="_on_hearing_heard"]
 [connection signal="heard" from="Hearing" to="StateMachine/Search" method="_on_hearing_heard"]
-[connection signal="moved" from="Navigation" to="." method="_on_navigation_moved"]
+[connection signal="moved" from="Navigation" to="StateMachine/Patrol" method="_on_navigation_moved"]
+[connection signal="moved" from="Navigation" to="StateMachine/Suspicion" method="_on_navigation_moved"]
+[connection signal="moved" from="Navigation" to="StateMachine/Search" method="_on_navigation_moved"]
