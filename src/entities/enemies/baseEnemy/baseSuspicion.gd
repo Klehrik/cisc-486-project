@@ -20,8 +20,7 @@ func on_enter() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 		
-	# Temp
-	_owner.get_node("Status").text = "?"
+	_owner.status_label.set_status(StatusLabel.Status.SUSPICION)
 
 func on_process(delta: float) -> void:
 	var target := _owner.target

@@ -8,9 +8,10 @@ signal hurt(hitbox: Hitbox)		## Emitted when a hitbox enters this hurtbox, after
 	get():
 		return health_max
 	set(value):
-		health_max = value
+		health_max = max(value, 0.0)
 		if value > health:
 			health = value
+		health = min(health, health_max)
 var health = health_max:
 	get():
 		return health

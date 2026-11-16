@@ -24,8 +24,7 @@ func on_enter() -> void:
 	_owner.rotation_speed = rotation_speed
 	_owner.target = null
 		
-	# Temp
-	_owner.get_node("Status").text = "..?"
+	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
 
 func on_process(delta: float) -> void:
 	# Move to random spot in search radius

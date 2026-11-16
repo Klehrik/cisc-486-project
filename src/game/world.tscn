@@ -56,6 +56,8 @@ shadow_blur = 0.0
 
 [node name="Camera" parent="." unique_id=167082799 instance=ExtResource("2_drn54")]
 
+[node name="Screen" type="CanvasLayer" parent="." unique_id=1713659681]
+
 [node name="Player" parent="." unique_id=2050928230 instance=ExtResource("2_38auj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 

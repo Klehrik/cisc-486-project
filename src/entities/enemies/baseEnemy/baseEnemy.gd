@@ -13,6 +13,7 @@ var rotate_while_moving := true		## If [code]true[/code], rotate in navigation d
 @onready var navigation: Navigation 	= find_children("*", "Navigation").get(0)
 @onready var stateMachine: StateMachine = find_children("*", "StateMachine").get(0)
 @onready var path: Path 				= find_children("*", "Path").get(0)
+@onready var status_label: StatusLabel 	= find_children("*", "StatusLabel").get(0)
 
 func _ready() -> void:
 	assert(physics, 	 "Entity does not have a Physics component.")
@@ -20,6 +21,7 @@ func _ready() -> void:
 	assert(navigation, 	 "Entity does not have a Navigation component.")
 	assert(stateMachine, "Entity does not have a StateMachine component.")
 	assert(path, 		 "Entity does not have a Path component.")
+	assert(status_label, "Entity does not have a StatusLabel component.")
 
 ## Rotate to face a point [br]Should be called every frame while rotating
 func rotate_to_look_at(pos: Vector3, delta: float) -> void:

@@ -13,10 +13,10 @@ func _process(delta: float) -> void:
 			$Player.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
 	if Input.is_action_just_pressed("Debug 1"):
-		Event.noise.emit($Player.global_position, 8.0)
+		Event.noise.emit($Player.global_position, 9.0)
 		
 	if Input.is_action_just_pressed("Debug 2"):
-		# Spawn enemy hitbox
+		# Spawn hitbox
 		var vp := get_viewport()
 		if vp:
 			var hitbox: Hitbox = Scene.instantiate_global(Scene.hitbox)
@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 				Vector3(0.5, 0.5, 2),
 				false
 			)
-			hitbox.collision_layer = 1 << 4
+			hitbox.collision_layer = 1 << 3 | 1 << 4	# Team 1 and Team 2 attacks respectively
 			hitbox.damage = 1.0
 			hitbox.kb_vec = -hitbox.global_basis.z
 			hitbox.lifetime = 2.0

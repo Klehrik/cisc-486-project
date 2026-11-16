@@ -15,8 +15,7 @@ func on_enter() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 	
-	# Temp
-	_owner.get_node("Status").text = "!"
+	_owner.status_label.set_status(StatusLabel.Status.ALERT)
 	_owner.add_child(PoI.new(0, 1.5))	# Pan camera to show alerted enemy for a bit
 
 func on_process(delta: float) -> void:

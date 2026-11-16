@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lhv6drc41r6x"]
+
+[ext_resource type="Script" uid="uid://bodg0i2kuwjyg" path="res://src/game/worldLabel/worldLabel.gd" id="1_pxf6v"]
+[ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="2_wxuhm"]
+
+[node name="WorldLabel" type="Node2D" unique_id=753174796]
+script = ExtResource("1_pxf6v")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=2063681055]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+theme_override_fonts/normal_font = ExtResource("2_wxuhm")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "foo"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2

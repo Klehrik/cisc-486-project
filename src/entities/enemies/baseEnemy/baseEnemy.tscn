@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b6l6uypu3pal3" path="res://src/entities/enemies/baseEnemy/baseAlert.gd" id="7_df8pl"]
 [ext_resource type="Script" uid="uid://ctlagq0867cjx" path="res://src/entities/enemies/baseEnemy/baseSuspicion.gd" id="8_g02qm"]
 [ext_resource type="Script" uid="uid://wbkoydw6wu1r" path="res://src/entities/enemies/baseEnemy/baseSearch.gd" id="9_fjad2"]
+[ext_resource type="Script" uid="uid://bjls8sr5s3m2u" path="res://src/entities/enemies/statusLabel.gd" id="12_nwpln"]
 
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1653461897 groups=["Team 2"]]
 collision_layer = 4
@@ -29,6 +30,10 @@ script = ExtResource("2_sffbo")
 script = ExtResource("4_4md2a")
 
 [node name="Navigation" parent="." unique_id=1481448506 instance=ExtResource("4_g02qm")]
+
+[node name="StatusLabel" type="Node3D" parent="." unique_id=1738454165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("12_nwpln")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1689165596]
 script = ExtResource("4_46fc1")
@@ -49,11 +54,6 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 [node name="Search" type="Node" parent="StateMachine" unique_id=1397660578]
 script = ExtResource("9_fjad2")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
-
-[node name="Status" type="Label3D" parent="." unique_id=1059038396]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-billboard = 1
-font_size = 192
 
 [connection signal="notify" from="." to="StateMachine/Patrol" method="_on_base_enemy_notify"]
 [connection signal="notify" from="." to="StateMachine/Suspicion" method="_on_base_enemy_notify"]
