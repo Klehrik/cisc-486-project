@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c3vca0rcit22b" path="res://src/entities/hurtbox.tscn" id="6_j1rkh"]
 [ext_resource type="Script" uid="uid://b6l6uypu3pal3" path="res://src/entities/enemies/baseEnemy/baseAlert.gd" id="7_df8pl"]
 [ext_resource type="Script" uid="uid://ctlagq0867cjx" path="res://src/entities/enemies/baseEnemy/baseSuspicion.gd" id="8_g02qm"]
+[ext_resource type="Script" uid="uid://clraj46r2i5m8" path="res://src/entities/enemies/speech.gd" id="8_s0k04"]
 [ext_resource type="Script" uid="uid://wbkoydw6wu1r" path="res://src/entities/enemies/baseEnemy/baseSearch.gd" id="9_fjad2"]
 [ext_resource type="Script" uid="uid://bjls8sr5s3m2u" path="res://src/entities/enemies/statusLabel.gd" id="12_nwpln"]
 
@@ -34,6 +35,10 @@ script = ExtResource("4_4md2a")
 [node name="StatusLabel" type="Node3D" parent="." unique_id=1738454165]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 script = ExtResource("12_nwpln")
+
+[node name="Speech" type="Node3D" parent="." unique_id=1154050675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("8_s0k04")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1689165596]
 script = ExtResource("4_46fc1")

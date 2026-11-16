@@ -17,10 +17,10 @@ class CameraOrientation:
 	
 	var rotation: Vector3
 	var offset: Vector3
-	var dist_scale: float		## Scaling value for camera [code]z[/code] distance [br][code]1.0[/code] at base
-	var speed: float			## [code]exp_decay()[/code] orientation speed [br][code]5.0[/code] at base
-	var ignore_secondary: bool	## Whether to ignore secondary targets when camera panning
-	var base: Array				## Original initialized values
+	var dist_scale: float		## Scaling value for camera [code]z[/code] distance [br][code]1.0[/code] at base.
+	var speed: float			## [code]exp_decay()[/code] orientation speed [br][code]5.0[/code] at base.
+	var ignore_secondary: bool	## Whether to ignore secondary targets when camera panning.
+	var base: Array				## Original initialized values.
 	
 	## Pass [code]-1[/code] to numerical fields to use default.
 	func _init(

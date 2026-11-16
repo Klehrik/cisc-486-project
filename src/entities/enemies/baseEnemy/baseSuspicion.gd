@@ -11,6 +11,7 @@ extends State
 var suspicion: float
 var track: float
 var delay: float
+var talked: bool
 
 @onready var _owner: BaseEnemy = owner
 
@@ -21,6 +22,7 @@ func on_enter() -> void:
 	_owner.rotation_speed = rotation_speed
 		
 	_owner.status_label.set_status(StatusLabel.Status.SUSPICION)
+	talked = false
 
 func on_process(delta: float) -> void:
 	var target := _owner.target
@@ -46,6 +48,10 @@ func on_process(delta: float) -> void:
 	if delay > 0:
 		delay -= delta
 	else:
+		if not talked:
+			talked = true
+			_owner.speech.talk(Dialogue.Status.Suspicion.pick_random())
+		
 		_owner.navigation.navigate_to_point(_owner.target_last_seen)
 		if _owner.navigation.get_next() == Vector3.INF:
 			parent.switch("Search")

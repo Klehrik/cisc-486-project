@@ -11,6 +11,8 @@ var wallhug_normal: Vector3			## Normal of the wall being hugged.
 var pitch: Camera.CameraOrientation
 var wallhug: Camera.CameraOrientation
 
+@onready var physics: Physics = $Physics
+
 func _ready() -> void:
 	var camera := Camera.instance
 	camera.add_target(self, 100)
@@ -35,7 +37,7 @@ func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var move_dir := Camera.instance.get_relative(Vector3(input_vec.x, 0, input_vec.y))
 	if move_dir != Vector3.ZERO:
 		last_move_dir = move_dir
-	($Physics as Physics).move_vec = move_dir * move_speed * speed_multiplier
+	physics.move_vec = move_dir * move_speed * speed_multiplier
 	
 	if (global_position - last_footstep).length() > footstep_dist:
 		last_footstep = global_position

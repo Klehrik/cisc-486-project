@@ -25,6 +25,7 @@ func on_enter() -> void:
 	_owner.target = null
 		
 	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
+	_owner.speech.talk(Dialogue.Status.Search.pick_random())
 
 func on_process(delta: float) -> void:
 	# Move to random spot in search radius
