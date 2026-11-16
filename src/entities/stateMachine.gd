@@ -2,7 +2,12 @@ class_name StateMachine
 extends Node
 
 var states: Dictionary[String, State] = {}
-var current: State = null
+var stack: Array[State] = []
+var current: State:
+	get():
+		return stack.back()
+	set(value):
+		assert(false, "current is read only.")
 
 func _ready() -> void:
 	await owner.ready
@@ -14,20 +19,62 @@ func _ready() -> void:
 		states[state.name] = state
 		if not first:
 			first = state
-	switch(first.name)
+	push(first.name)
 	
 func _physics_process(delta: float) -> void:
-	if current:
-		current.on_process(delta)
+	current.on_process(delta)
 
-func switch(name: String) -> void:
-	if current and current.name == name:
+func push(name: String) -> void:
+	var c := current
+	if c and c.name == name:
 		return
 	var next: State = states.get(name)
 	assert(next, "State '%s' does not exist." % name)
-	if current:
+	
+	if c:
+		c.is_current_state = false
+		c.on_exit()
+	
+	stack.append(next)
+	c = current
+	if c:
+		c.is_current_state = true
+		c.on_push()
+		c.on_enter()
+
+func pop() -> void:
+	if len(stack) <= 1:
+		push_error("Cannot pop last state.")
+		return
+	
+	var c := current
+	if c:
 		current.is_current_state = false
 		current.on_exit()
-	current = next
-	current.is_current_state = true
-	current.on_enter()
+		current.on_pop()
+	
+	stack.pop_back()
+	c = current
+	if c:
+		c.is_current_state = true
+		c.on_enter()
+
+func switch(name: String) -> void:
+	var c := current
+	if c and c.name == name:
+		return
+	var next: State = states.get(name)
+	assert(next, "State '%s' does not exist." % name)
+	
+	if c:
+		c.is_current_state = false
+		c.on_exit()
+		c.on_pop()
+	
+	stack.pop_back()
+	stack.append(next)
+	c = current
+	if c:
+		c.is_current_state = true
+		c.on_push()
+		c.on_enter()
