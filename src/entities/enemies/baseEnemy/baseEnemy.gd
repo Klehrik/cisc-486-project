@@ -7,6 +7,7 @@ var rotation_speed: float			## [code]exp_decay_angle()[/code] rotation rate.
 var target: Node3D					## The target being tracked.
 var target_last_seen := Vector3.INF	## The last seen position of the target.
 var rotate_while_moving := true		## If [code]true[/code], rotate in navigation direction.
+var alerted_once := false			## [code]true[/code] if the enemy has been alerted before. [br]Resets on going back to Patrol.
 
 @onready var physics: Physics 			= find_children("*", "Physics").get(0)
 @onready var vision: Vision 			= find_children("*", "Vision").get(0)

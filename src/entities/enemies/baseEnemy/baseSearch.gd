@@ -25,7 +25,11 @@ func on_enter() -> void:
 	_owner.target = null
 		
 	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
-	_owner.speech.talk(Dialogue.Status.Search.pick_random())
+	
+	var lines = Dialogue.Status.Search
+	if _owner.alerted_once:
+		lines = Dialogue.Status.SearchAlerted
+	_owner.speech.talk(lines.pick_random())
 
 func on_process(delta: float) -> void:
 	# Move to random spot in search radius
@@ -52,6 +56,12 @@ func on_process(delta: float) -> void:
 	if search <= 0:
 		_owner.navigation.stop()
 		_owner.path.reset_to_nearest_node(_owner.global_position)
+		
+		var lines = Dialogue.Status.SearchEnd
+		if _owner.alerted_once:
+			lines = Dialogue.Status.SearchEndAlerted
+		_owner.speech.talk(lines.pick_random())
+		
 		parent.switch("Patrol")
 	
 func _on_vision_detected(target: Node3D) -> void:

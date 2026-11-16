@@ -16,6 +16,7 @@ func on_enter() -> void:
 	_owner.target = null
 	
 	_owner.status_label.set_status(StatusLabel.Status.PATROL)
+	_owner.alerted_once = false
 
 func on_process(delta: float) -> void:
 	# Follow path
