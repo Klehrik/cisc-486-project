@@ -65,6 +65,4 @@ font_size = 192
 [connection signal="heard" from="Hearing" to="StateMachine/Patrol" method="_on_hearing_heard"]
 [connection signal="heard" from="Hearing" to="StateMachine/Suspicion" method="_on_hearing_heard"]
 [connection signal="heard" from="Hearing" to="StateMachine/Search" method="_on_hearing_heard"]
-[connection signal="moved" from="Navigation" to="StateMachine/Patrol" method="_on_navigation_moved"]
-[connection signal="moved" from="Navigation" to="StateMachine/Suspicion" method="_on_navigation_moved"]
-[connection signal="moved" from="Navigation" to="StateMachine/Search" method="_on_navigation_moved"]
+[connection signal="moved" from="Navigation" to="." method="_on_navigation_moved"]

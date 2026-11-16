@@ -6,6 +6,7 @@ signal notify(target: Node3D, last_seen_pos: Vector3)	## Emitted through Alerted
 var rotation_speed: float			## [code]exp_decay_angle()[/code] rotation rate.
 var target: Node3D					## The target being tracked.
 var target_last_seen := Vector3.INF	## The last seen position of the target.
+var rotate_while_moving := true		## If [code]true[/code], rotate in navigation direction.
 
 @onready var physics: Physics 			= find_children("*", "Physics").get(0)
 @onready var vision: Vision 			= find_children("*", "Vision").get(0)
@@ -26,5 +27,6 @@ func rotate_to_look_at(pos: Vector3, delta: float) -> void:
 	var dest := atan2(-d.x, -d.z)
 	rotation.y = Util.exp_decay_angle(rotation.y, dest, rotation_speed, delta)
 
-#func _on_navigation_moved(direction: Vector3, delta: float) -> void:
-#	rotate_to_look_at(global_position + direction, delta)
+func _on_navigation_moved(direction: Vector3, delta: float) -> void:
+	if rotate_while_moving:
+		rotate_to_look_at(global_position + direction, delta)
