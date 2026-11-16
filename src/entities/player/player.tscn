@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="1_4m8ck"]
 [ext_resource type="Script" uid="uid://yevlo2600s0j" path="res://src/entities/player/player.gd" id="1_muk8e"]
+[ext_resource type="PackedScene" uid="uid://c3vca0rcit22b" path="res://src/entities/hurtbox.tscn" id="2_oih67"]
 [ext_resource type="Script" uid="uid://bvnfpkhnbs5d0" path="res://src/entities/player/free.gd" id="2_vt6n5"]
 [ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="2_wrxq6"]
 [ext_resource type="Script" uid="uid://c16r0sc3rwsij" path="res://src/entities/player/wallhug.gd" id="5_ketdh"]
@@ -33,7 +34,7 @@ height = 0.9
 radius = 0.25
 height = 0.9
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c83cc"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oih67"]
 radius = 0.25
 height = 0.9
 
@@ -50,14 +51,13 @@ mesh = SubResource("CapsuleMesh_vt6n5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_muk8e")
 
-[node name="Hurtbox" type="Area3D" parent="." unique_id=1239405939]
-collision_layer = 0
-collision_mask = 4
+[node name="Hurtbox" parent="." unique_id=1950418006 instance=ExtResource("2_oih67")]
+collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1379928767]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=821778974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
-shape = SubResource("CapsuleShape3D_c83cc")
-debug_color = Color(0.7, 0, 0, 0.41960785)
+shape = SubResource("CapsuleShape3D_oih67")
+debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
 
 [node name="Physics" type="Node" parent="." unique_id=1862717885]
 script = ExtResource("2_wrxq6")

@@ -1,11 +1,11 @@
 class_name Physics
 extends Node
 
-@export var knockback_decay := 5.0	## Knockback vector [code]exp_decay()[/code] rate
+@export var knockback_decay := 5.0	## Knockback vector [code]exp_decay()[/code] rate.
 @export var gravity := 12.0
 
-var move_vec 	:= Vector3.ZERO	## Base movement vector; unchanging on its own
-var kb_vec   	:= Vector3.ZERO	## Knockback vector; decays over time
+var move_vec 	:= Vector3.ZERO	## Base movement vector; unchanging on its own.
+var kb_vec   	:= Vector3.ZERO	## Knockback vector; decays over time.
 var velocity_y 	:= 0.0
 
 @onready var _owner: CharacterBody3D = owner

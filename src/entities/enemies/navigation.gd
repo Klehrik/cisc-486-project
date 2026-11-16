@@ -3,7 +3,7 @@ extends NavigationAgent3D
 
 # Path Height is >0 to compensate for the NavigationRegion mesh floating above the ground
 
-signal moved(direction: Vector3, delta: float)	## Emitted every frame while navigating
+signal moved(direction: Vector3, delta: float)	## Emitted every frame while navigating.
 
 @export var speed := 1.5	## Modified by states
 @export_flags_3d_navigation var _navigation_layers: int

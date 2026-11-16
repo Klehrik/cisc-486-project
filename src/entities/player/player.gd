@@ -23,7 +23,7 @@ func _ready() -> void:
 		Vector3(deg_to_rad(-20.0), 0, 0),
 		Vector3.UP * 2,
 		0.5,
-		5.0,
+		-1,
 		true
 	)
 
@@ -62,7 +62,7 @@ func handle_camera_wallhug() -> bool:
 	if result:
 		# Modify wallhug orientation when pitched
 		if Input.is_action_pressed("Pitch"):
-			wallhug.rotation.x = deg_to_rad(-40.0)
+			wallhug.rotation.x = deg_to_rad(-45.0)
 			wallhug.offset     = Vector3.UP * 4
 			wallhug.dist_scale = 0.7
 		else:

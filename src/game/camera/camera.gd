@@ -12,6 +12,9 @@ var orientations: Array[Array] = [] 	## List of target camera orientations. [br]
 var current_dist_scale := 1.0 			## The current camera distance scaling; do not set. [br][code]1.0[/code] at base.
 
 class CameraOrientation:
+	const default_dist_scale = 1.0
+	const default_speed 	 = 6.0
+	
 	var rotation: Vector3
 	var offset: Vector3
 	var dist_scale: float		## Scaling value for camera [code]z[/code] distance [br][code]1.0[/code] at base
@@ -19,13 +22,16 @@ class CameraOrientation:
 	var ignore_secondary: bool	## Whether to ignore secondary targets when camera panning
 	var base: Array				## Original initialized values
 	
+	## Pass [code]-1[/code] to numerical fields to use default.
 	func _init(
 		rotation: Vector3,
 		offset: Vector3 		= Vector3.ZERO,
-		dist_scale: float 		= 1.0,
-		speed: float 			= 5.0,
+		dist_scale: float 		= default_dist_scale,
+		speed: float 			= default_speed,
 		ignore_secondary: bool 	= false
 	) -> void:
+		dist_scale = dist_scale if dist_scale > 0 else default_dist_scale
+		speed	   = speed if speed > 0 else default_speed
 		self.rotation 			= rotation
 		self.offset 			= offset
 		self.dist_scale 		= dist_scale
