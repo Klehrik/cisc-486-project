@@ -15,10 +15,14 @@ func on_enter() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 	
-	_owner.status_label.set_status(StatusLabel.Status.ALERT)
 	_owner.add_child(PoI.new(0, 1.5))	# Pan camera to show alerted enemy for a bit
+	
+	_owner.status_label.set_status(StatusLabel.Status.ALERT)
 	_owner.speech.talk(Dialogue.Status.Alert.pick_random())
 	_owner.alerted_once = true
+	
+	# Shout noise
+	Event.noise.emit(_owner.global_position, 9.0)
 
 func on_process(delta: float) -> void:
 	var target := _owner.target
