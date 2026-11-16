@@ -2,6 +2,7 @@ class_name Speech
 extends Node3D
 
 var label: WorldLabel
+var tween: Tween
 
 func _ready() -> void:
 	label = WorldLabel.create()
@@ -15,7 +16,9 @@ func talk(text: String, duration: float = 3.0) -> void:
 	
 	# Popup animation
 	label.scale.y = 0
-	var tween := label.create_tween()
+	if tween:
+		tween.kill()
+	tween = label.create_tween()
 	tween.tween_property(label, "scale:y", 1, 0.2)
 	tween.tween_interval(duration)
 	tween.tween_property(label, "scale:y", 0, 0.2)

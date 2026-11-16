@@ -42,5 +42,5 @@ const Status = {
 		"Whatever.",
 		"They got away..",
 		"Not here.",
-	]
+	],
 }

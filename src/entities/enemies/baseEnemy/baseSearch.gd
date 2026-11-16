@@ -14,6 +14,7 @@ var search: float
 var linger: float
 var look: float
 var look_point: Vector3
+var talk_delay: float
 
 @onready var _owner: BaseEnemy = owner
 
@@ -23,13 +24,9 @@ func on_enter() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 	_owner.target = null
-		
-	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
 	
-	var lines = Dialogue.Status.Search
-	if _owner.alerted_once:
-		lines = Dialogue.Status.SearchAlerted
-	_owner.speech.talk(lines.pick_random())
+	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
+	talk_delay = randf_range(0.5, 2.5)
 
 func on_process(delta: float) -> void:
 	# Move to random spot in search radius
@@ -51,6 +48,14 @@ func on_process(delta: float) -> void:
 			var region_pos := NavigationServer3D.map_get_closest_point(map, pos)
 			region_pos.y = 0	## NavMap floats above the ground a bit
 			_owner.navigation.navigate_to_point(region_pos)
+			
+	if talk_delay > 0:
+		talk_delay -= delta
+		if talk_delay <= 0:
+			var lines = Dialogue.Status.Search
+			if _owner.alerted_once:
+				lines = Dialogue.Status.SearchAlerted
+			_owner.speech.talk(lines.pick_random())
 	
 	search -= delta
 	if search <= 0:
