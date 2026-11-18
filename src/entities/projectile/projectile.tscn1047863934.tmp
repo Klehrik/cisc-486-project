@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://btbx1k02xnp0l"]
+
+[ext_resource type="Script" uid="uid://fi6i0gu5j4on" path="res://src/entities/projectile/projectile.gd" id="1_34nme"]
+[ext_resource type="PackedScene" uid="uid://de46xtnnrpmr0" path="res://src/entities/hitbox.tscn" id="2_34nme"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gwwcf"]
+radius = 0.05
+
+[sub_resource type="Curve" id="Curve_yohqp"]
+_data = [Vector2(0, 0), 0.0, 5.684994, 0, 0, Vector2(0.096311465, 0.545045), 3.8468468, 3.8468468, 0, 0, Vector2(0.4979508, 1), 0.0, 0.0, 0, 0, Vector2(0.9036885, 0.49999994), -3.8229535, -3.8229535, 0, 0, Vector2(0.977459, 0.004504442), -5.770267, 0.0, 0, 0]
+point_count = 5
+
+[node name="Projectile" type="CharacterBody3D" unique_id=1703019424]
+collision_layer = 0
+script = ExtResource("1_34nme")
+
+[node name="Collisionbox" type="CollisionShape3D" parent="." unique_id=1700514753]
+shape = SubResource("SphereShape3D_gwwcf")
+
+[node name="Hitbox" parent="." unique_id=1795130635 instance=ExtResource("2_34nme")]
+
+[node name="Trail3D" type="Trail3D" parent="." unique_id=1235996433]
+custom_aabb = AABB(-0.3, -0.3, -0.3, 0.6, 0.6, 0.6)
+lifetime = 0.5
+width_curve = SubResource("Curve_yohqp")

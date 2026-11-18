@@ -28,4 +28,4 @@ func on_enter() -> void:
 func on_process(delta: float) -> void:
 	roll_time -= delta
 	if roll_time <= 0:
-		parent.switch("Free")
+		parent.pop()

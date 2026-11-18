@@ -15,7 +15,7 @@ var talked: bool
 
 @onready var _owner: BaseEnemy = owner
 
-func on_enter() -> void:
+func on_push() -> void:
 	suspicion = 0.0
 	delay = delay_time
 	_owner.navigation.speed = speed

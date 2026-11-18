@@ -18,7 +18,7 @@ var talk_delay: float
 
 @onready var _owner: BaseEnemy = owner
 
-func on_enter() -> void:
+func on_push() -> void:
 	search = search_time
 	linger = randf_range(linger_time_min, linger_time_max)
 	_owner.navigation.speed = speed
@@ -67,7 +67,7 @@ func on_process(delta: float) -> void:
 			lines = Dialogue.Status.SearchEndAlerted
 		_owner.speech.talk(lines.pick_random())
 		
-		parent.switch("Patrol")
+		parent.pop()
 	
 func _on_vision_detected(target: Node3D) -> void:
 	if is_current_state:

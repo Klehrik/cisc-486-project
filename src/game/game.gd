@@ -30,6 +30,16 @@ func _process(delta: float) -> void:
 			hitbox.damage = 1.0
 			hitbox.kb_vec = -hitbox.global_basis.z
 			hitbox.lifetime = 2.0
+		
+	if Input.is_action_just_pressed("Debug 3"):
+		# Spawn enemy projectile
+		var vp := get_viewport()
+		if vp:
+			var p: Projectile = Scene.instantiate_global(Scene.projectile)
+			p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position()) + (Vector3.UP * 0.5)
+			p.velocity = (Util.vector_zero_y($Player.global_position) - Util.vector_zero_y(p.global_position)).normalized() * 50
+			p.damage = 1.0
+			p.set_team(2)
 
 func _physics_process(delta: float) -> void:
 	frame += 1

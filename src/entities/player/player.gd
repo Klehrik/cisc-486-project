@@ -57,7 +57,7 @@ func handle_camera_wallhug() -> bool:
 	# Check if still touching wall (since `is_on_wall()` is inconsistent at that)
 	var query := PhysicsRayQueryParameters3D.create(
 		global_position,
-		global_position + (-wallhug_normal * 0.35),
+		global_position + (-wallhug_normal * 0.32),
 		collision_mask
 	)
 	var result := space_state.intersect_ray(query)

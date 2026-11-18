@@ -7,4 +7,4 @@ func on_process(delta: float) -> void:
 	_owner.last_footstep = _owner.global_position
 	
 	if not _owner.handle_camera_wallhug():
-		parent.switch("Free")
+		parent.pop()

@@ -5,6 +5,8 @@ var states: Dictionary[String, State] = {}
 var stack: Array[State] = []
 var current: State:
 	get():
+		if not stack:
+			return null
 		return stack.back()
 	set(value):
 		assert(false, "current is read only.")

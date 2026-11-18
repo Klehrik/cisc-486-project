@@ -11,7 +11,7 @@ var track: float
 
 @onready var _owner: BaseEnemy = owner
 
-func on_enter() -> void:
+func on_push() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 	

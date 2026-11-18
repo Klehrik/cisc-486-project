@@ -11,3 +11,7 @@ func exp_decay_angle(a: float, b: float, decay: float, delta: float) -> float:
 	var diff = fmod(b - a, TAU)
 	var dist = fmod(2 * diff, TAU) - diff;
 	return b - (dist * exp(-decay * delta))
+
+## Does what it says on the tin.
+func vector_zero_y(vec: Vector3) -> Vector3:
+	return Vector3(vec.x, 0, vec.z)

@@ -2,6 +2,7 @@ extends Node
 
 const hitbox = preload("res://src/entities/hitbox.tscn")
 const world_label = preload("res://src/game/worldLabel/worldLabel.tscn")
+const projectile = preload("res://src/entities/projectile/projectile.tscn")
 
 var tree: Node
 var inst: Node3D

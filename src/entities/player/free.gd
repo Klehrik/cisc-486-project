@@ -10,7 +10,7 @@ func on_process(delta: float) -> void:
 	
 	# Roll check
 	if Input.is_action_just_pressed("Roll"):
-		parent.switch("Roll")
+		parent.push("Roll")
 		return
 	
 	# Wallhug check
@@ -18,6 +18,6 @@ func on_process(delta: float) -> void:
 		wallhug_value += delta
 		if wallhug_value >= wallhug_max:
 			_owner.wallhug_normal = _owner.get_wall_normal()
-			parent.switch("Wallhug")
+			parent.push("Wallhug")
 	else:
 		wallhug_value = 0.0
