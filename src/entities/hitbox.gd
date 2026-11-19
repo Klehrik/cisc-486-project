@@ -8,6 +8,11 @@ var damage   := 0.0:			## Damage of hitbox.
 		return damage
 	set(value):
 		damage = max(value, 0.0)
+var stun	 := 0.0:			## Stun buildup of hitbox.
+	get():
+		return stun
+	set(value):
+		stun = max(value, 0.0)
 var kb_vec 	 := Vector3.ZERO	## Knockback vector of hitbox.
 var lifetime := -1.0			## Lifetime of hitbox (in seconds). [br]If [code]-1[/code], will persist forever.
 

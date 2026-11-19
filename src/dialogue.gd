@@ -49,4 +49,11 @@ const Status = {
 		"Lost 'em..",
 		"...",
 	],
+	Stunned = [
+		"Augh!",
+		"..!",
+		"Oof!",
+		"Ow!",
+		"AAAAHHHRGH!",
+	],
 }

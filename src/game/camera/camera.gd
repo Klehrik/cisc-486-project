@@ -73,7 +73,7 @@ func _process(delta: float) -> void:
 		if n > 1 and !o.ignore_secondary:
 			# Secondary target is the nearest one with highest priority
 			var priority: float = targets[1][1]
-			var candidates = targets.filter(func(a): return a[1] == priority)
+			var candidates = targets.filter(func(a): return a[0] and (a[1] == priority))
 			var target2: Node3D
 			var dist := INF
 			for tarray: Array in candidates:

@@ -24,9 +24,10 @@ func on_push() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 	_owner.target = null
-	
-	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
 	talk_delay = randf_range(0.5, 2.5)
+
+func on_enter() -> void:
+	_owner.status_label.set_status(StatusLabel.Status.SEARCH)
 
 func on_process(delta: float) -> void:
 	# Move to random spot in search radius

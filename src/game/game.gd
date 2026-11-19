@@ -38,8 +38,10 @@ func _process(delta: float) -> void:
 		if vp:
 			var p: Projectile = Scene.instantiate_global(Scene.projectile)
 			p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position()) + (Vector3.UP * 0.5)
-			p.velocity = (Util.vector_zero_y($Player.global_position) - Util.vector_zero_y(p.global_position)).normalized() * 50
+			var dir := (Util.vector_zero_y($Player.global_position) - Util.vector_zero_y(p.global_position)).normalized()
+			p.velocity = dir * 50
 			p.damage = 1.0
+			p.kb_vec = dir * 2.5
 			p.set_team(2)
 
 func _physics_process(delta: float) -> void:

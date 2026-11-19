@@ -15,6 +15,11 @@ var damage: float:		## Damage of projectile.
 		return hitbox.damage
 	set(value):
 		hitbox.damage = value
+var stun: float:		## Stun buildup of projectile.
+	get():
+		return hitbox.stun
+	set(value):
+		hitbox.stun = value
 var kb_vec: Vector3:	## Knockback vector of hitbox.
 	get():
 		return hitbox.kb_vec

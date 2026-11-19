@@ -117,6 +117,9 @@ func is_pushing_against_wall() -> bool:
 	return input_vec != Vector2.ZERO
 
 func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
+	# Apply knockback
+	physics.kb_vec += hitbox.kb_vec
+	
 	# DEBUG
 	if hurtbox.health <= 0:
 		await get_tree().process_frame

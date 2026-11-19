@@ -2,8 +2,10 @@ class_name Equipment_BurstPistol
 extends Equipment
 
 var damage 	  := 1.0
+var stun	  := 0.5
+var knockback := 2.5
 var speed 	  := 50.0
-var spread	  := 12.0	## Total arc spread (in degrees).
+var spread	  := 10.0	## Total arc spread (in degrees).
 var shots_max := 3		## Shots fired per burst.
 var delay_max := 0.1	## Time between shots (in seconds).
 var cooldown  := 1.0	## In seconds.
@@ -38,8 +40,11 @@ func _physics_process(delta: float) -> void:
 			var half_spread := deg_to_rad(spread/2.0)
 			var dir := (use_origin.target - use_origin.global_position).normalized()
 			dir = dir.rotated(Vector3.UP, randf_range(-half_spread, half_spread))
+			
 			var p: Projectile = Scene.instantiate_global(Scene.projectile)
 			p.position = use_origin.global_position
 			p.velocity = dir * speed
 			p.damage = damage
+			p.stun = stun
+			p.kb_vec = dir * knockback
 			p.set_team(team)

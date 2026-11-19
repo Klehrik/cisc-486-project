@@ -6,6 +6,7 @@ enum Status {
 	SUSPICION,
 	ALERT,
 	SEARCH,
+	STUNNED,
 }
 
 var label: WorldLabel
@@ -34,6 +35,10 @@ func set_status(status: Status) -> void:
 		Status.SEARCH:
 			label.text  = "?"
 			label.color = Color("fee761")
+			
+		Status.STUNNED:
+			label.text  = "~"
+			label.color = Color("0095e9")
 
 	# Popup animation
 	label.scale.y = 0

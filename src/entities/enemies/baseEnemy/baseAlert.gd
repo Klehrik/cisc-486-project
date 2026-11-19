@@ -15,14 +15,17 @@ func on_push() -> void:
 	_owner.navigation.speed = speed
 	_owner.rotation_speed = rotation_speed
 	
-	_owner.add_child(PoI.new(0, 1.5))	# Pan camera to show alerted enemy for a bit
+	# Pan camera to show alerted enemy for a bit
+	_owner.add_child(PoI.new(0, 1.5))
 	
-	_owner.status_label.set_status(StatusLabel.Status.ALERT)
 	_owner.speech.talk(Dialogue.Status.Alert.pick_random())
 	_owner.alerted_once = true
 	
 	# Shout noise
 	Event.noise.emit(_owner.global_position, 9.0)
+	
+func on_enter() -> void:
+	_owner.status_label.set_status(StatusLabel.Status.ALERT)
 
 func on_process(delta: float) -> void:
 	var target := _owner.target
@@ -62,6 +65,7 @@ func on_process(delta: float) -> void:
 
 func on_exit() -> void:
 	_owner.rotate_while_moving = true
+	track = 0
 
 func _on_base_enemy_notify(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
 	if is_current_state:
