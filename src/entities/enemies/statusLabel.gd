@@ -39,3 +39,6 @@ func set_status(status: Status) -> void:
 	label.scale.y = 0
 	var tween := label.create_tween()
 	tween.tween_property(label, "scale:y", 1, 0.2)
+
+func _on_tree_exiting() -> void:
+	label.queue_free()

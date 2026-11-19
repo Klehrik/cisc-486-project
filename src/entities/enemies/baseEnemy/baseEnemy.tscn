@@ -64,6 +64,7 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 [connection signal="notify" from="." to="StateMachine/Suspicion" method="_on_base_enemy_notify"]
 [connection signal="notify" from="." to="StateMachine/Alert" method="_on_base_enemy_notify"]
 [connection signal="notify" from="." to="StateMachine/Search" method="_on_base_enemy_notify"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="detected" from="Vision" to="StateMachine/Patrol" method="_on_vision_detected"]
 [connection signal="detected" from="Vision" to="StateMachine/Suspicion" method="_on_vision_detected"]
 [connection signal="detected" from="Vision" to="StateMachine/Search" method="_on_vision_detected"]
@@ -71,3 +72,5 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 [connection signal="heard" from="Hearing" to="StateMachine/Suspicion" method="_on_hearing_heard"]
 [connection signal="heard" from="Hearing" to="StateMachine/Search" method="_on_hearing_heard"]
 [connection signal="moved" from="Navigation" to="." method="_on_navigation_moved"]
+[connection signal="tree_exiting" from="StatusLabel" to="StatusLabel" method="_on_tree_exiting"]
+[connection signal="tree_exiting" from="Speech" to="Speech" method="_on_tree_exiting"]

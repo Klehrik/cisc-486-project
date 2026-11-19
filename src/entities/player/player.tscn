@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="2_wrxq6"]
 [ext_resource type="Script" uid="uid://c16r0sc3rwsij" path="res://src/entities/player/wallhug.gd" id="5_ketdh"]
 [ext_resource type="Script" uid="uid://dv54tpjrqyfsj" path="res://src/entities/player/roll.gd" id="6_0mfjg"]
+[ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="8_eb65w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
 render_priority = 1
@@ -59,6 +60,11 @@ health_max = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_oih67")
 debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
+
+[node name="UseOrigin" type="Marker3D" parent="." unique_id=670096193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("8_eb65w")
+metadata/_custom_type_script = "uid://1ktfo8yao518"
 
 [node name="Physics" type="Node" parent="." unique_id=1862717885]
 script = ExtResource("2_wrxq6")

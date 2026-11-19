@@ -12,6 +12,11 @@ var pitch: Camera.CameraOrientation
 var wallhug: Camera.CameraOrientation
 
 @onready var physics: Physics = $Physics
+@onready var use_origin: UseOrigin = $UseOrigin
+
+# DEBUG
+var equipment: Array[Equipment] = []
+var equipment_current: int
 
 func _ready() -> void:
 	var camera := Camera.instance
@@ -28,9 +33,14 @@ func _ready() -> void:
 		-1,
 		true
 	)
+	
+	# DEBUG
+	equipment.append(Equipment_BurstPistol.new(1))
+	add_child(equipment[0])
 
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
+	handle_equipment()
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
@@ -79,6 +89,25 @@ func handle_camera_wallhug() -> bool:
 	else:
 		camera.remove_orientation(wallhug)
 		return false
+
+func handle_equipment() -> void:
+	# Set equipment target position
+	var vp := get_viewport()
+	if vp:
+		use_origin.target = Camera.instance.project_position_to_ground(vp.get_mouse_position(), use_origin.global_position.y)
+	
+	# Handle swapping
+	if Input.is_action_just_pressed("Swap Left"):
+		equipment_current = posmod(equipment_current - 1, len(equipment))
+	if Input.is_action_just_pressed("Swap Right"):
+		equipment_current = posmod(equipment_current + 1, len(equipment))
+
+func handle_equipment_use() -> void:
+	var e := equipment[equipment_current]
+	if Input.is_action_pressed("Use"):
+		e.use(use_origin)
+	if Input.is_action_just_released("Use"):
+		e.stop(use_origin)
 
 ## Returns [code]true[/code] if touching wall with movement input.
 func is_pushing_against_wall() -> bool:

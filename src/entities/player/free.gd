@@ -7,6 +7,7 @@ const wallhug_max := 0.5	## Time (in seconds) to push against wall for wallhug
 
 func on_process(delta: float) -> void:
 	_owner.handle_movement()
+	_owner.handle_equipment_use()
 	
 	# Roll check
 	if Input.is_action_just_pressed("Roll"):

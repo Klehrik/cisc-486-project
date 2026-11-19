@@ -14,3 +14,7 @@
 	- Suspicion will need to be tweaked to travel directly to last_seen_pos first
 
 - Speech text popups
+
+- Group UseOrigin and UseTarget into its own component/manager
+	- Position is origin, and can use direction instead of target
+	- Component has `parent` that points to its owner; pass the component into Equipment `use()`/`stop()`

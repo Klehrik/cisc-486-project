@@ -35,3 +35,7 @@ func rotate_to_look_at(pos: Vector3, delta: float) -> void:
 func _on_navigation_moved(direction: Vector3, delta: float) -> void:
 	if rotate_while_moving:
 		rotate_to_look_at(global_position + direction, delta)
+
+func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
+	if hurtbox.health <= 0:
+		queue_free()

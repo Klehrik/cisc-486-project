@@ -8,9 +8,10 @@ func _process(delta: float) -> void:
 		get_tree().reload_current_scene()
 		
 	if Input.is_action_pressed("Left Mouse"):
-		var vp := get_viewport()
-		if vp:
-			$Player.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
+		pass
+		#var vp := get_viewport()
+		#if vp:
+		#	$Player.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
 	if Input.is_action_just_pressed("Debug 1"):
 		Event.noise.emit($Player.global_position, 9.0)

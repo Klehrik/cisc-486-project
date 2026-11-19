@@ -22,3 +22,6 @@ func talk(text: String, duration: float = 3.0) -> void:
 	tween.tween_property(label, "scale:y", 1, 0.2)
 	tween.tween_interval(duration)
 	tween.tween_property(label, "scale:y", 0, 0.2)
+
+func _on_tree_exiting() -> void:
+	label.queue_free()
