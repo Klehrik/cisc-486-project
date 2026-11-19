@@ -9,6 +9,7 @@ var spread	  := 10.0	## Total arc spread (in degrees).
 var shots_max := 3		## Shots fired per burst.
 var delay_max := 0.1	## Time between shots (in seconds).
 var cooldown  := 1.0	## In seconds.
+var noise	  := 9.0	## Noise strength.
 
 var shots: int
 var delay: float
@@ -17,6 +18,7 @@ var use_origin: UseOrigin
 var team: int
 
 func _init(team: int) -> void:
+	super()
 	self.team = team
 	cooldown_max = cooldown
 
@@ -48,3 +50,6 @@ func _physics_process(delta: float) -> void:
 			p.stun = stun
 			p.kb_vec = dir * knockback
 			p.set_team(team)
+
+			if team == 1:
+				Event.noise.emit(p.global_position, noise)

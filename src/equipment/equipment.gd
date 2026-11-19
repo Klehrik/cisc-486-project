@@ -6,6 +6,9 @@ extends Node
 var cooldown_max: float	 ## The cooldown for this equipment (in seconds).
 var cooldown_left: float ## The remaining cooldown for this equipment (in seconds).
 
+func _init() -> void:
+	Scene.add_to_tree(self, "Process")
+
 func _process(delta: float) -> void:
 	if cooldown_left > 0:
 		cooldown_left -= delta
@@ -23,4 +26,8 @@ func use(use_origin: UseOrigin) -> bool:
 
 ## Called once when the user stops using the equipment.
 func stop(use_origin: UseOrigin) -> void:
+	pass
+
+## Called every frame.
+func process(delta: float) -> void:
 	pass

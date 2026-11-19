@@ -11,7 +11,7 @@ var alerted_once := false			## [code]true[/code] if the enemy has been alerted b
 
 var stun_time: float				## Remaining stun time (in seconds).
 @export var stun_threshold := 1.0	## Required level of [code]stun_time[/code] to enter Stunned state.
-@export var stun_multiplier := 1.0	## Amount of [code]stun_time[/code] added based on attack stun value.
+@export var stun_multiplier := 1.0	## Amount of [code]stun_time[/code] added based on incoming attack stun value.
 
 @onready var physics: Physics 			 = find_children("*", "Physics").get(0)
 @onready var vision: Vision 			 = find_children("*", "Vision").get(0)
@@ -47,6 +47,8 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Add stun time
 	stun_time += hitbox.stun * stun_multiplier
 	if stun_time >= stun_threshold:
+		# Emit noise to enter Suspicion if hit in Patrol
+		Event.noise.emit(global_position, 0.1)
 		state_machine.push("Stunned")
 	
 	if hurtbox.health <= 0:

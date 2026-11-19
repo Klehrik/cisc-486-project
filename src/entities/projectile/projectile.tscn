@@ -22,7 +22,7 @@ Hitbox's normal shape"
 shape = SubResource("SphereShape3D_i8xfr")
 debug_color = Color(0.7078114, 0.48051488, 0.21571043, 0.41960785)
 
-[node name="Trail3D" type="Trail3D" parent="." unique_id=1235996433]
+[node name="Trail" type="Trail3D" parent="." unique_id=1235996433]
 process_mode = 1
 custom_aabb = AABB(-0.3, -0.3, -0.3, 0.6, 0.6, 0.6)
 lifetime = 0.06

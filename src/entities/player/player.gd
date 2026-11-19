@@ -35,12 +35,15 @@ func _ready() -> void:
 	)
 	
 	# DEBUG
-	equipment.append(Equipment_BurstPistol.new(1))
-	add_child(equipment[0])
+	equipment = [
+		Equipment_BurstPistol.new(1),
+		Equipment_StunPistol.new(1),
+		Equipment_HandCannon.new(1),
+	]
 
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
-	handle_equipment()
+	handle_equipment(delta)
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
@@ -90,7 +93,7 @@ func handle_camera_wallhug() -> bool:
 		camera.remove_orientation(wallhug)
 		return false
 
-func handle_equipment() -> void:
+func handle_equipment(delta: float) -> void:
 	# Set equipment target position
 	var vp := get_viewport()
 	if vp:

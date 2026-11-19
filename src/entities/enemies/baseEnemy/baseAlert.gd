@@ -19,10 +19,12 @@ func on_push() -> void:
 	_owner.add_child(PoI.new(0, 1.5))
 	
 	_owner.speech.talk(Dialogue.Status.Alert.pick_random())
-	_owner.alerted_once = true
+	if not _owner.alerted_once:
+		_owner.alerted_once = true
+		Stats.enemies_alerted += 1
 	
-	# Shout noise
-	Event.noise.emit(_owner.global_position, 9.0)
+	# Alert nearby allies
+	Event.noise.emit(_owner.global_position, 30.0)
 	
 func on_enter() -> void:
 	_owner.status_label.set_status(StatusLabel.Status.ALERT)
