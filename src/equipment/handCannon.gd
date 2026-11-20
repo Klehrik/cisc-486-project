@@ -22,7 +22,7 @@ func use(use_origin: UseOrigin) -> bool:
 	# Fire bullet
 	var dir := (use_origin.target - use_origin.global_position).normalized()
 	var p: Projectile = Scene.instantiate_global(Scene.projectile)
-	p.get_node("Trail").width = 0.5
+	p.scale_projectile(2)
 	p.position = use_origin.global_position
 	p.velocity = dir * speed
 	p.damage = damage

@@ -54,6 +54,6 @@ const Status = {
 		"..!",
 		"Oof!",
 		"Ow!",
-		"AAAAHHHRGH!",
+		#"AAAAHHHRGH!",
 	],
 }

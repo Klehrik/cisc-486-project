@@ -27,6 +27,8 @@ var kb_vec: Vector3:	## Knockback vector of hitbox.
 		hitbox.kb_vec = value
 
 @onready var hitbox: Hitbox = $Hitbox
+@onready var col_shape: CollisionShape3D = $Hitbox/CollisionShape3D2
+@onready var trail: Trail3D = $Trail
 
 func _ready() -> void:
 	target_position = Vector3.ZERO
@@ -40,6 +42,13 @@ func set_team(team: int) -> void:
 		2:
 			collision_mask = 1 | 1 << 1
 			hitbox.collision_layer = 1 << 4
+
+## Scales the projectile hitbox radius and trail width.
+func scale_projectile(scaling: float) -> void:
+	var shape: SphereShape3D = col_shape.shape.duplicate()
+	shape.radius *= scaling
+	col_shape.shape = shape
+	trail.width = trail.width * scaling
 
 func on_hit() -> void:
 	$Destroy.start()

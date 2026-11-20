@@ -58,6 +58,9 @@ func on_process(delta: float) -> void:
 			parent.switch("Search")
 			return
 
+func on_exit() -> void:
+	track = 0
+
 func _on_vision_detected(target: Node3D) -> void:
 	if is_current_state:
 		_owner.target = target

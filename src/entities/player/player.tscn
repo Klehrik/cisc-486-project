@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c16r0sc3rwsij" path="res://src/entities/player/wallhug.gd" id="5_ketdh"]
 [ext_resource type="Script" uid="uid://dv54tpjrqyfsj" path="res://src/entities/player/roll.gd" id="6_0mfjg"]
 [ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="8_eb65w"]
+[ext_resource type="Script" uid="uid://c4frq5mk8g1wk" path="res://src/entities/player/twoBoneTest.gd" id="9_4f0qm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
 render_priority = 1
@@ -38,6 +39,14 @@ height = 0.9
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oih67"]
 radius = 0.25
 height = 0.9
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4f0qm"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_tk761"]
+size = Vector3(0.1, 0.1, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=2050928230 groups=["Team 1"]]
 collision_layer = 2
@@ -85,5 +94,23 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 [node name="Roll" type="Node" parent="StateMachine" unique_id=515694526]
 script = ExtResource("6_0mfjg")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
+
+[node name="Leg" type="Marker3D" parent="." unique_id=728463882 node_paths=PackedStringArray("target_marker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+script = ExtResource("9_4f0qm")
+target_marker = NodePath("Target")
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Bone1" type="Node3D" parent="Leg" unique_id=559475883]
+
+[node name="Bone1" type="MeshInstance3D" parent="Leg/Bone1" unique_id=817569008]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_4f0qm")
+
+[node name="Bone2" type="MeshInstance3D" parent="Leg" unique_id=1545225069]
+mesh = SubResource("BoxMesh_tk761")
+
+[node name="Target" type="Marker3D" parent="Leg" unique_id=862699155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42331868, 0, 0)
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

@@ -47,8 +47,11 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Add stun time
 	stun_time += hitbox.stun * stun_multiplier
 	if stun_time >= stun_threshold:
-		# Emit noise to enter Suspicion if hit in Patrol
-		Event.noise.emit(global_position, 0.1)
+		
+		# Kinda messy; might want to have each state handle this themselves
+		if state_machine.current == $StateMachine/Patrol:
+			state_machine.switch("Suspicion")
+			
 		state_machine.push("Stunned")
 	
 	if hurtbox.health <= 0:

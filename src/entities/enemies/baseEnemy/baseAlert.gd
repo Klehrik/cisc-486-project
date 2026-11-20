@@ -61,6 +61,7 @@ func on_process(delta: float) -> void:
 				ally.notify.emit(target, target_pos)
 		
 	else:
+		_owner.navigation.navigate_to_point(_owner.target_last_seen)
 		if not _owner.navigation.is_navigating:
 			parent.switch("Search")
 			return
