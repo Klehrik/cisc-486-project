@@ -251,3 +251,4 @@ script = ExtResource("6_0mfjg")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="collision" from="Separation" to="." method="_on_separation_collision"]
