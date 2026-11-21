@@ -48,11 +48,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Face move direction
 	rotate_to_look_at(global_position + last_move_dir, delta)
-	$Model/LeftLeg.cross = last_move_dir
-	$Model/LeftLeg.target_max_distance = (physics.move_vec.length() / move_speed) * 0.8
-	$Model/RightLeg.cross = last_move_dir
-	$Model/RightLeg.target_max_distance = (physics.move_vec.length() / move_speed) * 0.8
-	$Model/LegTargets.position.z = (physics.move_vec.length() / move_speed) * -0.5
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")

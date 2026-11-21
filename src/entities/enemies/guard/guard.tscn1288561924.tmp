@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://3ewhlfmd0wte"]
+
+[ext_resource type="PackedScene" uid="uid://csga642phph1t" path="res://src/entities/enemies/baseEnemy/baseEnemy.tscn" id="1_c564r"]
+[ext_resource type="Script" uid="uid://dj6ip0tkxbmsq" path="res://src/entities/enemies/guard/guard.gd" id="2_f5x34"]
+[ext_resource type="Script" uid="uid://dnyb64j5ddymv" path="res://src/entities/enemies/guard/model.gd" id="2_lrbil"]
+[ext_resource type="Script" uid="uid://d2fw564y26ts3" path="res://src/procAnim/limb.gd" id="3_f5x34"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhiho"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kc3pt"]
+next_pass = SubResource("StandardMaterial3D_qhiho")
+shading_mode = 2
+albedo_color = Color(0.34117648, 0.56078434, 1, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_71thp"]
+material = SubResource("StandardMaterial3D_kc3pt")
+radius = 0.15
+height = 0.3
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh8ku"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk761"]
+next_pass = SubResource("StandardMaterial3D_sh8ku")
+shading_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.306, 0.4188, 0.45, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_74xet"]
+material = SubResource("StandardMaterial3D_tk761")
+top_radius = 0.2
+bottom_radius = 0.17
+height = 0.3
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koir0"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqdhu"]
+next_pass = SubResource("StandardMaterial3D_koir0")
+albedo_color = Color(0.30588236, 0.41960785, 0.4509804, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3s04m"]
+material = SubResource("StandardMaterial3D_lqdhu")
+top_radius = 0.06
+bottom_radius = 0.05
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4vrc"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c4mh"]
+next_pass = SubResource("StandardMaterial3D_b4vrc")
+albedo_color = Color(0.30588236, 0.41960785, 0.4509804, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_171gl"]
+material = SubResource("StandardMaterial3D_3c4mh")
+top_radius = 0.05
+bottom_radius = 0.04
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8d2k"]
+albedo_color = Color(0.33999997, 0.8899999, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_glcja"]
+material = SubResource("StandardMaterial3D_t8d2k")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvma2"]
+next_pass = SubResource("StandardMaterial3D_wrxq6")
+albedo_color = Color(0.87, 0.30261496, 0.07829998, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kj1fl"]
+radius = 0.25
+height = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj1fl"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwp56"]
+next_pass = SubResource("StandardMaterial3D_kj1fl")
+albedo_color = Color(0.91, 0.82264, 0.2548, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_c83cc"]
+size = Vector3(0.3, 0.2, 0.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwp56"]
+radius = 0.2
+height = 0.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d5d58"]
+radius = 0.2
+height = 0.9
+
+[node name="Guard" unique_id=1653461897 instance=ExtResource("1_c564r")]
+script = ExtResource("2_f5x34")
+
+[node name="Model" type="Node3D" parent="." index="0" unique_id=2086343296]
+script = ExtResource("2_lrbil")
+
+[node name="Head" type="MeshInstance3D" parent="Model" index="0" unique_id=359154241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+mesh = SubResource("SphereMesh_71thp")
+
+[node name="Body" type="MeshInstance3D" parent="Model" index="1" unique_id=779627009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_74xet")
+
+[node name="LeftLeg" type="Marker3D" parent="Model" index="2" unique_id=1379905970 node_paths=PackedStringArray("target_marker", "exclusions")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.3, 0)
+script = ExtResource("3_f5x34")
+target_marker = NodePath("../LegTargets/LeftTarget")
+target_max_distance = 0.8
+exclusions = [NodePath("../RightLeg")]
+length_1 = 0.2
+length_2 = 0.2
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Upper" type="Node3D" parent="Model/LeftLeg" index="0" unique_id=595744410]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftLeg/Upper" index="0" unique_id=921930278]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_3s04m")
+
+[node name="Lower" type="Node3D" parent="Model/LeftLeg" index="1" unique_id=632357101]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftLeg/Lower" index="0" unique_id=1400631255]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_171gl")
+
+[node name="RightLeg" type="Marker3D" parent="Model" index="3" unique_id=1701787298 node_paths=PackedStringArray("target_marker", "exclusions")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.3, 0)
+script = ExtResource("3_f5x34")
+target_marker = NodePath("../LegTargets/RightTarget")
+target_max_distance = 0.8
+exclusions = [NodePath("../LeftLeg")]
+length_1 = 0.2
+length_2 = 0.2
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Upper" type="Node3D" parent="Model/RightLeg" index="0" unique_id=363948914]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightLeg/Upper" index="0" unique_id=705361451]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_3s04m")
+
+[node name="Lower" type="Node3D" parent="Model/RightLeg" index="1" unique_id=1790536950]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightLeg/Lower" index="0" unique_id=716220604]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_171gl")
+
+[node name="LegTargets" type="Node3D" parent="Model" index="4" unique_id=2140679602]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
+
+[node name="LeftTarget" type="Marker3D" parent="Model/LegTargets" index="0" unique_id=1390052953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LegTargets/LeftTarget" index="0" unique_id=517734337]
+mesh = SubResource("SphereMesh_glcja")
+
+[node name="RightTarget" type="Marker3D" parent="Model/LegTargets" index="1" unique_id=1400286350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LegTargets/RightTarget" index="0" unique_id=341961979]
+mesh = SubResource("SphereMesh_glcja")
+
+[node name="Mesh" type="MeshInstance3D" parent="." index="1" unique_id=1913652117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_lvma2")
+mesh = SubResource("CapsuleMesh_kj1fl")
+
+[node name="Eyes" type="MeshInstance3D" parent="Mesh" index="0" unique_id=1010764013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.2)
+material_override = SubResource("StandardMaterial3D_pwp56")
+mesh = SubResource("BoxMesh_c83cc")
+
+[node name="Collisionbox" type="CollisionShape3D" parent="." index="2" unique_id=1321256304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_pwp56")
+
+[node name="Hurtbox" parent="." index="3" unique_id=1950418006]
+collision_mask = 8
+health_max = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0" unique_id=869250974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_d5d58")
+debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
+
+[node name="Navigation" parent="." index="7" unique_id=1481448506]
+_navigation_layers = 1

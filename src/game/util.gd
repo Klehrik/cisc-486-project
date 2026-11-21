@@ -13,5 +13,5 @@ func exp_decay_angle(a: float, b: float, decay: float, delta: float) -> float:
 	return b - (dist * exp(-decay * delta))
 
 ## Does what it says on the tin.
-func vector_zero_y(vec: Vector3) -> Vector3:
-	return Vector3(vec.x, 0, vec.z)
+func vector_zero_y(vec: Vector3, y: float = 0) -> Vector3:
+	return Vector3(vec.x, y, vec.z)
