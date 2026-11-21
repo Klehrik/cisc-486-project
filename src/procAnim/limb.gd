@@ -15,6 +15,8 @@ var current_pos: Vector3	## The current limb endpoint.
 var target_pos: Vector3		## The target limb endpoint.
 
 func _ready() -> void:
+	current_pos = global_position
+	
 	await owner.ready
 	for bone: Node3D in get_children():
 		bones.append(bone)

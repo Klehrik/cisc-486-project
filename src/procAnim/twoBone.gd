@@ -27,6 +27,8 @@ func _calculate_points(end: Vector3) -> Vector3:
 	
 	# Get perpendicular of 'vec x Vector3.UP' plane to rotate around
 	var perp 		:= vec.cross(cross).normalized()
+	if perp == Vector3.ZERO:
+		perp = Vector3.UP
 	var vec_to_mid 	:= vec.rotated(perp, angle).normalized()
 	midpoint		= start + (vec_to_mid * length_1)
 	

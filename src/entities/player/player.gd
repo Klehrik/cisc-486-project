@@ -12,12 +12,13 @@ var wallhug_normal: Vector3			## Normal of the wall being hugged.
 var pitch: Camera.CameraOrientation
 var wallhug: Camera.CameraOrientation
 
-@onready var physics: Physics = $Physics
-@onready var use_origin: UseOrigin = $UseOrigin
-
-# DEBUG
 var equipment: Array[Equipment] = []
 var equipment_current: int
+var face_use_direction: float		## Face use direction for a bit when using (in seconds).
+var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
+
+@onready var physics: Physics = $Physics
+@onready var use_origin: UseOrigin = $UseOrigin
 
 func _ready() -> void:
 	var camera := Camera.instance
@@ -48,6 +49,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Face move direction
 	rotate_to_look_at(global_position + last_move_dir, delta)
+	if face_use_direction > 0:
+		face_use_direction -= delta
+		$Model.facing = use_origin.target - global_position
+	else:
+		$Model.facing = last_move_dir
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
@@ -113,6 +119,7 @@ func handle_equipment_use() -> void:
 	var e := equipment[equipment_current]
 	if Input.is_action_pressed("Use"):
 		e.use(use_origin)
+		face_use_direction = face_use_direction_max
 	if Input.is_action_just_released("Use"):
 		e.stop(use_origin)
 

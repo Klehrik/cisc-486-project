@@ -22,7 +22,7 @@ stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kc3pt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk761"]
 next_pass = SubResource("StandardMaterial3D_4f0qm")
 shading_mode = 2
 albedo_color = Color(0.34117648, 0.56078434, 1, 1)
@@ -31,7 +31,7 @@ stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_n7e5a"]
-material = SubResource("StandardMaterial3D_kc3pt")
+material = SubResource("StandardMaterial3D_tk761")
 radius = 0.15
 height = 0.3
 radial_segments = 8
@@ -48,7 +48,7 @@ stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk761"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kc3pt"]
 next_pass = SubResource("StandardMaterial3D_n7e5a")
 shading_mode = 2
 diffuse_mode = 3
@@ -58,7 +58,7 @@ stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tk761"]
-material = SubResource("StandardMaterial3D_tk761")
+material = SubResource("StandardMaterial3D_kc3pt")
 top_radius = 0.2
 bottom_radius = 0.17
 height = 0.3
@@ -75,7 +75,7 @@ stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqdhu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c4mh"]
 next_pass = SubResource("StandardMaterial3D_yi0df")
 albedo_color = Color(0.30588236, 0.41960785, 0.4509804, 1)
 stencil_mode = 2
@@ -83,7 +83,7 @@ stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_n7e5a"]
-material = SubResource("StandardMaterial3D_lqdhu")
+material = SubResource("StandardMaterial3D_3c4mh")
 top_radius = 0.06
 bottom_radius = 0.05
 height = 0.2
@@ -99,7 +99,7 @@ stencil_flags = 1
 stencil_compare = 5
 metadata/_stencil_owned = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c4mh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2qdy"]
 next_pass = SubResource("StandardMaterial3D_0tyfe")
 albedo_color = Color(0.30588236, 0.41960785, 0.4509804, 1)
 stencil_mode = 2
@@ -107,16 +107,16 @@ stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_kc3pt"]
-material = SubResource("StandardMaterial3D_3c4mh")
+material = SubResource("StandardMaterial3D_p2qdy")
 top_radius = 0.05
 bottom_radius = 0.04
 height = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8d2k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqdhu"]
 albedo_color = Color(0.33999997, 0.8899999, 1, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_tk761"]
-material = SubResource("StandardMaterial3D_t8d2k")
+material = SubResource("StandardMaterial3D_lqdhu")
 radius = 0.05
 height = 0.1
 
