@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 var move_speed := 3.0
+var rotation_speed := 12.0			## [code]exp_decay_angle()[/code] rotation rate.
 const footstep_dist := 0.5			## How far the player needs to travel to trigger another footstep (in metres).
 
 var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement.
@@ -44,6 +45,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
 	handle_equipment(delta)
+	
+	# Face move direction
+	rotate_to_look_at(global_position + last_move_dir, delta)
+	$Model/LeftLeg.cross  = last_move_dir
+	$Model/RightLeg.cross = last_move_dir
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
@@ -111,6 +117,12 @@ func handle_equipment_use() -> void:
 		e.use(use_origin)
 	if Input.is_action_just_released("Use"):
 		e.stop(use_origin)
+
+## Rotate to face a point [br]Should be called every frame while rotating
+func rotate_to_look_at(pos: Vector3, delta: float) -> void:
+	var d := pos - position
+	var dest := atan2(-d.x, -d.z)
+	rotation.y = Util.exp_decay_angle(rotation.y, dest, rotation_speed, delta)
 
 ## Returns [code]true[/code] if touching wall with movement input.
 func is_pushing_against_wall() -> bool:

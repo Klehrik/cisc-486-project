@@ -3,12 +3,99 @@
 [ext_resource type="Script" uid="uid://dkkpvddn7shsf" path="res://src/entities/stateMachine.gd" id="1_4m8ck"]
 [ext_resource type="Script" uid="uid://yevlo2600s0j" path="res://src/entities/player/player.gd" id="1_muk8e"]
 [ext_resource type="PackedScene" uid="uid://c3vca0rcit22b" path="res://src/entities/hurtbox.tscn" id="2_oih67"]
+[ext_resource type="Script" uid="uid://d2fw564y26ts3" path="res://src/procAnim/limb.gd" id="2_tk761"]
 [ext_resource type="Script" uid="uid://bvnfpkhnbs5d0" path="res://src/entities/player/free.gd" id="2_vt6n5"]
 [ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="2_wrxq6"]
 [ext_resource type="Script" uid="uid://c16r0sc3rwsij" path="res://src/entities/player/wallhug.gd" id="5_ketdh"]
 [ext_resource type="Script" uid="uid://dv54tpjrqyfsj" path="res://src/entities/player/roll.gd" id="6_0mfjg"]
 [ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="8_eb65w"]
 [ext_resource type="Script" uid="uid://c4frq5mk8g1wk" path="res://src/entities/player/twoBoneTest.gd" id="9_4f0qm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4f0qm"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kc3pt"]
+next_pass = SubResource("StandardMaterial3D_4f0qm")
+shading_mode = 2
+albedo_color = Color(0.34117648, 0.56078434, 1, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_n7e5a"]
+material = SubResource("StandardMaterial3D_kc3pt")
+radius = 0.15
+height = 0.3
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7e5a"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk761"]
+next_pass = SubResource("StandardMaterial3D_n7e5a")
+shading_mode = 2
+diffuse_mode = 3
+albedo_color = Color(0.306, 0.4188, 0.45, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tk761"]
+material = SubResource("StandardMaterial3D_tk761")
+top_radius = 0.2
+bottom_radius = 0.17
+height = 0.3
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqdhu"]
+albedo_color = Color(0.16000003, 0.28600007, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n7e5a"]
+material = SubResource("StandardMaterial3D_lqdhu")
+top_radius = 0.05
+bottom_radius = 0.04
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c4mh"]
+albedo_color = Color(0.91666675, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kc3pt"]
+material = SubResource("StandardMaterial3D_3c4mh")
+top_radius = 0.04
+bottom_radius = 0.03
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8d2k"]
+albedo_color = Color(0.33999997, 0.8899999, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tk761"]
+material = SubResource("StandardMaterial3D_t8d2k")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2qdy"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n7e5a"]
+material = SubResource("StandardMaterial3D_p2qdy")
+size = Vector3(0.1, 0.1, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrxq6"]
 render_priority = 1
@@ -23,7 +110,8 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xftk2"]
 next_pass = SubResource("StandardMaterial3D_wrxq6")
-albedo_color = Color(0.33999997, 0.56000006, 1, 1)
+transparency = 1
+albedo_color = Color(0.33999997, 0.56000006, 1, 0.21960784)
 stencil_mode = 2
 stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
@@ -52,8 +140,79 @@ size = Vector3(0.1, 0.1, 1)
 collision_layer = 2
 script = ExtResource("1_muk8e")
 
+[node name="Model" type="Node3D" parent="." unique_id=1923146211]
+
+[node name="Head" type="MeshInstance3D" parent="Model" unique_id=1816719225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+mesh = SubResource("SphereMesh_n7e5a")
+
+[node name="Body" type="MeshInstance3D" parent="Model" unique_id=1121245557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_tk761")
+
+[node name="LeftLeg" type="Marker3D" parent="Model" unique_id=897623710 node_paths=PackedStringArray("target_marker", "exclusions")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12, 0.3, 0)
+script = ExtResource("2_tk761")
+target_marker = NodePath("Target")
+target_max_distance = 0.8
+exclusions = [NodePath("../RightLeg")]
+length_1 = 0.2
+length_2 = 0.2
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Upper" type="Node3D" parent="Model/LeftLeg" unique_id=495964031]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftLeg/Upper" unique_id=1261815636]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n7e5a")
+
+[node name="Lower" type="Node3D" parent="Model/LeftLeg" unique_id=783984394]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftLeg/Lower" unique_id=1571887146]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_kc3pt")
+
+[node name="Target" type="Marker3D" parent="Model/LeftLeg" unique_id=2104830156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftLeg/Target" unique_id=2010380044]
+mesh = SubResource("SphereMesh_tk761")
+
+[node name="RightLeg" type="Marker3D" parent="Model" unique_id=472586812 node_paths=PackedStringArray("target_marker", "exclusions")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12, 0.3, 0)
+script = ExtResource("2_tk761")
+target_marker = NodePath("Target")
+target_max_distance = 0.8
+exclusions = [NodePath("../LeftLeg")]
+length_1 = 0.2
+length_2 = 0.2
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Upper" type="Node3D" parent="Model/RightLeg" unique_id=2084770970]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightLeg/Upper" unique_id=408417070]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n7e5a")
+
+[node name="Lower" type="Node3D" parent="Model/RightLeg" unique_id=2097002284]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightLeg/Lower" unique_id=1262632600]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_kc3pt")
+
+[node name="Target" type="Marker3D" parent="Model/RightLeg" unique_id=839637870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightLeg/Target" unique_id=934598777]
+mesh = SubResource("SphereMesh_tk761")
+
+[node name="debug" type="MeshInstance3D" parent="Model" unique_id=174187561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.29865456)
+mesh = SubResource("BoxMesh_n7e5a")
+
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=244478287]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_xftk2")
 mesh = SubResource("CapsuleMesh_vt6n5")
 
@@ -62,6 +221,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_muk8e")
 
 [node name="Hurtbox" parent="." unique_id=1950418006 instance=ExtResource("2_oih67")]
+visible = false
 collision_mask = 16
 health_max = 10.0
 
@@ -96,7 +256,9 @@ script = ExtResource("6_0mfjg")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
 
 [node name="Leg" type="Marker3D" parent="." unique_id=728463882 node_paths=PackedStringArray("target_marker")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0)
+visible = false
 script = ExtResource("9_4f0qm")
 target_marker = NodePath("Target")
 metadata/_custom_type_script = "uid://d2fw564y26ts3"

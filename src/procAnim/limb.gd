@@ -7,10 +7,12 @@ extends TwoBone
 @export var target_marker: Marker3D		## The target position follows this marker.
 @export var target_max_distance := 1.0	## The max distance from the marker before the leg moves (in metres).
 @export var speed := 8.0				## Speed at which the target position moves to the marker (in m/s).
+@export var exclusions: Array[Limb]		## Limb will not move while these limbs are moving.
 
 var bones: Array[Node3D] = []
 var is_moving := false
-var target_marker_pos: Vector3	## The static position to move to when moving the limb.
+var current_pos: Vector3	## The current limb endpoint.
+var target_pos: Vector3		## The target limb endpoint.
 
 func _ready() -> void:
 	await owner.ready
@@ -20,18 +22,25 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Move limb if too far from marker
 	if target_marker and not is_moving:
-		var marker_pos := target_marker.global_position
-		if (target - marker_pos).length() > target_max_distance:
-			target_marker_pos = marker_pos
-			is_moving = true
+		var can_move := true
+		for limb in exclusions:
+			if limb.is_moving:
+				can_move = false
+				break
+		if can_move:
+			var marker_pos := target_marker.global_position
+			if (current_pos - marker_pos).length() > target_max_distance:
+				target_pos = marker_pos
+				is_moving = true
 	
 	# Move target towards marker
 	if is_moving:
-		target = target.move_toward(target_marker_pos, speed * delta)
-		if target == target_marker_pos:
+		current_pos = current_pos.move_toward(target_pos, speed * delta)
+		if current_pos == target_pos:
 			is_moving = false
 	
 	# Position meshes
+	target = current_pos
 	var b1 := bones[0]
 	var b2 := bones[1]
 	b1.global_position = (global_position + midpoint) / 2
