@@ -23,14 +23,15 @@ var hitboxes: Array[Hitbox] = []	## List of hitboxes that already hit this.
 func _on_area_entered(area: Area3D) -> void:
 	if area is Hitbox and area not in hitboxes:
 		var hitbox := area as Hitbox
-		hitboxes.append(hitbox)
-		hitbox.hit.emit(hitbox, self)
-		prehurt.emit(self, hitbox)
-		health -= hitbox.damage
-		hurt.emit(self, hitbox)
+		if hitbox.is_active:
+			hitboxes.append(hitbox)
+			hitbox.hit.emit(hitbox, self)
+			prehurt.emit(self, hitbox)
+			health -= hitbox.damage
+			hurt.emit(self, hitbox)
 		
-		# DEBUG
-		print("Ow for ", hitbox.damage, " dmg; health: ", health, " / ", health_max)
+			# DEBUG
+			print("Ow for ", hitbox.damage, " dmg; health: ", health, " / ", health_max)
 
 func _physics_process(delta: float) -> void:
 	if hitboxes:

@@ -25,6 +25,7 @@ var kb_vec: Vector3:	## Knockback vector of hitbox.
 		return hitbox.kb_vec
 	set(value):
 		hitbox.kb_vec = value
+var pierce := 0			## Number of targets the projectile can pierce.
 
 @onready var hitbox: Hitbox = $Hitbox
 @onready var col_shape: CollisionShape3D = $Hitbox/CollisionShape3D2
@@ -52,7 +53,11 @@ func scale_projectile(scaling: float) -> void:
 
 func on_hit() -> void:
 	$Destroy.start()
-	process_mode = Node.PROCESS_MODE_DISABLED
+	if pierce > 0:
+		pierce -= 1
+	else:
+		hitbox.is_active = false
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 func _physics_process(delta: float) -> void:
 	position += velocity * delta

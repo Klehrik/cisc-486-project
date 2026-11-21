@@ -3,18 +3,19 @@ extends Area3D
 
 signal hit(hitbox: Hitbox, hurtbox: Hurtbox)	## Emitted when this hitbox enters a hurtbox, before damage application.
 
-var damage   := 0.0:			## Damage of hitbox.
+var damage    := 0.0:			## Damage of hitbox.
 	get():
 		return damage
 	set(value):
 		damage = max(value, 0.0)
-var stun	 := 0.0:			## Stun buildup of hitbox.
+var stun	  := 0.0:			## Stun buildup of hitbox.
 	get():
 		return stun
 	set(value):
 		stun = max(value, 0.0)
-var kb_vec 	 := Vector3.ZERO	## Knockback vector of hitbox.
-var lifetime := -1.0			## Lifetime of hitbox (in seconds). [br]If [code]-1[/code], will persist forever.
+var kb_vec 	  := Vector3.ZERO	## Knockback vector of hitbox.
+var lifetime  := -1.0			## Lifetime of hitbox (in seconds). [br]If [code]-1[/code], will persist forever.
+var is_active := true			## Hurtboxes should check this before applying anything.
 
 @onready var shape: CollisionShape3D = $CollisionShape3D
 
