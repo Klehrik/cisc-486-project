@@ -56,3 +56,6 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	
 	if hurtbox.health <= 0:
 		queue_free()
+
+func _on_separation_collision(push: Vector3) -> void:
+	physics.kb_vec += push

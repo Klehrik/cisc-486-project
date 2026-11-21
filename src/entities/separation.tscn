@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://djjo1e28iabc4"]
+
+[ext_resource type="Script" uid="uid://cb3i61rsn6v4m" path="res://src/entities/separation.gd" id="1_me1vd"]
+
+[node name="Separation" type="Area3D" unique_id=1497330905]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("1_me1vd")

@@ -183,6 +183,7 @@ mesh = SubResource("CylinderMesh_171gl")
 [node name="LegTargets" type="Node3D" parent="Model" index="4" unique_id=2140679602]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
 
 [node name="LeftTarget" type="Marker3D" parent="Model/LegTargets" index="0" unique_id=1390052953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
@@ -209,5 +210,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_d5d58")
 debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
 
-[node name="Navigation" parent="." index="6" unique_id=1481448506]
+[node name="Collisionbox" type="CollisionShape3D" parent="Separation" parent_id_path=PackedInt32Array(1497330905) index="0" unique_id=2132123355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_pwp56")
+
+[node name="Navigation" parent="." index="7" unique_id=1481448506]
 _navigation_layers = 1

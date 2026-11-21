@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bvnfpkhnbs5d0" path="res://src/entities/player/free.gd" id="2_vt6n5"]
 [ext_resource type="Script" uid="uid://csbqc7mofua04" path="res://src/entities/physics.gd" id="2_wrxq6"]
 [ext_resource type="Script" uid="uid://c16r0sc3rwsij" path="res://src/entities/player/wallhug.gd" id="5_ketdh"]
+[ext_resource type="PackedScene" uid="uid://djjo1e28iabc4" path="res://src/entities/separation.tscn" id="5_n7e5a"]
 [ext_resource type="Script" uid="uid://dv54tpjrqyfsj" path="res://src/entities/player/roll.gd" id="6_0mfjg"]
 [ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="8_eb65w"]
 
@@ -216,6 +217,13 @@ health_max = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_oih67")
 debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
+
+[node name="Separation" parent="." unique_id=1497330905 instance=ExtResource("5_n7e5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+
+[node name="Collisionbox" type="CollisionShape3D" parent="Separation" unique_id=670466334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("CapsuleShape3D_muk8e")
 
 [node name="UseOrigin" type="Marker3D" parent="." unique_id=670096193]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
