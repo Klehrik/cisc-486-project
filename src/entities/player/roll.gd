@@ -13,17 +13,17 @@ func on_enter() -> void:
 	physics.kb_vec += _owner.last_move_dir * roll_speed
 	
 	# Placeholder animation
-	var mesh: MeshInstance3D = _owner.get_node("Mesh")
-	mesh.look_at(mesh.global_position + _owner.last_move_dir)
-	var tween := create_tween()
-	tween.tween_property(mesh, "rotation:x", -PI * 2, roll_time_max)
-	tween = create_tween()
-	tween.tween_property(mesh, "position:y", mesh.position.y - 0.4, roll_time_max/2)
-	tween.parallel()
-	tween.tween_property(mesh, "scale:y", mesh.scale.y - 0.25, roll_time_max/2)
-	tween.tween_property(mesh, "position:y", mesh.position.y, roll_time_max/2)
-	tween.parallel()
-	tween.tween_property(mesh, "scale:y", mesh.scale.y, roll_time_max/2)
+	#var mesh: MeshInstance3D = _owner.get_node("Mesh")
+	#mesh.look_at(mesh.global_position + _owner.last_move_dir)
+	#var tween := create_tween()
+	#tween.tween_property(mesh, "rotation:x", -PI * 2, roll_time_max)
+	#tween = create_tween()
+	#tween.tween_property(mesh, "position:y", mesh.position.y - 0.4, roll_time_max/2)
+	#tween.parallel()
+	#tween.tween_property(mesh, "scale:y", mesh.scale.y - 0.25, roll_time_max/2)
+	#tween.tween_property(mesh, "position:y", mesh.position.y, roll_time_max/2)
+	#tween.parallel()
+	#tween.tween_property(mesh, "scale:y", mesh.scale.y, roll_time_max/2)
 
 func on_process(delta: float) -> void:
 	roll_time -= delta

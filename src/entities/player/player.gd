@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 
-var move_speed := 3.0
+var move_speed := 2.5
 var rotation_speed := 12.0			## [code]exp_decay_angle()[/code] rotation rate.
 const footstep_dist := 0.5			## How far the player needs to travel to trigger another footstep (in metres).
 
@@ -48,8 +48,11 @@ func _physics_process(delta: float) -> void:
 	
 	# Face move direction
 	rotate_to_look_at(global_position + last_move_dir, delta)
-	$Model/LeftLeg.cross  = last_move_dir
+	$Model/LeftLeg.cross = last_move_dir
+	$Model/LeftLeg.target_max_distance = (physics.move_vec.length() / move_speed) * 0.8
 	$Model/RightLeg.cross = last_move_dir
+	$Model/RightLeg.target_max_distance = (physics.move_vec.length() / move_speed) * 0.8
+	$Model/LegTargets.position.z = (physics.move_vec.length() / move_speed) * -0.5
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")

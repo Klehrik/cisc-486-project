@@ -1,7 +1,7 @@
 class_name BaseAlert
 extends State
 
-@export var speed 			:= 2.8	## Movement speed.
+@export var speed 			:= 2.4	## Movement speed.
 @export var vision_mult		:= 1.5	## Vision range multiplier.
 @export var rotation_speed 	:= 12.0	## [code]exp_decay_angle()[/code] rotation rate.
 @export var track_time 		:= 1.5	## Time the enemy can track after target is no longer visible (in seconds).
