@@ -46,3 +46,4 @@ func get_next() -> Vector3:
 ## Stops navigation.
 func stop() -> void:
 	target_position = _owner.global_position
+	is_navigating = false
