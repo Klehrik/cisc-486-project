@@ -93,7 +93,11 @@ func update_data(equipment: Array[Equipment], current: int, spin_direction: Spin
 		if spin_direction != SpinDirection.NONE:
 			data.angle += angle_spacing * spin_direction
 
+# Update name and use count labels.
 func update_labels(equipment_name: String, uses: int, uses_max: int) -> void:
 	if name_label:
 		name_label.text = equipment_name
-		uses_label.text = "%s [color=darkgray]/%s[/color]" % [uses, uses_max]
+		if uses > 0:
+			uses_label.text = "%s [color=darkgray]/%s[/color]" % [uses, uses_max]
+		else:
+			uses_label.text = "[color=red]0[/color] [color=darkgray]/%s[/color]" % uses_max
