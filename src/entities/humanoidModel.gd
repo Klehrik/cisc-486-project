@@ -23,6 +23,7 @@ var leg_target_pos_dist := 0.0		## z-offset of target marker positions.
 var left_arm_offset: Vector3	## Offset from neutral in facing direction.
 var right_arm_offset: Vector3	## Offset from neutral in facing direction.
 var equipment_offset: Vector3	## Offset from neutral in facing direction.
+var equipment_model: EquipmentModel
 
 @onready var left_leg: Limb  	 = $LeftLeg
 @onready var right_leg: Limb 	 = $RightLeg
@@ -50,22 +51,24 @@ func _physics_process(delta: float) -> void:
 ## Set equipment model and arm pose. [br]
 ## Returns the UseOrigin of the equipment if it exists.
 func set_equipment(equipment: Equipment) -> UseOrigin:
+	# Set arm pose
 	var arm_pose := HumanoidModel.ArmPoses.NEUTRAL
 	if equipment.arm_pose:
 		arm_pose = equipment.arm_pose
 	set_arm_pose(arm_pose)
 	
-	var model: Node3D = get_node_or_null(equipment_model_name)
-	if model:
-		model.queue_free()
-	if equipment.model:
-		model = equipment.model.instantiate()
-		model.name = equipment_model_name
-		model.top_level = true
-		add_child(model)
+	# Delete existing equipment models
+	if equipment_model:
+		equipment_model.queue_free()
 		
-		for uo: UseOrigin in model.find_children("*", "UseOrigin"):
+	# Create new model
+	if equipment.model:
+		equipment_model = equipment.model.instantiate()
+		equipment_model.top_level = true
+		add_child(equipment_model)
+		for uo: UseOrigin in equipment_model.find_children("*", "UseOrigin"):
 			return uo
+	
 	return null
 
 func set_arm_pose(pose: ArmPoses) -> void:
@@ -86,6 +89,9 @@ func set_arm_pose(pose: ArmPoses) -> void:
 		ArmPoses.RIFLE:
 			left_arm.rotation_dir  = -1.0
 			right_arm.rotation_dir = -1.0
+			left_arm_offset  = Vector3(0, 0.5, -0.65)
+			right_arm_offset = Vector3(0.04, 0.5, -0.3)
+			equipment_offset = Vector3(0, 0.5, -0.2)
 
 func _handle_legs() -> void:
 	# Scale leg target position based on current motion vector
@@ -110,7 +116,6 @@ func _handle_arms() -> void:
 	right_arm_target.global_position = global_position + right_arm_offset.rotated(Vector3.UP, angle)
 	
 	# Set equipment model position
-	var model: Node3D = get_node_or_null(equipment_model_name)
-	if model:
-		model.global_position = global_position + equipment_offset.rotated(Vector3.UP, angle)
-		model.rotation.y = angle
+	if equipment_model:
+		equipment_model.global_position = global_position + equipment_offset.rotated(Vector3.UP, angle)
+		equipment_model.rotation.y = angle

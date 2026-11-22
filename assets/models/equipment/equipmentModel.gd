@@ -1,0 +1,2 @@
+class_name EquipmentModel
+extends Node3D

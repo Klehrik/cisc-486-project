@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bfa1o6qpdg36x"]
 
+[ext_resource type="Script" uid="uid://dpy7o7ffni4w" path="res://assets/models/equipment/equipmentModel.gd" id="1_y2wqp"]
 [ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="1_y6yqb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oytt3"]
@@ -29,6 +30,7 @@ material = SubResource("StandardMaterial3D_y6yqb")
 height = 3.5
 
 [node name="BurstPistol" type="Node3D" unique_id=1175524240]
+script = ExtResource("1_y2wqp")
 
 [node name="Model" type="Node3D" parent="." unique_id=1323894386]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.05, 0)

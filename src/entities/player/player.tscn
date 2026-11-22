@@ -277,10 +277,9 @@ mesh = SubResource("SphereMesh_kc3pt")
 
 [node name="ArmTargets" type="Node3D" parent="Model" unique_id=311193773]
 process_mode = 4
-visible = false
 
 [node name="LeftTarget" type="Marker3D" parent="Model/ArmTargets" unique_id=1113316187]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.5, -0.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.5, -0.55947894)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/ArmTargets/LeftTarget" unique_id=28708114]
 mesh = SubResource("SphereMesh_tk761")
