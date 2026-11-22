@@ -11,6 +11,7 @@ var count	  := 8.0	## Pellet count.
 var scale_min := 0.5
 var scale_max := 0.8
 var cooldown  := 2.5	## In seconds.
+var ammo	  := 6
 var noise	  := 12.0	## Noise strength.
 
 var team: int
@@ -19,6 +20,8 @@ func _init(team: int) -> void:
 	super()
 	self.team = team
 	cooldown_max = cooldown
+	uses_max = ammo
+	uses = uses_max
 	
 	model = preload("res://assets/models/equipment/shotgun.tscn")
 	arm_pose = HumanoidModel.ArmPoses.RIFLE
@@ -27,6 +30,8 @@ func use(use_origin: UseOrigin) -> bool:
 	if not use_origin:
 		return false
 	if is_on_cooldown():
+		return false
+	if not consume_use():
 		return false
 	
 	# Fire bullets

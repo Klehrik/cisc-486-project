@@ -80,3 +80,17 @@ func switch(name: String) -> void:
 		c.is_current_state = true
 		c.on_push()
 		c.on_enter()
+
+## Resets the state stack to a single one.
+func reset(name: String) -> void:
+	var next: State = states.get(name)
+	assert(next, "State '%s' does not exist." % name)
+	
+	while current:
+		var c := current
+		c.is_current_state = false
+		c.on_exit()
+		c.on_pop()
+		stack.pop_back()
+		
+	push(name)

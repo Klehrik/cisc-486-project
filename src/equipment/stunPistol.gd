@@ -6,6 +6,7 @@ var stun	  := 2.5
 var knockback := 1.0
 var speed 	  := 50.0
 var cooldown  := 1.5	## In seconds.
+var ammo	  := 12
 var noise	  := 2.0	## Noise strength.
 
 var team: int
@@ -14,6 +15,8 @@ func _init(team: int) -> void:
 	super()
 	self.team = team
 	cooldown_max = cooldown
+	uses_max = ammo
+	uses = uses_max
 	
 	model = preload("res://assets/models/equipment/pistol.tscn")
 	arm_pose = HumanoidModel.ArmPoses.PISTOL
@@ -22,6 +25,8 @@ func use(use_origin: UseOrigin) -> bool:
 	if not use_origin:
 		return false
 	if is_on_cooldown():
+		return false
+	if not consume_use():
 		return false
 	
 	# Fire bullet

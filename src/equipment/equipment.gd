@@ -3,10 +3,13 @@ extends Node
 
 ## Inherit this and override [code]use[/code] and [code]stop[/code] when needed.
 
-var cooldown_max: float	 					## The cooldown for this equipment (in seconds).
-var cooldown_left: float 					## The remaining cooldown for this equipment (in seconds).
+var cooldown_max: float	 ## The cooldown for this equipment (in seconds).
+var cooldown_left: float ## The remaining cooldown for this equipment (in seconds).
 var model: PackedScene
 var arm_pose: HumanoidModel.ArmPoses
+
+var uses 	 := -1	## Remaining uses. [br]Infinite if [code]-1[/code].
+var uses_max := -1	## Maximum uses. [br]Infinite if [code]-1[/code].
 
 func _init() -> void:
 	Scene.add_to_tree(self, "Process")
@@ -21,6 +24,15 @@ func is_on_cooldown() -> bool:
 ## [code]cd_mult[/code] is a scaling of [code]cooldown_max[/code].
 func start_cooldown(cd_mult: float = 1.0) -> void:
 	cooldown_left = cooldown_max * cd_mult
+
+## Tries to consumes a use and returns [code]true[/code] if successful.
+func consume_use() -> bool:
+	if uses <= -1:
+		return true
+	if uses > 0:
+		uses -= 1
+		return true
+	return false
 
 ## Called once (or every frame) whenever the equipment is being used.
 ## Returns [code]true[/code] if the equipment was successfully used.

@@ -8,7 +8,7 @@ var equipment: Equipment
 
 func _ready() -> void:
 	super()
-	equipment = Equipment_GuardGun.new(2)
+	equipment = [Equipment_GuardGun, Equipment_GuardShotgun].pick_random().new(2)	## debug
 	if equipment:
 		var uo := model.set_equipment(equipment)
 		if uo:
