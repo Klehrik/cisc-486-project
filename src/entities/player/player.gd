@@ -41,7 +41,7 @@ func _ready() -> void:
 	equipment = [
 		Equipment_BurstPistol.new(1),
 		Equipment_StunPistol.new(1),
-		Equipment_HandCannon.new(1),
+		Equipment_Cannon.new(1),
 		Equipment_Shotgun.new(1),
 	]
 
