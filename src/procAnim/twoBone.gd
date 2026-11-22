@@ -10,6 +10,7 @@ var target: Vector3:		## The end of the limb (global position). [br]Setting will
 	set(value):
 		target = _calculate_points(value)
 var cross := Vector3.UP		## Cross vector used to get perpendicular for rotation plane.
+var rotation_dir := 1.0		## Direction of midpoint rotation from origin.
 
 ## Calculates the joint position and returns the finalized target point.
 func _calculate_points(end: Vector3) -> Vector3:
@@ -26,10 +27,10 @@ func _calculate_points(end: Vector3) -> Vector3:
 	var angle := acos(((length_1 ** 2) + (length ** 2) - (length_2 ** 2)) / (2 * length_1 * length))
 	
 	# Get perpendicular of 'vec x Vector3.UP' plane to rotate around
-	var perp 		:= vec.cross(cross).normalized()
+	var perp := vec.cross(cross).normalized()
 	if perp == Vector3.ZERO:
 		perp = Vector3.UP
-	var vec_to_mid 	:= vec.rotated(perp, angle).normalized()
-	midpoint		= start + (vec_to_mid * length_1)
+	var vec_to_mid := vec.rotated(perp, angle * sign(rotation_dir)).normalized()
+	midpoint = start + (vec_to_mid * length_1)
 	
 	return end

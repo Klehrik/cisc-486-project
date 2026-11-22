@@ -17,7 +17,7 @@ var equipment_current: int
 var face_use_direction: float		## Face use direction for a bit when using (in seconds).
 var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
 
-@onready var model: Node3D 		   = $Model
+@onready var model: PlayerModel	   = $Model
 @onready var physics: Physics 	   = $Physics
 @onready var use_origin: UseOrigin = $UseOrigin
 
@@ -116,6 +116,13 @@ func handle_equipment(delta: float) -> void:
 		equipment_current = posmod(equipment_current - 1, len(equipment))
 	if Input.is_action_just_pressed("Swap Right"):
 		equipment_current = posmod(equipment_current + 1, len(equipment))
+	
+	# Set new weapon model and arm pose
+	var arm_pose := HumanoidModel.ArmPoses.NEUTRAL
+	var e := equipment[equipment_current]
+	if e.arm_pose:
+		arm_pose = e.arm_pose
+	model.set_arm_pose(arm_pose)
 
 func handle_equipment_use() -> void:
 	var e := equipment[equipment_current]

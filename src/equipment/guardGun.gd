@@ -1,4 +1,4 @@
-class_name Equipment_GuardRifle
+class_name Equipment_GuardGun
 extends Equipment
 
 var damage 	  := 1.0
@@ -23,6 +23,8 @@ func _init(team: int) -> void:
 	cooldown_max = cooldown
 
 func use(use_origin: UseOrigin) -> bool:
+	if not use_origin:
+		return false
 	if is_on_cooldown():
 		return false
 	self.use_origin = use_origin
@@ -31,6 +33,9 @@ func use(use_origin: UseOrigin) -> bool:
 	return true
 
 func _physics_process(delta: float) -> void:
+	if not use_origin:
+		return
+	
 	if shots > 0:
 		if delay > 0:
 			delay -= delta

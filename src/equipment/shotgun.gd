@@ -21,6 +21,8 @@ func _init(team: int) -> void:
 	cooldown_max = cooldown
 
 func use(use_origin: UseOrigin) -> bool:
+	if not use_origin:
+		return false
 	if is_on_cooldown():
 		return false
 	

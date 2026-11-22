@@ -8,7 +8,8 @@ func on_enter() -> void:
 	super()
 	
 	# Delay shooting when entering Alert
-	__owner.equipment.start_cooldown(initial_cooldown_mult)
+	if __owner.equipment:
+		__owner.equipment.start_cooldown(initial_cooldown_mult)
 
 func on_process(delta: float) -> void:
 	super(delta)

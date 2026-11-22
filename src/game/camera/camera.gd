@@ -110,7 +110,8 @@ func project_position_to_ground(pos: Vector2, ground_y: float = 0.0) -> Vector3:
 
 ## Returns the screen position of a 3D coordinate.
 func unproject_position(pos: Vector3) -> Vector2:
-	return $Camera3D.unproject_position(pos)
+	var camera: Camera3D = $Camera3D
+	return camera.unproject_position(pos)
 
 ## Registers a new followable camera target. [br]Higher priority is used over lower ones. [br][code]secondary_target_max_dist[/code] is the maximum distance (in metres) from the primary target that camera position averaging can happen.
 func add_target(target: Node3D, priority: int = 0, secondary_target_max_dist: float = 10.0) -> void:

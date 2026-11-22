@@ -116,6 +116,62 @@ material = SubResource("StandardMaterial3D_t8d2k")
 radius = 0.05
 height = 0.1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s04m"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_171gl"]
+next_pass = SubResource("StandardMaterial3D_3s04m")
+albedo_color = Color(0.4117647, 0.36862746, 0.2784314, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_glcja"]
+material = SubResource("StandardMaterial3D_171gl")
+top_radius = 0.04
+bottom_radius = 0.03
+height = 0.17
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lht3l"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2qdy"]
+next_pass = SubResource("StandardMaterial3D_lht3l")
+albedo_color = Color(0.4117647, 0.36862746, 0.2784314, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7jlus"]
+material = SubResource("StandardMaterial3D_p2qdy")
+top_radius = 0.03
+bottom_radius = 0.01
+height = 0.17
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap2pj"]
+albedo_color = Color(0.33999997, 0.8899999, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yyu4e"]
+material = SubResource("StandardMaterial3D_ap2pj")
+radius = 0.05
+height = 0.1
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pwp56"]
 radius = 0.2
 height = 0.9
@@ -198,6 +254,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LegTargets/RightTarget" index="0" unique_id=341961979]
 mesh = SubResource("SphereMesh_glcja")
+
+[node name="LeftArm" type="Marker3D" parent="Model" index="5" unique_id=417285715 node_paths=PackedStringArray("target_marker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16, 0.55, -0.1)
+script = ExtResource("3_f5x34")
+target_marker = NodePath("../ArmTargets/LeftTarget")
+target_max_distance = 0.0
+length_1 = 0.17
+length_2 = 0.17
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Upper" type="Node3D" parent="Model/LeftArm" index="0" unique_id=1656775146]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftArm/Upper" index="0" unique_id=1246387001]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_glcja")
+
+[node name="Lower" type="Node3D" parent="Model/LeftArm" index="1" unique_id=1938932321]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/LeftArm/Lower" index="0" unique_id=1243198943]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7jlus")
+
+[node name="RightArm" type="Marker3D" parent="Model" index="6" unique_id=1848417548 node_paths=PackedStringArray("target_marker")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16, 0.55, -0.1)
+script = ExtResource("3_f5x34")
+target_marker = NodePath("../ArmTargets/RightTarget")
+target_max_distance = 0.0
+length_1 = 0.17
+length_2 = 0.17
+metadata/_custom_type_script = "uid://d2fw564y26ts3"
+
+[node name="Upper" type="Node3D" parent="Model/RightArm" index="0" unique_id=1535727814]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightArm/Upper" index="0" unique_id=1799122911]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_glcja")
+
+[node name="Lower" type="Node3D" parent="Model/RightArm" index="1" unique_id=1044470830]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/RightArm/Lower" index="0" unique_id=2102838031]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7jlus")
+
+[node name="ArmTargets" type="Node3D" parent="Model" index="7" unique_id=485617947]
+process_mode = 4
+visible = false
+
+[node name="LeftTarget" type="Marker3D" parent="Model/ArmTargets" index="0" unique_id=180170120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, 0.5, -0.35)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/ArmTargets/LeftTarget" index="0" unique_id=530510205]
+mesh = SubResource("SphereMesh_yyu4e")
+
+[node name="RightTarget" type="Marker3D" parent="Model/ArmTargets" index="1" unique_id=2115188586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, 0.5, -0.35)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model/ArmTargets/RightTarget" index="0" unique_id=1172316350]
+mesh = SubResource("SphereMesh_yyu4e")
 
 [node name="Collisionbox" type="CollisionShape3D" parent="." index="1" unique_id=1321256304]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)

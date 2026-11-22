@@ -21,8 +21,12 @@ func _init(team: int) -> void:
 	super()
 	self.team = team
 	cooldown_max = cooldown
+	
+	arm_pose = HumanoidModel.ArmPoses.PISTOL
 
 func use(use_origin: UseOrigin) -> bool:
+	if not use_origin:
+		return false
 	if is_on_cooldown():
 		return false
 	self.use_origin = use_origin
@@ -31,6 +35,9 @@ func use(use_origin: UseOrigin) -> bool:
 	return true
 
 func _physics_process(delta: float) -> void:
+	if not use_origin:
+		return
+		
 	if shots > 0:
 		if delay > 0:
 			delay -= delta
