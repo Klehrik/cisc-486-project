@@ -16,8 +16,9 @@ func _process(delta: float) -> void:
 func is_on_cooldown() -> bool:
 	return cooldown_left > 0
 
-func start_cooldown() -> void:
-	cooldown_left = cooldown_max
+## [code]cd_mult[/code] is a scaling of [code]cooldown_max[/code].
+func start_cooldown(cd_mult: float = 1.0) -> void:
+	cooldown_left = cooldown_max * cd_mult
 
 ## Called once (or every frame) whenever the equipment is being used.
 ## Returns [code]true[/code] if the equipment was successfully used.

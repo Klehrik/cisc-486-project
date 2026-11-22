@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://dj6ip0tkxbmsq" path="res://src/entities/enemies/guard/guard.gd" id="2_f5x34"]
 [ext_resource type="Script" uid="uid://dnyb64j5ddymv" path="res://src/entities/enemies/guard/model.gd" id="2_lrbil"]
 [ext_resource type="Script" uid="uid://d2fw564y26ts3" path="res://src/procAnim/limb.gd" id="3_f5x34"]
+[ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="5_71thp"]
+[ext_resource type="Script" uid="uid://eodqio0k5srd" path="res://src/entities/enemies/guard/alert.gd" id="5_qhiho"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhiho"]
 render_priority = 1
@@ -214,5 +216,13 @@ debug_color = Color(0.67829764, 0.09651054, 0.6126869, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 shape = SubResource("CapsuleShape3D_pwp56")
 
-[node name="Navigation" parent="." index="7" unique_id=1481448506]
+[node name="UseOrigin" type="Marker3D" parent="." index="4" unique_id=1394557365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("5_71thp")
+metadata/_custom_type_script = "uid://1ktfo8yao518"
+
+[node name="Navigation" parent="." index="8" unique_id=1481448506]
 _navigation_layers = 1
+
+[node name="Alert" parent="StateMachine" parent_id_path=PackedInt32Array(1689165596) index="2" unique_id=2093878154]
+script = ExtResource("5_qhiho")

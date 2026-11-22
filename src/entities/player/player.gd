@@ -17,7 +17,8 @@ var equipment_current: int
 var face_use_direction: float		## Face use direction for a bit when using (in seconds).
 var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
 
-@onready var physics: Physics = $Physics
+@onready var model: Node3D 		   = $Model
+@onready var physics: Physics 	   = $Physics
 @onready var use_origin: UseOrigin = $UseOrigin
 
 func _ready() -> void:
@@ -41,6 +42,7 @@ func _ready() -> void:
 		Equipment_BurstPistol.new(1),
 		Equipment_StunPistol.new(1),
 		Equipment_HandCannon.new(1),
+		Equipment_Shotgun.new(1),
 	]
 
 func _physics_process(delta: float) -> void:
@@ -51,9 +53,9 @@ func _physics_process(delta: float) -> void:
 	rotate_to_look_at(global_position + last_move_dir, delta)
 	if face_use_direction > 0:
 		face_use_direction -= delta
-		$Model.facing = use_origin.target - global_position
+		model.facing = use_origin.target - global_position
 	else:
-		$Model.facing = last_move_dir
+		model.facing = last_move_dir
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
