@@ -61,5 +61,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -5)
 script = ExtResource("2_aknx1")
 
 [node name="DisplayOrigin" type="Marker3D" parent="Model" unique_id=1252771917]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75000006, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -2)
 script = ExtResource("3_aknx1")
