@@ -44,6 +44,7 @@ func _ready() -> void:
 		Equipment_Cannon.new(1),
 		Equipment_Shotgun.new(1),
 	]
+	EquipmentWheel.instance.update_data(equipment, equipment_current)
 
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
@@ -114,18 +115,23 @@ func handle_equipment(delta: float) -> void:
 	
 	# Handle swapping
 	var swapped := false
+	var spin_direction := EquipmentWheel.SpinDirection.NONE
 	if Input.is_action_just_pressed("Swap Left"):
 		equipment_current = posmod(equipment_current - 1, len(equipment))
 		swapped = true
+		spin_direction = EquipmentWheel.SpinDirection.LEFT
 	if Input.is_action_just_pressed("Swap Right"):
 		equipment_current = posmod(equipment_current + 1, len(equipment))
 		swapped = true
+		spin_direction = EquipmentWheel.SpinDirection.RIGHT
 	
 	if swapped:
 		var e := equipment[equipment_current]
 		var uo := model.set_equipment(e)
 		if uo:
 			use_origin.follow = uo
+		
+		EquipmentWheel.instance.update_data(equipment, equipment_current, spin_direction)
 
 func handle_equipment_use() -> void:
 	var e := equipment[equipment_current]

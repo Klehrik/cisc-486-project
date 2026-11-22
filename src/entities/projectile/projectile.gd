@@ -1,6 +1,8 @@
 class_name Projectile
 extends RayCast3D
 
+const base_sphere_radius := 0.15
+
 var velocity: Vector3:	## The velocity of the projectile.
 	get():
 		return velocity
@@ -26,13 +28,20 @@ var kb_vec: Vector3:	## Knockback vector of hitbox.
 	set(value):
 		hitbox.kb_vec = value
 var pierce := 0			## Number of targets the projectile can pierce.
+var trail_lifetime_scale := 1.0:	## Setting this modifies $Trail lifetime.
+	get():
+		return trail_lifetime_scale
+	set(value):
+		trail_lifetime_scale = value
+		trail.lifetime = trail_base_lifetime * value
 
 @onready var hitbox: Hitbox = $Hitbox
-@onready var col_shape: CollisionShape3D = $Hitbox/CollisionShape3D2
 @onready var trail: Trail3D = $Trail
+@onready var trail_base_lifetime := trail.lifetime
 
 func _ready() -> void:
 	target_position = Vector3.ZERO
+	hitbox.set_sphere(Vector3.ZERO, base_sphere_radius)
 
 ## Team 1 - Player [br]Team 2 - Enemies
 func set_team(team: int) -> void:
@@ -46,9 +55,7 @@ func set_team(team: int) -> void:
 
 ## Scales the projectile hitbox radius and trail width.
 func scale_projectile(scaling: float) -> void:
-	var shape: SphereShape3D = col_shape.shape.duplicate()
-	shape.radius *= scaling
-	col_shape.shape = shape
+	hitbox.set_sphere(Vector3.ZERO, base_sphere_radius * scaling)
 	trail.width = trail.width * scaling
 
 func on_hit() -> void:

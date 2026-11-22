@@ -1,0 +1,2 @@
+class_name DisplayOrigin
+extends Marker3D

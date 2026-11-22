@@ -37,3 +37,7 @@ func _physics_process(delta: float) -> void:
 	if hitboxes:
 		if not is_instance_valid(hitboxes.back()):
 			hitboxes.pop_back()
+
+	# Entity fell out of the world
+	if global_position.y <= -25.0:
+		owner.queue_free()

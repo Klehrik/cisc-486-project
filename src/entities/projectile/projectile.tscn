@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://de46xtnnrpmr0" path="res://src/entities/hitbox.tscn" id="2_34nme"]
 [ext_resource type="Script" uid="uid://i7smrtc8uja4" path="res://src/entities/projectile/destroy.gd" id="3_gwwcf"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_i8xfr"]
-radius = 0.15
-
 [sub_resource type="Curve" id="Curve_yohqp"]
 _data = [Vector2(0, 0.40090084), 0.0, 5.684994, 0, 0, Vector2(0.04713115, 0.7522522), 1.7860363, 1.7860363, 0, 0, Vector2(0.4979508, 1), 0.0, 0.0, 0, 0, Vector2(0.94877046, 0.7522522), -1.7319134, -1.7319134, 0, 0, Vector2(1, 0.40090084), -5.770267, 0.0, 0, 0]
 point_count = 5
@@ -15,12 +12,6 @@ point_count = 5
 script = ExtResource("1_34nme")
 
 [node name="Hitbox" parent="." unique_id=1795130635 instance=ExtResource("2_34nme")]
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hitbox" unique_id=124655416]
-editor_description = "This is used instead of
-Hitbox's normal shape"
-shape = SubResource("SphereShape3D_i8xfr")
-debug_color = Color(0.7078114, 0.48051488, 0.21571043, 0.41960785)
 
 [node name="Trail" type="Trail3D" parent="." unique_id=1235996433]
 process_mode = 1

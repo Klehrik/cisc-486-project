@@ -5,7 +5,7 @@ var damage 	  := 3.0
 var stun	  := 4.0
 var knockback := 15.0
 var speed 	  := 80.0
-var cooldown  := 7.0	## In seconds.
+var cooldown  := 5.0	## In seconds.
 var ammo	  := 5
 var noise	  := 12.0	## Noise strength.
 
@@ -32,7 +32,8 @@ func use(use_origin: UseOrigin) -> bool:
 	# Fire bullet
 	var dir := (use_origin.target - use_origin.global_position).normalized()
 	var p: Projectile = Scene.instantiate_global(Scene.projectile)
-	p.scale_projectile(2)
+	p.scale_projectile(1.25)
+	p.trail_lifetime_scale = 2.0
 	p.position = use_origin.global_position
 	p.velocity = dir * speed
 	p.damage = damage

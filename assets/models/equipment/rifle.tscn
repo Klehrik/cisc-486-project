@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpy7o7ffni4w" path="res://assets/models/equipment/equipmentModel.gd" id="1_2w252"]
 [ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="2_22xx8"]
+[ext_resource type="Script" uid="uid://c4r3her1tk3x2" path="res://src/HUD/displayOrigin.gd" id="3_22xx8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1w6f"]
 render_priority = 1
@@ -72,5 +73,9 @@ transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 2.1, -4.75
 mesh = SubResource("BoxMesh_2w252")
 
 [node name="UseOrigin" type="Marker3D" parent="Model" unique_id=516322242]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.5, -5.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5.25)
 script = ExtResource("2_22xx8")
+
+[node name="DisplayOrigin" type="Marker3D" parent="Model" unique_id=2000208954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -2.25)
+script = ExtResource("3_22xx8")

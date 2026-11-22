@@ -67,27 +67,28 @@ func _process(delta: float) -> void:
 	var n := len(targets)
 	if n > 0:
 		# First target is the primary one (highest priority)
-		var target: Node3D = targets[0][0]
-		dest = target.global_position
-		
-		if n > 1 and !o.ignore_secondary:
-			# Secondary target is the nearest one with highest priority
-			var priority: float = targets[1][1]
-			var candidates = targets.filter(func(a): return a[0] and (a[1] == priority))
-			var target2: Node3D
-			var dist := INF
-			for tarray: Array in candidates:
-				var t: Node3D = tarray[0]
-				var d: float = (t.global_position - dest).length()
-				if d < dist and d <= tarray[2]:
-					target2 = t
-					dist = d
-					
-			if target2:
-				var pos2 := target2.global_position
-				dest = (dest + pos2) / 2
-		
-		dest += o.offset
+		if targets[0][0]:
+			var target: Node3D = targets[0][0]
+			dest = target.global_position
+			
+			if n > 1 and !o.ignore_secondary:
+				# Secondary target is the nearest one with highest priority
+				var priority: float = targets[1][1]
+				var candidates = targets.filter(func(a): return a[0] and (a[1] == priority))
+				var target2: Node3D
+				var dist := INF
+				for tarray: Array in candidates:
+					var t: Node3D = tarray[0]
+					var d: float = (t.global_position - dest).length()
+					if d < dist and d <= tarray[2]:
+						target2 = t
+						dist = d
+						
+				if target2:
+					var pos2 := target2.global_position
+					dest = (dest + pos2) / 2
+			
+			dest += o.offset
 	
 	# Slide to destination
 	position = Util.exp_decay(position, dest, slide_speed, delta)
