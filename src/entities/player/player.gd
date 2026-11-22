@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 var move_speed := 2.5
-var rotation_speed := 12.0			## [code]exp_decay_angle()[/code] rotation rate.
+var rotation_speed := 16.0			## [code]exp_decay_angle()[/code] rotation rate.
 const footstep_dist := 0.5			## How far the player needs to travel to trigger another footstep (in metres).
 
 var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement.
@@ -44,6 +44,9 @@ func _ready() -> void:
 		Equipment_Cannon.new(1),
 		Equipment_Shotgun.new(1),
 	]
+	var uo := model.set_equipment(equipment[equipment_current])
+	if uo:
+		use_origin.follow = uo
 	EquipmentWheel.instance.update_data(equipment, equipment_current)
 
 func _physics_process(delta: float) -> void:
@@ -127,6 +130,7 @@ func handle_equipment(delta: float) -> void:
 	
 	var e := equipment[equipment_current]
 	EquipmentWheel.instance.update_labels(e.equipment_name, e.uses, e.uses_max)
+	EquipmentWheel.instance.update_cooldown_ratio(e.cooldown_ratio)
 	
 	if swapped:
 		var uo := model.set_equipment(e)

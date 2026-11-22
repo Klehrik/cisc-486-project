@@ -24,6 +24,7 @@ var show_full_time := 0.0
 @onready var offset: Node2D 		   = $Offset
 @onready var name_label: RichTextLabel = $Offset/Name
 @onready var uses_label: RichTextLabel = $Offset/Uses
+@onready var selected: Node2D 		   = $Offset/Selected
 @onready var sub_viewport: SubViewport = $SubViewport
 
 class ModelData:
@@ -101,3 +102,7 @@ func update_labels(equipment_name: String, uses: int, uses_max: int) -> void:
 			uses_label.text = "%s [color=darkgray]/%s[/color]" % [uses, uses_max]
 		else:
 			uses_label.text = "[color=red]0[/color] [color=darkgray]/%s[/color]" % uses_max
+
+## From 0.0 (cooldown start) to 1.0 (ready).
+func update_cooldown_ratio(ratio: float) -> void:
+	selected.ratio = ratio

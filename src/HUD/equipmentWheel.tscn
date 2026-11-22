@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6d50maaqqbhs" path="res://src/HUD/equipmentWheel.gd" id="1_bjqkr"]
 [ext_resource type="Texture2D" uid="uid://4egrsjpy6a4c" path="res://assets/primitives/ring256.png" id="1_hhpe3"]
-[ext_resource type="Texture2D" uid="uid://cvuqkrddxcasr" path="res://assets/primitives/circle256.png" id="3_bjqkr"]
+[ext_resource type="Script" uid="uid://br1v8dgixjj1d" path="res://src/HUD/equipmentWheelSelected.gd" id="3_nra1l"]
 [ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="4_nra1l"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_nra1l"]
@@ -19,11 +19,11 @@ position = Vector2(4, -4)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_hhpe3")
 
-[node name="Selected" type="Sprite2D" parent="Offset" unique_id=212972941]
+[node name="Selected" type="Node2D" parent="Offset" unique_id=332713292]
 modulate = Color(0.25, 0.25, 0.25, 0.5019608)
 position = Vector2(31, -31)
 scale = Vector2(0.09, 0.09)
-texture = ExtResource("3_bjqkr")
+script = ExtResource("3_nra1l")
 
 [node name="Name" type="RichTextLabel" parent="Offset" unique_id=88889343]
 offset_left = 54.0

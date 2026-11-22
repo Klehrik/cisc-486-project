@@ -7,10 +7,15 @@ var equipment_name := "?"
 var model: PackedScene
 var arm_pose: HumanoidModel.ArmPoses
 
-var cooldown_max: float	 ## The cooldown for this equipment (in seconds).
-var cooldown_left: float ## The remaining cooldown for this equipment (in seconds).
-var uses 	 := -1		 ## Remaining uses. [br]Infinite if [code]-1[/code].
-var uses_max := -1		 ## Maximum uses. [br]Infinite if [code]-1[/code].
+var cooldown_max: float	 	## The cooldown for this equipment (in seconds).
+var cooldown_left: float 	## The remaining cooldown for this equipment (in seconds).
+var cooldown_ratio: float:	## 1.0 - (ratio of remaining to max).
+	get():
+		return 1.0 - (cooldown_left / cooldown_max)
+	set(value):
+		assert(false, "Cannot modify cooldown_ratio.")
+var uses 	 := -1		 	## Remaining uses. [br]Infinite if [code]-1[/code].
+var uses_max := -1		 	## Maximum uses. [br]Infinite if [code]-1[/code].
 
 func _init() -> void:
 	Scene.add_to_tree(self, "Process")
