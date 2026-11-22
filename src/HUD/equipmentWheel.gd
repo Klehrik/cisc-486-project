@@ -10,6 +10,7 @@ enum SpinDirection {
 }
 
 const distance_from_corner := 0.7		## Model distance from corner.
+const cd_distance_from_corner := 44.0	## Cooldown pie chart distance from corner.
 const model_scale := 0.5
 const angle_spacing := PI/6				## Offsets of other models from current one (at 45 deg angle).
 const spin_speed := 8.0					## Model [code]exp_decay()[/code] spin speed.
@@ -50,12 +51,17 @@ func _physics_process(delta: float) -> void:
 		if data.model:
 			data.model.position = (Vector3(0, 0, -distance_from_corner)).rotated(Vector3.LEFT, data.angle) - data.display_origin
 			data.model.visible = true
-			
+	
+	# Show/hide full wheel
 	var target := hide_offset
 	if show_full_time > 0:
 		show_full_time -= delta
 		target = Vector2.ZERO
 	offset.position = Util.exp_decay(offset.position, target, hide_speed, delta)
+	
+	# Set position of cooldown pie chart
+	# 	losing it
+	selected.position = (Vector2.RIGHT * cd_distance_from_corner).rotated(models[2].angle)
 
 ## Update model data and optionally spin.
 func update_data(equipment: Array[Equipment], current: int, spin_direction: SpinDirection = SpinDirection.NONE) -> void:
