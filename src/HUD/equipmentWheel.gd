@@ -9,15 +9,20 @@ enum SpinDirection {
 	RIGHT = 1,
 }
 
-const distance_from_corner := 0.65	## Model distance from corner.
+const distance_from_corner := 0.7		## Model distance from corner.
 const model_scale := 0.5
-const angle_spacing := PI/6			## Offsets of other models from current one (at 45 deg angle).
-const spin_speed := 8.0				## Model [code]exp_decay()[/code] spin speed
+const angle_spacing := PI/6				## Offsets of other models from current one (at 45 deg angle).
+const spin_speed := 8.0					## Model [code]exp_decay()[/code] spin speed.
+const show_full_time_max := 2.0			## Amount of time to show full wheel (in seconds).
+const hide_offset := Vector2(-16, 16)	## Position offset when not showing full wheel.
+const hide_speed := 6.0					## Wheel [code]exp_decay()[/code] show/hide speed.
 
 var models: Array[ModelData] = []	## Holds 5 (0, 1 are left, 2 is current, 3, 4 are right).
 var equipment: Array[Equipment]		## Reference to equipment array to display.
+var show_full_time := 0.0
 
-@onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
+@onready var offset: Node2D 		   = $Offset
+@onready var sub_viewport: SubViewport = $SubViewport
 
 class ModelData:
 	var model: EquipmentModel
@@ -31,15 +36,6 @@ func _ready() -> void:
 	for i in range(5):
 		var data := ModelData.new()
 		models.append(data)
-	
-	#var m: EquipmentModel = load("res://assets/models/equipment/rifle.tscn").instantiate()
-	#sub_viewport.add_child(m)
-	#m.scale = Vector3.ONE * model_scale
-	#var display_origin := Vector3.ZERO
-	#for do: DisplayOrigin in m.find_children("*", "DisplayOrigin"):
-	#	display_origin = do.global_position
-	#	break
-	#m.position = (Vector3(0, 0, -distance_from_corner)).rotated(Vector3.LEFT, -PI/4) - display_origin
 
 func _physics_process(delta: float) -> void:
 	# Lerp each model angle to target one
@@ -51,15 +47,28 @@ func _physics_process(delta: float) -> void:
 		if data.model:
 			data.model.position = (Vector3(0, 0, -distance_from_corner)).rotated(Vector3.LEFT, data.angle) - data.display_origin
 			data.model.visible = true
+			
+	var target := hide_offset
+	if show_full_time > 0:
+		show_full_time -= delta
+		target = Vector2.ZERO
+	offset.position = Util.exp_decay(offset.position, target, hide_speed, delta)
 
 ## Update model data and optionally spin.
 func update_data(equipment: Array[Equipment], current: int, spin_direction: SpinDirection = SpinDirection.NONE) -> void:
+	show_full_time = show_full_time_max
+	
+	## Update labels
+	var e := equipment[current]
+	offset.get_node("Name").text = e.equipment_name
+	offset.get_node("Uses").text = "%s [color=darkgray]/%s[/color]" % [e.uses, e.uses_max]
+	
 	## Update leftmost (left 2) model first
 	var count := len(equipment)
 	current = posmod(current + 2, count)
 	
 	for data in models:
-		var e := equipment[current]
+		e = equipment[current]
 		current = posmod(current - 1, count)
 		
 		# Destroy old model

@@ -13,6 +13,7 @@ var team: int
 
 func _init(team: int) -> void:
 	super()
+	equipment_name = "Stun Pistol"
 	self.team = team
 	cooldown_max = cooldown
 	uses_max = ammo

@@ -3,13 +3,14 @@ extends Node
 
 ## Inherit this and override [code]use[/code] and [code]stop[/code] when needed.
 
-var cooldown_max: float	 ## The cooldown for this equipment (in seconds).
-var cooldown_left: float ## The remaining cooldown for this equipment (in seconds).
+var equipment_name := "?"
 var model: PackedScene
 var arm_pose: HumanoidModel.ArmPoses
 
-var uses 	 := -1	## Remaining uses. [br]Infinite if [code]-1[/code].
-var uses_max := -1	## Maximum uses. [br]Infinite if [code]-1[/code].
+var cooldown_max: float	 ## The cooldown for this equipment (in seconds).
+var cooldown_left: float ## The remaining cooldown for this equipment (in seconds).
+var uses 	 := -1		 ## Remaining uses. [br]Infinite if [code]-1[/code].
+var uses_max := -1		 ## Maximum uses. [br]Infinite if [code]-1[/code].
 
 func _init() -> void:
 	Scene.add_to_tree(self, "Process")

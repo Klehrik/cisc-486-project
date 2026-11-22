@@ -161,7 +161,9 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# DEBUG
 	if hurtbox.health <= 0:
 		await get_tree().process_frame
-		get_tree().reload_current_scene()
+		var tree := get_tree()
+		if tree:
+			tree.reload_current_scene()
 
 func _on_separation_collision(push: Vector3) -> void:
 	physics.kb_vec += push / 2.0

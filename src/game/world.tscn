@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/game.gd" id="1_thycv"]
 [ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="2_38auj"]
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_drn54"]
-[ext_resource type="Texture2D" uid="uid://4egrsjpy6a4c" path="res://assets/sprites/ring256.png" id="3_8x1mj"]
 [ext_resource type="PackedScene" uid="uid://dnyl55eut40lj" path="res://src/HUD/equipmentWheel.tscn" id="3_wncxb"]
 [ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="4_tkkm2"]
 [ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/enemies/guard/guard.tscn" id="4_ws5b0"]
@@ -67,16 +66,6 @@ shadow_blur = 0.0
 
 [node name="EquipmentWheel" parent="Screen/HUD" unique_id=171200968 instance=ExtResource("3_wncxb")]
 position = Vector2(0, 180)
-
-[node name="oldEquipmentWheel" type="Node2D" parent="Screen/HUD" unique_id=26466033]
-visible = false
-position = Vector2(0, 180)
-
-[node name="Ring256" type="Sprite2D" parent="Screen/HUD/oldEquipmentWheel" unique_id=278533067]
-visible = false
-modulate = Color(1, 1, 1, 0.2509804)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_8x1mj")
 
 [node name="Player" parent="." unique_id=2050928230 instance=ExtResource("2_38auj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
