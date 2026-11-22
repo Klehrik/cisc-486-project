@@ -2,7 +2,6 @@ class_name EquipmentWheelSelected
 extends Node2D
 
 var segments  := 32
-var color     := Color.WHITE
 var radius    := 120
 
 var ratio := 1.0:	## The ratio of filled-in circle (from 0.0 to 1.0). [br]This can be set to update it.
@@ -22,4 +21,4 @@ func _draw() -> void:
 		var t := float(i) / segments
 		var angle: float = lerp(-PI/2, end_angle, t)
 		points.append(Vector2.from_angle(angle) * radius)
-	draw_polygon(points, [color])
+	draw_polygon(points, [Color.WHITE])
