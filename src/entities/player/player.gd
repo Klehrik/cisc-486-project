@@ -125,12 +125,13 @@ func handle_equipment(delta: float) -> void:
 		swapped = true
 		spin_direction = EquipmentWheel.SpinDirection.RIGHT
 	
+	var e := equipment[equipment_current]
+	EquipmentWheel.instance.update_labels(e.equipment_name, e.uses, e.uses_max)
+	
 	if swapped:
-		var e := equipment[equipment_current]
 		var uo := model.set_equipment(e)
 		if uo:
 			use_origin.follow = uo
-		
 		EquipmentWheel.instance.update_data(equipment, equipment_current, spin_direction)
 
 func handle_equipment_use() -> void:

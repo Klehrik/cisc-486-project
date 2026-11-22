@@ -22,6 +22,8 @@ var equipment: Array[Equipment]		## Reference to equipment array to display.
 var show_full_time := 0.0
 
 @onready var offset: Node2D 		   = $Offset
+@onready var name_label: RichTextLabel = $Offset/Name
+@onready var uses_label: RichTextLabel = $Offset/Uses
 @onready var sub_viewport: SubViewport = $SubViewport
 
 class ModelData:
@@ -60,8 +62,7 @@ func update_data(equipment: Array[Equipment], current: int, spin_direction: Spin
 	
 	## Update labels
 	var e := equipment[current]
-	offset.get_node("Name").text = e.equipment_name
-	offset.get_node("Uses").text = "%s [color=darkgray]/%s[/color]" % [e.uses, e.uses_max]
+	update_labels(e.equipment_name, e.uses, e.uses_max)
 	
 	## Update leftmost (left 2) model first
 	var count := len(equipment)
@@ -91,3 +92,8 @@ func update_data(equipment: Array[Equipment], current: int, spin_direction: Spin
 		# Optionally offset angle so they spin to the correct one
 		if spin_direction != SpinDirection.NONE:
 			data.angle += angle_spacing * spin_direction
+
+func update_labels(equipment_name: String, uses: int, uses_max: int) -> void:
+	if name_label:
+		name_label.text = equipment_name
+		uses_label.text = "%s [color=darkgray]/%s[/color]" % [uses, uses_max]
