@@ -49,13 +49,12 @@ func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
 	handle_equipment(delta)
 	
-	# Face move direction
-	rotate_to_look_at(global_position + last_move_dir, delta)
+	# Face move/use direction
 	if face_use_direction > 0:
 		face_use_direction -= delta
-		model.facing = use_origin.target - global_position
+		rotate_to_look_at(use_origin.target, delta)
 	else:
-		model.facing = last_move_dir
+		rotate_to_look_at(global_position + last_move_dir, delta)
 
 func handle_movement(speed_multiplier: float = 1.0) -> void:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
@@ -112,17 +111,19 @@ func handle_equipment(delta: float) -> void:
 		use_origin.target = Camera.instance.project_position_to_ground(vp.get_mouse_position(), use_origin.global_position.y)
 	
 	# Handle swapping
+	var swapped := false
 	if Input.is_action_just_pressed("Swap Left"):
 		equipment_current = posmod(equipment_current - 1, len(equipment))
+		swapped = true
 	if Input.is_action_just_pressed("Swap Right"):
 		equipment_current = posmod(equipment_current + 1, len(equipment))
+		swapped = true
 	
-	# Set new weapon model and arm pose
-	var arm_pose := HumanoidModel.ArmPoses.NEUTRAL
-	var e := equipment[equipment_current]
-	if e.arm_pose:
-		arm_pose = e.arm_pose
-	model.set_arm_pose(arm_pose)
+	if swapped:
+		var e := equipment[equipment_current]
+		var uo := model.set_equipment(e)
+		if uo:
+			use_origin.follow = uo
 
 func handle_equipment_use() -> void:
 	var e := equipment[equipment_current]
@@ -132,7 +133,7 @@ func handle_equipment_use() -> void:
 	if Input.is_action_just_released("Use"):
 		e.stop(use_origin)
 
-## Rotate to face a point [br]Should be called every frame while rotating
+## Rotate to face a point. [br]Should be called every frame while rotating.
 func rotate_to_look_at(pos: Vector3, delta: float) -> void:
 	var d := pos - position
 	var dest := atan2(-d.x, -d.z)

@@ -22,6 +22,7 @@ func _init(team: int) -> void:
 	self.team = team
 	cooldown_max = cooldown
 	
+	model = preload("res://assets/models/equipment/burstPistol.tscn")
 	arm_pose = HumanoidModel.ArmPoses.PISTOL
 
 func use(use_origin: UseOrigin) -> bool:

@@ -1,3 +1,46 @@
 [gd_scene format=3 uid="uid://bfa1o6qpdg36x"]
 
+[ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="1_y6yqb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oytt3"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6yqb"]
+next_pass = SubResource("StandardMaterial3D_oytt3")
+albedo_color = Color(0.333, 0.3408, 0.45, 1)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oytt3"]
+material = SubResource("StandardMaterial3D_y6yqb")
+size = Vector3(0.7, 2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4t7qh"]
+material = SubResource("StandardMaterial3D_y6yqb")
+height = 3.5
+
 [node name="BurstPistol" type="Node3D" unique_id=1175524240]
+
+[node name="Model" type="Node3D" parent="." unique_id=1323894386]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.05, 0)
+
+[node name="Grip" type="MeshInstance3D" parent="Model" unique_id=305244269]
+transform = Transform3D(1, 0, 0, 0, 0.9063077, 0.42261824, 0, -0.42261824, 0.9063077, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_oytt3")
+
+[node name="Barrel" type="MeshInstance3D" parent="Model" unique_id=126305501]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.5, -1.25)
+mesh = SubResource("CylinderMesh_4t7qh")
+
+[node name="UseOrigin" type="Marker3D" parent="Model" unique_id=147579175]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.5, -3)
+script = ExtResource("1_y6yqb")

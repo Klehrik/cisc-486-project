@@ -46,6 +46,8 @@ func _process(delta: float) -> void:
 	var b1 := bones[0]
 	var b2 := bones[1]
 	b1.global_position = (global_position + midpoint) / 2
-	b1.look_at(midpoint)
+	if not b1.global_position.cross(midpoint).is_zero_approx():	## Prevent colinearity warning
+		b1.look_at(midpoint)
 	b2.global_position = (midpoint + target) / 2
-	b2.look_at(target)
+	if not b2.global_position.cross(target).is_zero_approx():	## Prevent colinearity warning
+		b2.look_at(target)

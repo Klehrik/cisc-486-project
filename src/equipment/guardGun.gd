@@ -21,6 +21,8 @@ func _init(team: int) -> void:
 	super()
 	self.team = team
 	cooldown_max = cooldown
+	
+	arm_pose = HumanoidModel.ArmPoses.PISTOL
 
 func use(use_origin: UseOrigin) -> bool:
 	if not use_origin:
