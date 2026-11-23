@@ -41,7 +41,7 @@ func _ready() -> void:
 				camera.base_orientation.rotation.z)
 	)
 	wallhug = Camera.CameraOrientation.new(
-		Vector3(deg_to_rad(-20.0), 0, 0),
+		Vector3(deg_to_rad(-18.0), 0, 0),
 		Vector3.UP * 2,
 		0.5,
 		-1,
