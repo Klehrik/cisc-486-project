@@ -1527,6 +1527,17 @@ transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 6.5, 0, -1.5)
 [node name="Package" parent="Map/Upper2/Other" unique_id=1517819022 instance=ExtResource("27_8l7mp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -6.5)
 
+[node name="EquipmentPickup" parent="Map/Upper2/Other" unique_id=314604834 instance=ExtResource("16_l280w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -2)
+equipment_script = ExtResource("17_cirtn")
+
+[node name="EquipmentPickup2" parent="Map/Upper2/Other" unique_id=71344495 instance=ExtResource("16_l280w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3.5)
+equipment_script = ExtResource("21_k5joq")
+
+[node name="HealthPickup" parent="Map/Upper2/Other" unique_id=560746508 instance=ExtResource("19_k5joq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -3.5)
+
 [node name="Instantiated" type="Node3D" parent="." unique_id=695163067]
 
 [node name="Process" type="Node" parent="." unique_id=438157665]

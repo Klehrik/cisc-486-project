@@ -7,7 +7,7 @@ var do_flickering := true
 
 @onready var _owner: Player = owner
 
-func on_enter() -> void:
+func on_push() -> void:
 	_owner.physics.move_vec = Vector3.ZERO
 	
 	var tween := _owner.create_tween()
