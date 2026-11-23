@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://8q103lfiujb2"]
+
+[ext_resource type="Shader" uid="uid://pq2cv45k1y2x" path="res://assets/shaders/wallFade.gdshader" id="1_vxyx8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wncxb"]
+render_priority = 0
+shader = ExtResource("1_vxyx8")
+shader_parameter/bottom_color = Color(0.1804, 0.3451, 0.3882, 1)
+shader_parameter/top_color = Color(0.029000003, 0.033733334, 0.1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0al7b"]
+albedo_color = Color(1, 0.975, 0.85, 1)
+emission_enabled = true
+emission = Color(1, 0.9764706, 0.8509804, 1)
+
+[node name="CubeWithLight" type="Node3D" unique_id=1708018866]
+
+[node name="Cube" type="CSGBox3D" parent="." unique_id=1945132013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
+use_collision = true
+collision_mask = 0
+material = SubResource("ShaderMaterial_wncxb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Cube" unique_id=1515716173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+operation = 2
+size = Vector3(1, 0.1, 1)
+metadata/_edit_lock_ = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Cube" unique_id=820534033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19999999, 0)
+size = Vector3(0.9, 0.1, 0.9)
+material = SubResource("StandardMaterial3D_0al7b")
+metadata/_edit_lock_ = true
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=2143593615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -1)
+light_color = Color(1, 0.9764706, 0.8509804, 1)
+light_energy = 4.0
+light_size = 1.0
+metadata/_edit_lock_ = true
+
+[node name="AreaLight3D2" type="AreaLight3D" parent="." unique_id=1456412712]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5, 0.5, 0)
+light_color = Color(1, 0.9764706, 0.8509804, 1)
+light_energy = 4.0
+light_size = 1.0
+metadata/_edit_lock_ = true
+
+[node name="AreaLight3D3" type="AreaLight3D" parent="." unique_id=647761864]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.5, -0.49999997)
+light_color = Color(1, 0.9764706, 0.8509804, 1)
+light_energy = 4.0
+light_size = 1.0
+metadata/_edit_lock_ = true
+
+[node name="AreaLight3D4" type="AreaLight3D" parent="." unique_id=720412019]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 1, 0.5, -0.5)
+light_color = Color(1, 0.9764706, 0.8509804, 1)
+light_energy = 4.0
+light_size = 1.0
+metadata/_edit_lock_ = true
