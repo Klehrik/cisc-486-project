@@ -51,10 +51,14 @@ func _process(delta: float) -> void:
 		white_tween.tween_property(bar_white, "size:x", 0.0, white_tween_time)
 		white_tween.parallel()
 		white_tween.tween_property(self, "white_tween_value", 0.0, white_tween_time)
+	
+	# Do not adjust bars on passive health recovery
+	if diff < -hurtbox.recover_speed * delta * 3:
+		bar_recoverable.position.x = bar_current.size.x
+		bar_recoverable.size.x = hurtbox.recoverable_health / hurtbox.health_max * bar_width
 		
-	if diff < 0:
-		# TODO: actually readjust these bars
-		# when healing instead of ending them
+		# TODO: actually readjust white bar
+		# when healing instead of ending it
 		bar_white.size.x = 0
 		if white_tween:
 			white_tween.stop()
