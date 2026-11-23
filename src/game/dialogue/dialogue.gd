@@ -3,7 +3,9 @@ extends Node2D
 
 static var instance: Dialogue
 	
-const text_speed := 25.0		## Characters per second
+const text_speed 	   := 25.0	## Characters per second.
+const text_speed_punct := 3.0	## Characters per second for puncutation.
+const punctuation	   := ".,!?:;"
 
 var lines: Array[String]
 var chars: float
@@ -20,8 +22,12 @@ func _process(delta: float) -> void:
 	if not lines:
 		return
 	
-	chars += text_speed * delta
 	label.text = lines[0]
+	var line := label.get_parsed_text()
+	if line[clamp(chars - 1, 0, len(line) - 1)] in punctuation:
+		chars += text_speed_punct * delta
+	else:
+		chars += text_speed * delta
 	label.visible_characters = int(chars)
 		
 	if Input.is_action_just_pressed("Progress"):
@@ -29,6 +35,8 @@ func _process(delta: float) -> void:
 			lines.remove_at(0)
 			chars = 0
 			label.text = ""
+			if not lines:
+				Event.dialogue_end.emit()
 		else:
 			chars = 1000
 			

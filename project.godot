@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CISC486Project"
-run/main_scene="uid://co7qrtbgq4kl8"
+run/main_scene="uid://bcdgoco2xd5lx"
 config/features=PackedStringArray("4.8", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"

@@ -8,3 +8,6 @@ signal footstep(entity: Node3D, pos: Vector3)
 
 ## Emitted when a Team 1 entity touches a Pickup.
 signal pickup(equipment: Equipment)
+
+## Emitted when Dialogue has finished.
+signal dialogue_end()

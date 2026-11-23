@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://xi3oq4138rfb"]
+
+[ext_resource type="Script" uid="uid://o275m8ke5kco" path="res://src/game/dialogue/dialogue.gd" id="1_ys5bq"]
+[ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="2_vsadb"]
+[ext_resource type="Texture2D" uid="uid://crwf1adidxi55" path="res://assets/sprites/dialogueContinue.png" id="3_ds25o"]
+[ext_resource type="Script" uid="uid://dwa16j35i5jrp" path="res://src/game/dialogue/dialogueArrow.gd" id="4_hnhx3"]
+
+[node name="Dialogue" type="Node2D" unique_id=1028921172]
+script = ExtResource("1_ys5bq")
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=593307916]
+offset_right = 288.0
+offset_bottom = 24.0
+theme_override_constants/line_separation = 4
+theme_override_fonts/normal_font = ExtResource("2_vsadb")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1415538292]
+visible = false
+position = Vector2(282, 17)
+texture = ExtResource("3_ds25o")
+script = ExtResource("4_hnhx3")
