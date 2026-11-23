@@ -44,8 +44,7 @@ func _ready() -> void:
 	EquipmentWheel.instance.update_data(equipment, equipment_current)
 	
 	Event.pickup.connect(_on_pickup)
-	
-	HUDHealth.instance.update(hurtbox.health, hurtbox.health_max)
+	HUDHealth.instance.hurtbox = hurtbox
 	
 	# DEBUG
 	#equipment = [
@@ -178,9 +177,6 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Apply knockback
 	if hurtbox.health > 0:
 		physics.kb_vec += hitbox.kb_vec
-	
-	# Update HUD
-	HUDHealth.instance.update(hurtbox.health)
 	
 	# Check if dead
 	if hurtbox.health <= 0:

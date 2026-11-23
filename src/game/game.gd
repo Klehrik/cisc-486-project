@@ -52,3 +52,4 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	frame += 1
+	Stats.time_taken += delta

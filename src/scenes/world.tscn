@@ -115,6 +115,10 @@ offset_right = 50.0
 offset_bottom = 8.0
 color = Color(0, 0.09803922, 0.1882353, 1)
 
+[node name="Recoverable" type="ColorRect" parent="Screen/HUD/Health" unique_id=1248103178]
+offset_bottom = 8.0
+color = Color(0.07058824, 0.30588236, 0.5372549, 1)
+
 [node name="Current" type="ColorRect" parent="Screen/HUD/Health" unique_id=1913479468]
 offset_bottom = 8.0
 color = Color(0, 0.58431375, 0.9137255, 1)

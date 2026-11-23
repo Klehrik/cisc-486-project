@@ -7,6 +7,8 @@ const flicker_frames := 4	## Frames alternating visible/non-visible.
 @onready var _owner: BaseEnemy = owner
 
 func on_enter() -> void:
+	Stats.enemies_killed += 1
+	
 	var tween := _owner.create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)

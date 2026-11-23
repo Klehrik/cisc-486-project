@@ -299,6 +299,7 @@ shape = SubResource("CapsuleShape3D_muk8e")
 [node name="Hurtbox" parent="." unique_id=1950418006 instance=ExtResource("2_oih67")]
 collision_mask = 16
 health_max = 10.0
+recover_speed = 0.05
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=821778974]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)

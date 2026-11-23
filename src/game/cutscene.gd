@@ -26,12 +26,12 @@ func player_death() -> void:
 			Dialogue.instance.start_dialogue(Text.Death)
 			Fade.instance.tween_to_value(1.0, 3.0)
 	)
-	tween.tween_interval(5.0)
+	tween.tween_interval(4.0)
 	await tween.finished
 	if Dialogue.instance.has_dialogue:
 		await Event.dialogue_end
 	tween = create_tween()
-	tween.tween_interval(1.0)
+	tween.tween_interval(2.0)
 	await tween.finished
 	await RenderingServer.frame_post_draw
 	get_tree().reload_current_scene()

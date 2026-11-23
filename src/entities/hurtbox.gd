@@ -12,11 +12,15 @@ signal hurt(hurtbox: Hurtbox, hitbox: Hitbox)		## Emitted when a hitbox enters t
 		if value > health:
 			health = value
 		health = min(health, health_max)
-var health = health_max:
+@export var recover_speed := 0.0	## Speed at which recoverable health is regained (in HP/s).
+@export var recover_delay := 3.0	## Delay before health recovery (in seconds).
+var health := health_max:
 	get():
 		return health
 	set(value):
 		health = clamp(value, 0, health_max)
+var recoverable_health: float	## Remaining recoverable health; [br]initially equal to damage of last hit taken.
+var recover_delay_value: float
 var is_active := true	## Should check this before applying anything.
 
 var hitboxes: Array[Hitbox] = []	## List of hitboxes that already hit this.
@@ -31,8 +35,10 @@ func _on_area_entered(area: Area3D) -> void:
 			hitbox.hit.emit(hitbox, self)
 			prehurt.emit(self, hitbox)
 			health -= hitbox.damage
+			recoverable_health = hitbox.damage
+			recover_delay_value = recover_delay
 			hurt.emit(self, hitbox)
-		
+			
 			# DEBUG
 			print("Ow for ", hitbox.damage, " dmg; health: ", health, " / ", health_max)
 
@@ -40,6 +46,14 @@ func _physics_process(delta: float) -> void:
 	if hitboxes:
 		if not is_instance_valid(hitboxes.back()):
 			hitboxes.pop_back()
+	
+	# Recover health for last hit taken
+	if recover_delay_value > 0:
+		recover_delay_value -= delta
+	else:
+		if recover_speed > 0 and recoverable_health > 0:
+			health 			   += recover_speed * delta
+			recoverable_health -= recover_speed * delta
 
 	# Entity fell out of the world
 	if global_position.y <= -25.0:
