@@ -2,11 +2,11 @@ class_name Equipment_StunPistol
 extends Equipment
 
 var damage 	  := 0.1
-var stun	  := 10.0
+var stun	  := 6.0
 var knockback := 1.0
 var speed 	  := 50.0
 var cooldown  := 1.5	## In seconds.
-var ammo	  := 9
+var ammo	  := 10
 var noise	  := 2.0	## Noise strength.
 
 var team: int

@@ -1,7 +1,7 @@
 class_name Equipment_BurstPistol
 extends Equipment
 
-var damage 	  := 1.0
+var damage 	  := 1.15
 var stun	  := 0.5
 var knockback := 2.5
 var speed 	  := 50.0

@@ -1,7 +1,7 @@
 class_name Equipment_Cannon
 extends Equipment
 
-var damage 	  := 5.0
+var damage 	  := 7.0
 var stun	  := 4.0
 var knockback := 15.0
 var speed 	  := 80.0
