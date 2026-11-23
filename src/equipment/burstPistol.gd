@@ -18,7 +18,7 @@ var delay: float
 var use_origin: UseOrigin
 var team: int
 
-func _init(team: int) -> void:
+func _init(team: int = 0) -> void:
 	super()
 	equipment_name = "Burst Pistol"
 	self.team = team

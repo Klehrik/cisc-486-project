@@ -15,7 +15,13 @@ texture_filter = 0
 [sub_resource type="BoxShape3D" id="BoxShape3D_ti7x4"]
 size = Vector3(24, 1, 24)
 
-[node name="Chunk" type="Node3D" unique_id=1359292382]
+[sub_resource type="PlaneMesh" id="PlaneMesh_a1tgf"]
+size = Vector2(24, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1tgf"]
+size = Vector3(24, 24, 1)
+
+[node name="Chunk" type="Node3D" unique_id=1359292382 groups=["chunk"]]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1998131090]
 collision_mask = 0
@@ -34,3 +40,56 @@ mesh = SubResource("PlaneMesh_ti7x4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=25955586]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, -12)
 shape = SubResource("BoxShape3D_ti7x4")
+
+[node name="Walls" type="Node3D" parent="." unique_id=1360344373]
+
+[node name="Back" type="StaticBody3D" parent="Walls" unique_id=1509897324]
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Back" unique_id=1331622264]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12, 12, 0)
+material_override = SubResource("StandardMaterial3D_mymg0")
+mesh = SubResource("PlaneMesh_a1tgf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Back" unique_id=1787124995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, 0.5)
+shape = SubResource("BoxShape3D_a1tgf")
+
+[node name="Front" type="StaticBody3D" parent="Walls" unique_id=1374487485]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 24, 0, -24)
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Front" unique_id=1694025714]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12, 12, 0)
+material_override = SubResource("StandardMaterial3D_mymg0")
+mesh = SubResource("PlaneMesh_a1tgf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Front" unique_id=1680226666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, 0.5)
+shape = SubResource("BoxShape3D_a1tgf")
+
+[node name="Left" type="StaticBody3D" parent="Walls" unique_id=719198423]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, -24)
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Left" unique_id=135017666]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12, 12, 0)
+material_override = SubResource("StandardMaterial3D_mymg0")
+mesh = SubResource("PlaneMesh_a1tgf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Left" unique_id=219587860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, 0.5)
+shape = SubResource("BoxShape3D_a1tgf")
+
+[node name="Right" type="StaticBody3D" parent="Walls" unique_id=647523713]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 24, 0, 0)
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Right" unique_id=1954176209]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 12, 12, 0)
+material_override = SubResource("StandardMaterial3D_mymg0")
+mesh = SubResource("PlaneMesh_a1tgf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Right" unique_id=1923448507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 12, 0.5)
+shape = SubResource("BoxShape3D_a1tgf")

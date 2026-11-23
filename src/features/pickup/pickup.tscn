@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://defd47ohcti6x"]
+
+[ext_resource type="Script" uid="uid://bk84wufk2x2tr" path="res://src/features/pickup/pickup.gd" id="1_tfqcx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4sbs"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfqcx"]
+next_pass = SubResource("StandardMaterial3D_m4sbs")
+transparency = 1
+albedo_color = Color(1, 1, 0.75, 0.1254902)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tfqcx"]
+material = SubResource("StandardMaterial3D_tfqcx")
+size = Vector3(0.5, 0.5, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfqcx"]
+size = Vector3(0.5, 0.5, 1)
+
+[node name="Pickup" type="Area3D" unique_id=132759156]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_tfqcx")
+
+[node name="Box" type="MeshInstance3D" parent="." unique_id=1318462441]
+mesh = SubResource("BoxMesh_tfqcx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=474002478]
+shape = SubResource("BoxShape3D_tfqcx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2073738425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+light_color = Color(1, 1, 0.75, 1)
+light_energy = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

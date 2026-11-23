@@ -3,7 +3,7 @@ extends Node
 
 ## Inherit this and override [code]use[/code] and [code]stop[/code] when needed.
 
-var equipment_name := "?"
+var equipment_name := "--"
 var model: PackedScene
 var arm_pose: HumanoidModel.ArmPoses
 

@@ -14,6 +14,7 @@ var wallhug: Camera.CameraOrientation
 
 var equipment: Array[Equipment] = []
 var equipment_current: int
+var acquired_equipment := false
 #var face_use_direction: float		## Face use direction for a bit when using (in seconds).
 #var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
 
@@ -37,17 +38,22 @@ func _ready() -> void:
 		true
 	)
 	
-	# DEBUG
-	equipment = [
-		Equipment_BurstPistol.new(1),
-		Equipment_StunPistol.new(1),
-		Equipment_Cannon.new(1),
-		Equipment_Shotgun.new(1),
-	]
-	var uo := model.set_equipment(equipment[equipment_current])
-	if uo:
-		use_origin.follow = uo
+	equipment = [Equipment.new()]
 	EquipmentWheel.instance.update_data(equipment, equipment_current)
+	
+	Event.pickup.connect(_on_pickup)
+	
+	# DEBUG
+	#equipment = [
+	#	Equipment_BurstPistol.new(1),
+	#	Equipment_StunPistol.new(1),
+	#	Equipment_Cannon.new(1),
+	#	Equipment_Shotgun.new(1),
+	#]
+	#var uo := model.set_equipment(equipment[equipment_current])
+	#if uo:
+	#	use_origin.follow = uo
+	#EquipmentWheel.instance.update_data(equipment, equipment_current)
 
 func _physics_process(delta: float) -> void:
 	handle_camera_pitch()
@@ -133,9 +139,7 @@ func handle_equipment(delta: float) -> void:
 	EquipmentWheel.instance.update_cooldown_ratio(e.cooldown_ratio)
 	
 	if swapped:
-		var uo := model.set_equipment(e)
-		if uo:
-			use_origin.follow = uo
+		update_equipment_model()
 		EquipmentWheel.instance.update_data(equipment, equipment_current, spin_direction)
 
 func handle_equipment_use() -> void:
@@ -159,6 +163,12 @@ func is_pushing_against_wall() -> bool:
 	var input_vec := Input.get_vector("Left", "Right", "Up", "Down")
 	return input_vec != Vector2.ZERO
 
+func update_equipment_model() -> void:
+	var e = equipment[equipment_current]
+	var uo := model.set_equipment(e)
+	if uo:
+		use_origin.follow = uo
+
 func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Apply knockback
 	physics.kb_vec += hitbox.kb_vec
@@ -172,3 +182,21 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 
 func _on_separation_collision(push: Vector3) -> void:
 	physics.kb_vec += push / 2.0
+
+func _on_pickup(equipment: Equipment) -> void:
+	# horrible shit
+	# check equipment existence by name
+	var index := self.equipment.find_custom(func(e: Equipment): return e.equipment_name == equipment.equipment_name)
+	
+	if index == -1:
+		# delete the fucking empty placeholder equip
+		if not acquired_equipment:
+			self.equipment = []
+			acquired_equipment = true
+		
+		self.equipment.append(equipment)
+		update_equipment_model()
+		EquipmentWheel.instance.update_data(self.equipment, equipment_current)
+		
+	else:
+		pass

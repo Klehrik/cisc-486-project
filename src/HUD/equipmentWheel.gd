@@ -104,10 +104,12 @@ func update_data(equipment: Array[Equipment], current: int, spin_direction: Spin
 func update_labels(equipment_name: String, uses: int, uses_max: int) -> void:
 	if name_label:
 		name_label.text = equipment_name
-		if uses > 0:
-			uses_label.text = "%s [color=darkgray]/%s[/color]" % [uses, uses_max]
+		var u  := str(uses) 	if uses != -1 else "--"
+		var um := str(uses_max) if uses != -1 else "--"
+		if uses > 0 or uses <= -1:
+			uses_label.text = "%s [color=darkgray]/%s[/color]" % [u, um]
 		else:
-			uses_label.text = "[color=red]0[/color] [color=darkgray]/%s[/color]" % uses_max
+			uses_label.text = "[color=red]%s[/color] [color=darkgray]/%s[/color]" % [u, um]
 
 ## From 0.0 (cooldown start) to 1.0 (ready).
 func update_cooldown_ratio(ratio: float) -> void:

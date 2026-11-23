@@ -11,7 +11,7 @@ var noise	  := 12.0	## Noise strength.
 
 var team: int
 
-func _init(team: int) -> void:
+func _init(team: int = 0) -> void:
 	super()
 	equipment_name = "Sniper Rifle"
 	self.team = team
