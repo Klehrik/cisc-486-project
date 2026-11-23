@@ -60,7 +60,7 @@ const Status = {
 
 const Intro: Array[String] = [
 	"Alright, I'm here. Building's in sight.",
-	"[color=#8b9bb4]Good. Once again, your mission is to infiltrate the site and retrieve the target.",
+	"[color=#8b9bb4]Good. Once again, your mission is to infiltrate the site and retrieve the Package.",
 	"[color=#8b9bb4]Stay alert, and well-hidden. Security is at a maximum, and even for you there is no chance of fighting your way through.",
 	"Heh... well, if it comes to it, I think I can deal.",
 	"[color=#8b9bb4]Hm. Don't be so reckless. \nThis isn't a game.",
@@ -73,4 +73,17 @@ const Intro: Array[String] = [
 
 const Death: Array[String] = [
 	"Hello? What's going on? \nRespond!",
+]
+
+const Package: Array[String] = [
+	"There you are. \nYou're coming back with me.",
+	"(I'm going to need to head out [color=#fee761]the same way I came in[/color].)",
+	"[color=#d87644]<< Alert! There is an intruder in the building! >>\n<< Don't let them escape! >>",
+	"Uh oh.",
+]
+
+const End: Array[String] = [
+	"Hey. I got the Package.",
+	"[color=#8b9bb4]Good work as usual. \nRendezvous at the meeting point in 6 hours.",
+	"Alright, pal. \nSee you soon.",
 ]

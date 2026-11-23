@@ -1,4 +1,3 @@
-class_name Dead
 extends State
 
 const tween_time := 1.0

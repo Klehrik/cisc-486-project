@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cqx46721bf66d"]
+
+[ext_resource type="Script" uid="uid://g8rhqldu4eya" path="res://src/features/triggers/triggerEnd.gd" id="1_8qlvh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdr3v"]
+size = Vector3(1, 1, 2)
+
+[node name="TriggerEnd" type="Area3D" unique_id=413952289]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8qlvh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2104380960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_tdr3v")
+debug_color = Color(0.7404476, 0.5997404, 0.13724929, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

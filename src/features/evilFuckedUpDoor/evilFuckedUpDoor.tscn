@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dslptuehp14np"]
+
+[ext_resource type="Script" uid="uid://c84nhwlwbrwiq" path="res://src/features/evilFuckedUpDoor/evilFuckedUpDoor.gd" id="1_yv51d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65vdb"]
+albedo_color = Color(0.54509807, 0.60784316, 0.7058824, 1)
+metallic = 0.25
+roughness = 0.75
+
+[node name="EvilFuckedUpDoor" type="Node3D" unique_id=732829817]
+script = ExtResource("1_yv51d")
+
+[node name="Left" type="CSGBox3D" parent="." unique_id=470530629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 0)
+material_override = SubResource("StandardMaterial3D_65vdb")
+use_collision = true
+collision_mask = 0
+size = Vector3(3, 4, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Left" unique_id=1980372498]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, 0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Left" unique_id=1263466989]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, -0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[node name="Right" type="CSGBox3D" parent="." unique_id=33913011]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 2, 0)
+material_override = SubResource("StandardMaterial3D_65vdb")
+use_collision = true
+collision_mask = 0
+size = Vector3(3, 4, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Right" unique_id=2017311631]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, 0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Right" unique_id=1620960497]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, -0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)

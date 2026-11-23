@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://glv5e8oc3pyu"]
+
+[ext_resource type="Script" uid="uid://3hwfi5cmehw3" path="res://src/scenes/end.gd" id="1_o1u8y"]
+[ext_resource type="PackedScene" uid="uid://xi3oq4138rfb" path="res://src/game/dialogue/dialogue.tscn" id="2_8k8ib"]
+
+[node name="End" type="Node2D" unique_id=1106878964]
+script = ExtResource("1_o1u8y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1351258821]
+offset_right = 319.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="Dialogue" parent="." unique_id=1028921172 instance=ExtResource("2_8k8ib")]
+position = Vector2(16, 146)

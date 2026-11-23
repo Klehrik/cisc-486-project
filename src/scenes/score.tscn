@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ce6q16035ne5t"]
+
+[ext_resource type="Script" uid="uid://bcr6ks2lcd07j" path="res://src/scenes/score.gd" id="1_gkttm"]
+[ext_resource type="Shader" uid="uid://trfkpvg70wa8" path="res://assets/shaders/screenFade.gdshader" id="1_xhlbo"]
+[ext_resource type="Script" uid="uid://br0q2y8tsubyk" path="res://src/game/fade.gd" id="2_brrio"]
+[ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="3_brrio"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkttm"]
+shader = ExtResource("1_xhlbo")
+shader_parameter/fade = 1.0
+shader_parameter/fade_color = Color(0, 0, 0, 1)
+
+[node name="Score" type="Node2D" unique_id=1106878964]
+script = ExtResource("1_gkttm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1351258821]
+offset_right = 319.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1731374711]
+visible = false
+z_index = 10
+material = SubResource("ShaderMaterial_gkttm")
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_brrio")
+metadata/_edit_lock_ = true
+
+[node name="Labels" type="RichTextLabel" parent="." unique_id=988771741]
+offset_left = 44.0
+offset_top = 51.0
+offset_right = 181.0
+offset_bottom = 155.0
+theme_override_constants/line_separation = 4
+theme_override_fonts/normal_font = ExtResource("3_brrio")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Time taken
+Enemies alerted
+Enemies killed
+Damage taken"
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Values" type="RichTextLabel" parent="." unique_id=1297128192]
+offset_left = 195.0
+offset_top = 51.0
+offset_right = 273.0
+offset_bottom = 155.0
+theme_override_colors/default_color = Color(0.99607843, 0.90588236, 0.38039216, 1)
+theme_override_constants/line_separation = 4
+theme_override_fonts/normal_font = ExtResource("3_brrio")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "10:10
+2
+6
+59"
+scroll_active = false
+horizontal_alignment = 2
+visible_characters_behavior = 1

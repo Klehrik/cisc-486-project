@@ -49,3 +49,4 @@ func _process(delta: float) -> void:
 func start_dialogue(dialogue: Array[String]) -> void:
 	lines = dialogue.duplicate()
 	chars = 0
+	Event.dialogue_start.emit()

@@ -27,6 +27,7 @@ var acquired_equipment := false
 #var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
 
 var acquired_keycard := false	# yep
+var acquired_package := false
 
 @onready var model: PlayerModel	   		 = $Model
 @onready var physics: Physics 	   		 = $Physics
@@ -54,6 +55,7 @@ func _ready() -> void:
 	EquipmentWheel.instance.update_data(equipment, equipment_current)
 	
 	Event.pickup.connect(_on_pickup)
+	Event.dialogue_start.connect(_on_dialogue_start)
 	
 	HUDHealth.instance.hurtbox = hurtbox
 	HUDStamina.instance.player = self
@@ -232,3 +234,6 @@ func _on_pickup(equipment: Equipment, pickup: Pickup) -> void:
 			HUDPopup.add("+%s %s ammo" % [count, equipment.equipment_name])
 		else:
 			HUDPopup.add("[color=red]Already at max ammo[/color]")
+
+func _on_dialogue_start() -> void:
+	state_machine.push("Freeze")

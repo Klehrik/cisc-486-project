@@ -2,6 +2,7 @@ class_name Game
 extends Node3D
 
 static var frame := 0	## Physics frames elapsed since game start.
+static var count_time_taken := true
 
 func _enter_tree() -> void:
 	# Consistent randomization for RNG-stuff in level gen
@@ -54,4 +55,5 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	frame += 1
-	Stats.time_taken += delta
+	if count_time_taken:
+		Stats.time_taken += delta

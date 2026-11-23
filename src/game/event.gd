@@ -10,5 +10,8 @@ signal footstep(entity: Node3D, pos: Vector3)
 ## Call [code]pickup.mark_acquired()[/code] if successful.
 signal pickup(equipment: Equipment, pickup: Pickup)
 
+## Emitted when Dialogue has started.
+signal dialogue_start()
+
 ## Emitted when Dialogue has finished.
 signal dialogue_end()
