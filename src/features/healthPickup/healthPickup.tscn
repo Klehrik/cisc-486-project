@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://va7jeokgs4se"]
+
+[ext_resource type="Script" uid="uid://ddbt0ptu3evqx" path="res://src/features/healthPickup/healthPickup.gd" id="1_cm20q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kr4kg"]
+render_priority = 1
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.22745098, 0.26666668, 0.4, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tfqcx"]
+next_pass = SubResource("StandardMaterial3D_kr4kg")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.1254902)
+stencil_mode = 2
+stencil_flags = 2
+stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cm20q"]
+material = SubResource("StandardMaterial3D_tfqcx")
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm20q"]
+albedo_color = Color(0.3882353, 0.78039217, 0.3019608, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kr4kg"]
+material = SubResource("StandardMaterial3D_cm20q")
+size = Vector3(0.1, 0.7, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kr4kg"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="HealthPickup" type="Area3D" unique_id=1078819602]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_cm20q")
+
+[node name="Box" type="MeshInstance3D" parent="." unique_id=17443275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_cm20q")
+
+[node name="Cross" type="Node3D" parent="." unique_id=1420515945]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cross" unique_id=1470115761]
+mesh = SubResource("BoxMesh_kr4kg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cross" unique_id=1531886832]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_kr4kg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=177567906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_kr4kg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1768282199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.3882353, 0.78039217, 0.3019608, 1)
+light_energy = 2.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
