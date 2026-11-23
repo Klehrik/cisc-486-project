@@ -228,3 +228,5 @@ func _on_pickup(equipment: Equipment, pickup: Pickup) -> void:
 		if count > 0:
 			pickup.mark_acquired()
 			HUDPopup.add("+%s %s ammo" % [count, equipment.equipment_name])
+		else:
+			HUDPopup.add("[color=red]Already at max ammo[/color]")

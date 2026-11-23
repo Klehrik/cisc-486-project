@@ -2,18 +2,18 @@ class_name Equipment_StunPistol
 extends Equipment
 
 var damage 	  := 0.1
-var stun	  := 2.5
+var stun	  := 3.0
 var knockback := 1.0
 var speed 	  := 50.0
 var cooldown  := 1.5	## In seconds.
-var ammo	  := 12
+var ammo	  := 9
 var noise	  := 2.0	## Noise strength.
 
 var team: int
 
 func _init(team: int = 0) -> void:
 	super()
-	equipment_name = "Stun Pistol"
+	equipment_name = "Stun Pistol (Silenced)"
 	self.team = team
 	cooldown_max = cooldown
 	uses_max = ammo

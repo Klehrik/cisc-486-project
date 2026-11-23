@@ -24,8 +24,11 @@ func _physics_process(delta: float) -> void:
 			for do: DisplayOrigin in find_children("*", "DisplayOrigin"):
 				m.position -= do.position
 				break
+			m.position.y += 0.5	# uh huh (i moved everything 0.5 up)
 
 func _on_body_entered(body: Node3D) -> void:
+	if acquired:
+		return
 	Event.pickup.emit(equipment, self)
 	
 ## To be called by acquirer if successful.

@@ -32,7 +32,7 @@ func _ready() -> void:
 
 ## Rotate to face a point [br]Should be called every frame while rotating
 func rotate_to_look_at(pos: Vector3, delta: float) -> void:
-	var d := pos - position
+	var d := pos - global_position
 	var dest := atan2(-d.x, -d.z)
 	rotation.y = Util.exp_decay_angle(rotation.y, dest, rotation_speed, delta)
 

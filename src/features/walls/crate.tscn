@@ -8,8 +8,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwjky"]
 render_priority = 0
 shader = ExtResource("1_51mnt")
-shader_parameter/bottom_color = Color(0.399, 0.63478327, 0.7, 1)
-shader_parameter/top_color = Color(0.23760001, 0.37368008, 0.54, 1)
+shader_parameter/bottom_color = Color(0.342, 0.5441, 0.6, 1)
+shader_parameter/top_color = Color(0.198, 0.30719998, 0.45, 1)
 
 [node name="Crate" type="StaticBody3D" unique_id=980332367]
 collision_mask = 0
