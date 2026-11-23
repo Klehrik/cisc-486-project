@@ -14,7 +14,7 @@ script = ExtResource("1_bjqkr")
 [node name="Offset" type="Node2D" parent="." unique_id=820858494]
 
 [node name="Wheel" type="Sprite2D" parent="Offset" unique_id=237449698]
-modulate = Color(0, 0, 0, 0.5019608)
+modulate = Color(0.15, 0.13625, 0.112500004, 0.5019608)
 position = Vector2(4, -4)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_hhpe3")

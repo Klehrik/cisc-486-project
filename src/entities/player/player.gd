@@ -21,6 +21,7 @@ var acquired_equipment := false
 @onready var model: PlayerModel	   = $Model
 @onready var physics: Physics 	   = $Physics
 @onready var use_origin: UseOrigin = $UseOrigin
+@onready var hurtbox: Hurtbox 	   = $Hurtbox
 
 func _ready() -> void:
 	var camera := Camera.instance
@@ -42,6 +43,8 @@ func _ready() -> void:
 	EquipmentWheel.instance.update_data(equipment, equipment_current)
 	
 	Event.pickup.connect(_on_pickup)
+	
+	HUDHealth.instance.update(hurtbox.health, hurtbox.health_max)
 	
 	# DEBUG
 	#equipment = [
@@ -172,6 +175,9 @@ func update_equipment_model() -> void:
 func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Apply knockback
 	physics.kb_vec += hitbox.kb_vec
+	
+	# Update HUD
+	HUDHealth.instance.update(hurtbox.health)
 	
 	# DEBUG
 	if hurtbox.health <= 0:

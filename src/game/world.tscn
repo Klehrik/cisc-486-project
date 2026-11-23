@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/game.gd" id="1_thycv"]
 [ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="2_38auj"]
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_drn54"]
+[ext_resource type="Script" uid="uid://qqsnihlg5pro" path="res://src/HUD/health.gd" id="3_vmvxy"]
 [ext_resource type="PackedScene" uid="uid://dnyl55eut40lj" path="res://src/HUD/equipmentWheel.tscn" id="3_wncxb"]
 [ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="4_tkkm2"]
 [ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/enemies/guard/guard.tscn" id="4_ws5b0"]
@@ -95,6 +96,22 @@ shadow_blur = 0.0
 [node name="Screen" type="CanvasLayer" parent="." unique_id=1713659681]
 
 [node name="HUD" type="Node2D" parent="Screen" unique_id=1786881466]
+
+[node name="Health" type="Node2D" parent="Screen/HUD" unique_id=1255965542]
+position = Vector2(8, 8)
+script = ExtResource("3_vmvxy")
+
+[node name="Max" type="ColorRect" parent="Screen/HUD/Health" unique_id=343575097]
+offset_right = 50.0
+offset_bottom = 8.0
+color = Color(0, 0.09803922, 0.1882353, 1)
+
+[node name="Current" type="ColorRect" parent="Screen/HUD/Health" unique_id=1913479468]
+offset_bottom = 8.0
+color = Color(0, 0.58431375, 0.9137255, 1)
+
+[node name="White" type="ColorRect" parent="Screen/HUD/Health" unique_id=664769654]
+offset_bottom = 8.0
 
 [node name="EquipmentWheel" parent="Screen/HUD" unique_id=171200968 instance=ExtResource("3_wncxb")]
 position = Vector2(0, 180)
