@@ -15,6 +15,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	for hurtbox: Hurtbox in body.find_children("*", "Hurtbox"):
+		# Do nothing at full health
+		if hurtbox.health >= hurtbox.health_max:
+			return
+		
 		hurtbox.health += amount
 		break
 

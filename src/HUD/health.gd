@@ -9,8 +9,6 @@ const white_tween_time  := 1.0	## How long the white takes to dissipate.
 
 var hurtbox: Hurtbox
 var prev_health: float
-var recoverable_tween: Tween
-var recoverable_value: float
 var white_tween: Tween
 var white_tween_value: float
 
@@ -53,5 +51,12 @@ func _process(delta: float) -> void:
 		white_tween.tween_property(bar_white, "size:x", 0.0, white_tween_time)
 		white_tween.parallel()
 		white_tween.tween_property(self, "white_tween_value", 0.0, white_tween_time)
+		
+	if diff < 0:
+		# TODO: actually readjust these bars
+		# when healing instead of ending them
+		bar_white.size.x = 0
+		if white_tween:
+			white_tween.stop()
 		
 	prev_health = hurtbox.health
