@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://defd47ohcti6x"]
 
-[ext_resource type="Script" uid="uid://bk84wufk2x2tr" path="res://src/features/pickup/pickup.gd" id="1_tfqcx"]
+[ext_resource type="Script" uid="uid://bk84wufk2x2tr" path="res://src/features/equipmentPickup/equipmentPickup.gd" id="1_tfqcx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4sbs"]
 render_priority = 1
@@ -28,7 +28,7 @@ size = Vector3(0.5, 0.5, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_tfqcx"]
 size = Vector3(0.5, 0.5, 1)
 
-[node name="Pickup" type="Area3D" unique_id=132759156]
+[node name="EquipmentPickup" type="Area3D" unique_id=132759156]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_tfqcx")

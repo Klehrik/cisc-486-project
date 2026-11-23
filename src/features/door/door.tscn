@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://ogxrbvo3th30"]
+
+[ext_resource type="Script" uid="uid://cbqejshkx7dua" path="res://src/features/door/door.gd" id="1_fojow"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65vdb"]
+size = Vector3(5, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65vdb"]
+albedo_color = Color(0.54509807, 0.60784316, 0.7058824, 1)
+metallic = 0.25
+roughness = 0.75
+
+[node name="Door" type="Area3D" unique_id=512332872]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_fojow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1096815302]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_65vdb")
+debug_color = Color(0.79, 0, 0, 0.41960785)
+
+[node name="Left" type="CSGBox3D" parent="." unique_id=470530629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, 0)
+material_override = SubResource("StandardMaterial3D_65vdb")
+use_collision = true
+collision_layer = 0
+collision_mask = 0
+size = Vector3(3, 4, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Left" unique_id=1980372498]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, 0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Left" unique_id=1263466989]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, -0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[node name="Right" type="CSGBox3D" parent="." unique_id=33913011]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 1.5, 2, 0)
+material_override = SubResource("StandardMaterial3D_65vdb")
+use_collision = true
+collision_layer = 0
+collision_mask = 0
+size = Vector3(3, 4, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Right" unique_id=2017311631]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, 0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Right" unique_id=1620960497]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 1.6, 0, -0.35)
+operation = 2
+size = Vector3(0.5, 5, 0.5)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

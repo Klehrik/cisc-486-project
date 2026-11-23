@@ -1,19 +1,12 @@
-class_name Pickup
-extends Area3D
+class_name EquipmentPickup
+extends Pickup
 
 @export var equipment_script: Script
 var equipment: Equipment
 var acquired := false
 
-const rot_speed     := PI/3		## Rotations per second.
-const y_speed_scale := 0.02
-const y_offset 	    := Vector3.UP * 0.15
-
-@onready var start_position := position
-
 func _physics_process(delta: float) -> void:
-	position = start_position + (cos(Game.frame * y_speed_scale) * y_offset)
-	rotation.y += rot_speed * delta
+	super(delta)
 	
 	# Try to get equipment and spawn model
 	if not equipment:
@@ -37,15 +30,4 @@ func mark_acquired() -> void:
 		return
 	acquired = true
 	
-	# Animation
-	var tween := create_tween()
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_QUAD)
-	tween.set_parallel(true)
-	var t := 0.5
-	tween.tween_property(self, "position:y", position.y + 4.0, t)
-	tween.tween_property(self, "scale:x", 0.0, t)
-	tween.tween_property(self, "scale:z", 0.0, t)
-	tween.tween_property(self, "scale:y", 2.0, t)
-	await tween.finished
-	queue_free()
+	play_animation()

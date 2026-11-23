@@ -26,6 +26,8 @@ var acquired_equipment := false
 #var face_use_direction: float		## Face use direction for a bit when using (in seconds).
 #var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
 
+var acquired_keycard := false	# yep
+
 @onready var model: PlayerModel	   		 = $Model
 @onready var physics: Physics 	   		 = $Physics
 @onready var use_origin: UseOrigin 		 = $UseOrigin
