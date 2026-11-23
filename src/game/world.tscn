@@ -299,3 +299,7 @@ light_size = 1.0
 [node name="Pickup" parent="." unique_id=2123291494 instance=ExtResource("12_2it6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.147, 0.5, -2.448)
 equipment_script = ExtResource("13_a7um5")
+
+[node name="Pickup2" parent="." unique_id=132759156 instance=ExtResource("12_2it6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.448404, 0.5, -2.448)
+equipment_script = ExtResource("13_a7um5")

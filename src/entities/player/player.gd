@@ -199,4 +199,5 @@ func _on_pickup(equipment: Equipment) -> void:
 		EquipmentWheel.instance.update_data(self.equipment, equipment_current)
 		
 	else:
-		pass
+		var e := self.equipment[index]
+		e.gain_uses()

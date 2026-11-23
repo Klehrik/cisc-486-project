@@ -14,7 +14,11 @@ var cooldown_ratio: float:	## 1.0 - (ratio of remaining to max).
 		return 1.0 - (cooldown_left / cooldown_max)
 	set(value):
 		assert(false, "Cannot modify cooldown_ratio.")
-var uses 	 := -1		 	## Remaining uses. [br]Infinite if [code]-1[/code].
+var uses 	 := -1:		 	## Remaining uses. [br]Infinite if [code]-1[/code].
+	get():
+		return uses
+	set(value):
+		uses = clamp(value, -1, uses_max)
 var uses_max := -1		 	## Maximum uses. [br]Infinite if [code]-1[/code].
 
 func _init() -> void:
@@ -39,6 +43,11 @@ func consume_use() -> bool:
 		uses -= 1
 		return true
 	return false
+
+## Gain uses on pickup for existing equipment. [br]
+## Defaults to 20% of max uses (rounded, minimum 1).
+func gain_uses(amount: float = 0.2) -> void:
+	uses += max(round(uses_max * amount), 1)
 
 ## Called once (or every frame) whenever the equipment is being used.
 ## Returns [code]true[/code] if the equipment was successfully used.
