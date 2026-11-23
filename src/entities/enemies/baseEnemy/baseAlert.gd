@@ -18,7 +18,7 @@ func on_push() -> void:
 	# Pan camera to show alerted enemy for a bit
 	_owner.add_child(PoI.new(0, 1.5))
 	
-	_owner.speech.talk(Dialogue.Status.Alert.pick_random())
+	_owner.speech.talk(Text.Status.Alert.pick_random())
 	if not _owner.alerted_once:
 		_owner.alerted_once = true
 		Stats.enemies_alerted += 1

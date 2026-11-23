@@ -53,9 +53,9 @@ func on_process(delta: float) -> void:
 	if talk_delay > 0:
 		talk_delay -= delta
 		if talk_delay <= 0:
-			var lines = Dialogue.Status.Search
+			var lines = Text.Status.Search
 			if _owner.alerted_once:
-				lines = Dialogue.Status.SearchAlerted
+				lines = Text.Status.SearchAlerted
 			_owner.speech.talk(lines.pick_random())
 	
 	search -= delta
@@ -63,9 +63,9 @@ func on_process(delta: float) -> void:
 		_owner.navigation.stop()
 		_owner.path.reset_to_nearest_node(_owner.global_position)
 		
-		var lines = Dialogue.Status.SearchEnd
+		var lines = Text.Status.SearchEnd
 		if _owner.alerted_once:
-			lines = Dialogue.Status.SearchEndAlerted
+			lines = Text.Status.SearchEndAlerted
 		_owner.speech.talk(lines.pick_random())
 		
 		parent.pop()

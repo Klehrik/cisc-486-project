@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnyl55eut40lj"]
 
 [ext_resource type="Script" uid="uid://6d50maaqqbhs" path="res://src/HUD/equipmentWheel.gd" id="1_bjqkr"]
-[ext_resource type="Texture2D" uid="uid://4egrsjpy6a4c" path="res://assets/primitives/ring256.png" id="1_hhpe3"]
+[ext_resource type="Texture2D" uid="uid://4egrsjpy6a4c" path="res://assets/sprites/primitives/ring256.png" id="1_hhpe3"]
 [ext_resource type="Script" uid="uid://br1v8dgixjj1d" path="res://src/HUD/equipmentWheelSelected.gd" id="3_nra1l"]
 [ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="4_nra1l"]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4egrsjpy6a4c"
-path.s3tc="res://.godot/imported/ring256.png-bdb1e09dbf213c7b70e5f1cff5ea396a.s3tc.ctex"
+uid="uid://bl7o31ve7ye4p"
+path.s3tc="res://.godot/imported/grid.png-d8f6e3f14599d8a5bb4b96e2954f4f80.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/primitives/ring256.png"
-dest_files=["res://.godot/imported/ring256.png-bdb1e09dbf213c7b70e5f1cff5ea396a.s3tc.ctex"]
+source_file="res://assets/sprites/grid.png"
+dest_files=["res://.godot/imported/grid.png-d8f6e3f14599d8a5bb4b96e2954f4f80.s3tc.ctex"]
 
 [params]
 

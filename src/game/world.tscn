@@ -9,9 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/enemies/guard/guard.tscn" id="4_ws5b0"]
 [ext_resource type="Script" uid="uid://br0q2y8tsubyk" path="res://src/game/fade.gd" id="5_3mjtb"]
 [ext_resource type="Shader" uid="uid://trfkpvg70wa8" path="res://assets/shaders/screenFade.gdshader" id="5_6ycq4"]
+[ext_resource type="Script" uid="uid://o275m8ke5kco" path="res://src/game/dialogue.gd" id="5_7qo5r"]
+[ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="5_7s7ih"]
 [ext_resource type="Script" uid="uid://be65y2oihe4a7" path="res://src/entities/enemies/path.gd" id="5_f5g00"]
 [ext_resource type="PackedScene" uid="uid://bwe1i3pc2a17m" path="res://src/features/cube.tscn" id="5_qrfg3"]
+[ext_resource type="Texture2D" uid="uid://crwf1adidxi55" path="res://assets/sprites/dialogueContinue.png" id="6_liu65"]
 [ext_resource type="Script" uid="uid://kgnr0wr5uetg" path="res://src/game/camera/PoI.gd" id="8_f5g00"]
+[ext_resource type="Script" uid="uid://dwa16j35i5jrp" path="res://src/game/dialogueArrow.gd" id="8_ht5rl"]
 [ext_resource type="PackedScene" uid="uid://6rqxg1g4b108" path="res://src/features/noisy/noisy.tscn" id="9_tqpvw"]
 [ext_resource type="Shader" uid="uid://pq2cv45k1y2x" path="res://assets/shaders/wallFade.gdshader" id="11_wncxb"]
 [ext_resource type="PackedScene" uid="uid://defd47ohcti6x" path="res://src/features/pickup/pickup.tscn" id="12_2it6e"]
@@ -103,6 +107,8 @@ shadow_blur = 0.0
 [node name="Screen" type="CanvasLayer" parent="." unique_id=1713659681]
 
 [node name="HUD" type="Node2D" parent="Screen" unique_id=1786881466]
+visible = false
+metadata/_edit_lock_ = true
 
 [node name="Health" type="Node2D" parent="Screen/HUD" unique_id=1255965542]
 position = Vector2(8, 8)
@@ -123,12 +129,32 @@ offset_bottom = 8.0
 [node name="EquipmentWheel" parent="Screen/HUD" unique_id=171200968 instance=ExtResource("3_wncxb")]
 position = Vector2(0, 180)
 
+[node name="Dialogue" type="Node2D" parent="Screen" unique_id=1219737775]
+position = Vector2(16, 146)
+script = ExtResource("5_7qo5r")
+
+[node name="Label" type="RichTextLabel" parent="Screen/Dialogue" unique_id=654753632]
+offset_right = 288.0
+offset_bottom = 24.0
+theme_override_constants/line_separation = 4
+theme_override_fonts/normal_font = ExtResource("5_7s7ih")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="Arrow" type="Sprite2D" parent="Screen/Dialogue" unique_id=254057445]
+position = Vector2(282, 17)
+texture = ExtResource("6_liu65")
+script = ExtResource("8_ht5rl")
+
 [node name="Fade" type="ColorRect" parent="Screen" unique_id=1243741190]
 z_index = 100
 material = SubResource("ShaderMaterial_7s7ih")
 offset_right = 320.0
 offset_bottom = 180.0
 script = ExtResource("5_3mjtb")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=2050928230 instance=ExtResource("2_38auj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)

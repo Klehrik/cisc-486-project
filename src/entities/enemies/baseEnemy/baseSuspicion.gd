@@ -51,7 +51,7 @@ func on_process(delta: float) -> void:
 	else:
 		if not talked:
 			talked = true
-			_owner.speech.talk(Dialogue.Status.Suspicion.pick_random())
+			_owner.speech.talk(Text.Status.Suspicion.pick_random())
 		
 		_owner.navigation.navigate_to_point(_owner.target_last_seen)
 		if _owner.navigation.get_next() == Vector3.INF:

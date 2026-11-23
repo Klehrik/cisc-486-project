@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cser2vxuh44ym"]
 
-[ext_resource type="Texture2D" uid="uid://bl7o31ve7ye4p" path="res://assets/grid.png" id="1_a1tgf"]
+[ext_resource type="Texture2D" uid="uid://bl7o31ve7ye4p" path="res://assets/sprites/grid.png" id="1_a1tgf"]
 [ext_resource type="Script" uid="uid://kvgdsa872lwm" path="res://src/features/chunk.gd" id="1_xae44"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mymg0"]

@@ -6,7 +6,7 @@ extends State
 func on_enter() -> void:
 	_owner.navigation.stop()
 	_owner.status_label.set_status(StatusLabel.Status.STUNNED)
-	_owner.speech.talk(Dialogue.Status.Stunned.pick_random())
+	_owner.speech.talk(Text.Status.Stunned.pick_random())
 
 func on_process(delta: float) -> void:
 	_owner.stun_time -= delta

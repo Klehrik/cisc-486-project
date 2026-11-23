@@ -18,8 +18,9 @@ func _process(delta: float) -> void:
 			if p:
 				p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
-	#if Input.is_action_just_pressed("Debug 1"):
-	#	Event.noise.emit($Player.global_position, 9.0)
+	if Input.is_action_just_pressed("Debug 1"):
+		#Event.noise.emit($Player.global_position, 9.0)
+		Dialogue.instance.start_dialogue(Text.Intro)
 	#	
 	#if Input.is_action_just_pressed("Debug 2"):
 	#	# Spawn hitbox

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl7o31ve7ye4p"
-path.s3tc="res://.godot/imported/grid.png-0e5acf495abafdc7f64f9b213a44aa0e.s3tc.ctex"
+uid="uid://4egrsjpy6a4c"
+path.s3tc="res://.godot/imported/ring256.png-21d8ce9dd1dc1ee030cb144d612055f2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,14 @@ metadata={
 
 [deps]
 
-source_file="res://assets/grid.png"
-dest_files=["res://.godot/imported/grid.png-0e5acf495abafdc7f64f9b213a44aa0e.s3tc.ctex"]
+source_file="res://assets/sprites/primitives/ring256.png"
+dest_files=["res://.godot/imported/ring256.png-21d8ce9dd1dc1ee030cb144d612055f2.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
+compress/high_quality_mode=0
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
@@ -26,6 +27,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
+mipmaps/preserve_alpha_test_coverage=false
+mipmaps/alpha_test_threshold=0.5
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0
