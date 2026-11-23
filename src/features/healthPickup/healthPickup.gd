@@ -21,6 +21,7 @@ func _on_body_entered(body: Node3D) -> void:
 			return
 		
 		hurtbox.health += amount
+		HUDPopup.add("Recovered %s%% health" % int(amount / hurtbox.health_max * 100))
 		break
 		
 	if acquired:

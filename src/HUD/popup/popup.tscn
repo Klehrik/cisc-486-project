@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dv0pmbkeob7ny"]
+
+[ext_resource type="FontFile" uid="uid://berqitxc0g4ky" path="res://assets/fonts/Varnished.ttf" id="1_ah0yi"]
+[ext_resource type="Script" uid="uid://cdb6gseq3fmih" path="res://src/HUD/popup/popup.gd" id="1_ttne1"]
+
+[node name="Popup" type="Node2D" unique_id=1942597316]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_ttne1")
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=1420054359]
+offset_left = -64.0
+offset_top = -32.0
+offset_right = 64.0
+theme_override_fonts/normal_font = ExtResource("1_ah0yi")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Acquired Burst Pistol"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2

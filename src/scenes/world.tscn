@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_25l4m"]
 [ext_resource type="Script" uid="uid://qqsnihlg5pro" path="res://src/HUD/health.gd" id="3_vqtul"]
 [ext_resource type="Script" uid="uid://cx1ojc2mpbe0k" path="res://src/HUD/stamina.gd" id="4_25l4m"]
-[ext_resource type="PackedScene" uid="uid://dnyl55eut40lj" path="res://src/HUD/equipmentWheel.tscn" id="4_qi7wn"]
+[ext_resource type="PackedScene" uid="uid://dnyl55eut40lj" path="res://src/HUD/equipmentWheel/equipmentWheel.tscn" id="4_qi7wn"]
 [ext_resource type="PackedScene" uid="uid://xi3oq4138rfb" path="res://src/game/dialogue/dialogue.tscn" id="5_k5joq"]
 [ext_resource type="Shader" uid="uid://trfkpvg70wa8" path="res://assets/shaders/screenFade.gdshader" id="6_vvusi"]
 [ext_resource type="Script" uid="uid://br0q2y8tsubyk" path="res://src/game/fade.gd" id="7_k37mw"]

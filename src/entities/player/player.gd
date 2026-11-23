@@ -220,8 +220,11 @@ func _on_pickup(equipment: Equipment, pickup: Pickup) -> void:
 		update_equipment_model()
 		EquipmentWheel.instance.update_data(self.equipment, equipment_current)
 		pickup.mark_acquired()
+		HUDPopup.add("Acquired %s" % equipment.equipment_name)
 		
 	else:
 		var e := self.equipment[index]
-		if e.gain_uses() > 0:
+		var count := e.gain_uses()
+		if count > 0:
 			pickup.mark_acquired()
+			HUDPopup.add("+%s %s ammo" % [count, equipment.equipment_name])
