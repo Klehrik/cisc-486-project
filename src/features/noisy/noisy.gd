@@ -3,7 +3,7 @@ extends Node3D
 
 # Should be added as a child scene of other features.
 
-@export var sound_range := 9.0	## Range of noise when entered (in metres).
+@export var sound_range := 10.0	## Range of noise when entered (in metres).
 ## TODO: Add sound resource export here too when the time comes
 
 var bodies: Dictionary[Node3D, bool] = {}	## Dict of bodies currently in hitbox.

@@ -18,6 +18,7 @@ func _ready() -> void:
 	instance = self
 	visible = true
 	fade = 1.0
+	await create_tween().tween_interval(2.0).finished
 	tween_to_value(0.0, 2.0)
 
 func tween_to_value(value: float, time: float) -> void:

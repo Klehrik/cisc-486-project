@@ -32,10 +32,10 @@ func get_next() -> Vector3:
 	return nodes[current]
 
 ## Resets [code]get_next()[/code] to the closest node to the given position.
-func reset_to_nearest_node(position: Vector3) -> void:
+func reset_to_nearest_node(pos: Vector3) -> void:
 	var dist := INF
 	for i in range(0, len(nodes)):
-		var d := (position - nodes[i]).length_squared()
+		var d := (pos - nodes[i]).length_squared()
 		if d < dist:
 			dist = d
 			current = i - 1

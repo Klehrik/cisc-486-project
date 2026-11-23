@@ -13,7 +13,7 @@ func intro() -> void:
 	)
 	await Event.dialogue_end
 	tween = create_tween()
-	tween.tween_interval(2.0)
+	tween.tween_interval(1.0)
 	await tween.finished
 	await RenderingServer.frame_post_draw
 	get_tree().change_scene_to_file("res://src/scenes/world.tscn")
