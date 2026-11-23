@@ -9,6 +9,14 @@ var last_move_dir := Vector3.RIGHT	## Normalized direction of last movement.
 var last_footstep: Vector3			## Last saved footstep position.
 var wallhug_normal: Vector3			## Normal of the wall being hugged.
 
+var stamina_max := 2.0	## Number of consecutive rolls that can be made.
+var stamina := stamina_max:
+	get():
+		return stamina
+	set(value):
+		stamina = clamp(value, 0.0, stamina_max)
+const stamina_recover_speed := 1/1.5	## Stamina gain per second.
+
 var pitch: Camera.CameraOrientation
 var wallhug: Camera.CameraOrientation
 
@@ -44,7 +52,9 @@ func _ready() -> void:
 	EquipmentWheel.instance.update_data(equipment, equipment_current)
 	
 	Event.pickup.connect(_on_pickup)
+	
 	HUDHealth.instance.hurtbox = hurtbox
+	HUDStamina.instance.player = self
 	
 	# DEBUG
 	#equipment = [
@@ -65,6 +75,9 @@ func _physics_process(delta: float) -> void:
 	# Face use direction
 	if hurtbox.health > 0:
 		rotate_to_look_at(use_origin.target, delta)
+	
+	# Stamina
+	stamina += stamina_recover_speed * delta
 	
 	#if face_use_direction > 0:
 	#	face_use_direction -= delta
@@ -174,6 +187,8 @@ func update_equipment_model() -> void:
 		use_origin.follow = uo
 
 func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
+	Stats.damage_taken += hitbox.damage
+	
 	# Apply knockback
 	if hurtbox.health > 0:
 		physics.kb_vec += hitbox.kb_vec

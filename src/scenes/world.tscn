@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/game.gd" id="1_pa1cl"]
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_25l4m"]
 [ext_resource type="Script" uid="uid://qqsnihlg5pro" path="res://src/HUD/health.gd" id="3_vqtul"]
+[ext_resource type="Script" uid="uid://cx1ojc2mpbe0k" path="res://src/HUD/stamina.gd" id="4_25l4m"]
 [ext_resource type="PackedScene" uid="uid://dnyl55eut40lj" path="res://src/HUD/equipmentWheel.tscn" id="4_qi7wn"]
 [ext_resource type="PackedScene" uid="uid://xi3oq4138rfb" path="res://src/game/dialogue/dialogue.tscn" id="5_k5joq"]
 [ext_resource type="Shader" uid="uid://trfkpvg70wa8" path="res://assets/shaders/screenFade.gdshader" id="6_vvusi"]
@@ -126,10 +127,35 @@ color = Color(0, 0.58431375, 0.9137255, 1)
 [node name="White" type="ColorRect" parent="Screen/HUD/Health" unique_id=664769654]
 offset_bottom = 8.0
 
+[node name="Stamina" type="Node2D" parent="Screen/HUD" unique_id=1182669428]
+position = Vector2(8, 8)
+script = ExtResource("4_25l4m")
+
+[node name="Bar" type="ColorRect" parent="Screen/HUD/Stamina" unique_id=394813315]
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 12.0
+
+[node name="Tick" type="ColorRect" parent="Screen/HUD/Stamina" unique_id=874731674]
+offset_left = 25.0
+offset_top = 10.0
+offset_right = 26.0
+offset_bottom = 12.0
+color = Color(0, 0.09803922, 0.1882353, 1)
+
+[node name="Tick2" type="ColorRect" parent="Screen/HUD/Stamina" unique_id=191986729]
+visible = false
+offset_left = 33.0
+offset_top = 10.0
+offset_right = 34.0
+offset_bottom = 12.0
+color = Color(0, 0.09803922, 0.1882353, 1)
+
 [node name="EquipmentWheel" parent="Screen/HUD" unique_id=171200968 instance=ExtResource("4_qi7wn")]
 position = Vector2(0, 180)
 
 [node name="Fade" type="ColorRect" parent="Screen" unique_id=1243741190]
+visible = false
 z_index = 100
 material = SubResource("ShaderMaterial_7s7ih")
 offset_right = 320.0

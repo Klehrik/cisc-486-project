@@ -37,6 +37,8 @@ func _process(delta: float) -> void:
 		# Recoverable part of bar
 		bar_recoverable.position.x = bar_current.size.x
 		bar_recoverable.size.x = hurtbox.recoverable_health / hurtbox.health_max * bar_width
+		if hurtbox.health <= 0:
+			bar_recoverable.size.x = 0
 		
 		# White part of bar (damage taken)
 		bar_white.position.x = bar_current.size.x

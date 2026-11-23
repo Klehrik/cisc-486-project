@@ -10,7 +10,8 @@ func on_process(delta: float) -> void:
 	_owner.handle_equipment_use()
 	
 	# Roll check
-	if Input.is_action_just_pressed("Roll"):
+	if Input.is_action_just_pressed("Roll") and _owner.stamina >= 1.0:
+		_owner.stamina -= 1.0
 		parent.push("Roll")
 		return
 	

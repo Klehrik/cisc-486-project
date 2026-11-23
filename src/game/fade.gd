@@ -16,6 +16,7 @@ var tween: Tween
 func _ready() -> void:
 	assert(not instance, "Fade singleton already exists.")
 	instance = self
+	visible = true
 	fade = 1.0
 	tween_to_value(0.0, 2.0)
 

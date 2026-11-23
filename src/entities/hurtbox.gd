@@ -48,13 +48,14 @@ func _physics_process(delta: float) -> void:
 			hitboxes.pop_back()
 	
 	# Recover health for last hit taken
-	if recover_delay_value > 0:
-		recover_delay_value -= delta
-	else:
-		if recover_speed > 0 and recoverable_health > 0:
-			health 			   += recover_speed * delta
-			recoverable_health -= recover_speed * delta
-
+	if health > 0:
+		if recover_delay_value > 0:
+			recover_delay_value -= delta
+		else:
+			if recover_speed > 0 and recoverable_health > 0:
+				health 			   += recover_speed * delta
+				recoverable_health -= recover_speed * delta
+	
 	# Entity fell out of the world
 	if global_position.y <= -25.0:
 		owner.queue_free()
