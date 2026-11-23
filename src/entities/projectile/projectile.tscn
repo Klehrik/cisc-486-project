@@ -9,6 +9,7 @@ _data = [Vector2(0, 0.40090084), 0.0, 5.684994, 0, 0, Vector2(0.04713115, 0.7522
 point_count = 5
 
 [node name="Projectile" type="RayCast3D" unique_id=500055682]
+hit_from_inside = true
 script = ExtResource("1_34nme")
 
 [node name="Hitbox" parent="." unique_id=1795130635 instance=ExtResource("2_34nme")]

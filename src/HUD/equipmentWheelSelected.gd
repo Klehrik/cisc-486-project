@@ -9,7 +9,7 @@ var ratio := 1.0:	## The ratio of filled-in circle (from 0.0 to 1.0). [br]This c
 		return ratio
 	set(value):
 		ratio = clamp(value, 0.0, 1.0)
-		end_angle = -PI/2 + (PI * 1.999 * ratio)
+		end_angle = -PI/2 + (PI * 1.9999 * ratio)
 var end_angle: float
 
 func _process(delta: float) -> void:

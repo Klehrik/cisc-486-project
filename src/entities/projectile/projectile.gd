@@ -53,6 +53,19 @@ func set_team(team: int) -> void:
 			collision_mask = 1 | 1 << 1
 			hitbox.collision_layer = 1 << 4
 
+func set_pos(pos: Vector3) -> void:
+	position = pos
+	
+	# Check if in a wall to prevent shooting
+	# through walls when gun is pressed into one
+	var space = get_world_3d().direct_space_state
+	var query = PhysicsPointQueryParameters3D.new()
+	query.position = global_position
+	query.collision_mask = collision_mask
+	var result = space.intersect_point(query)
+	if result:
+		on_hit()
+
 ## Scales the projectile hitbox radius and trail width.
 func scale_projectile(scaling: float) -> void:
 	hitbox.set_sphere(Vector3.ZERO, base_sphere_radius * scaling)

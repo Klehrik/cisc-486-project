@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 				dir = dir.rotated(Vector3.UP, randf_range(-half_spread, half_spread))
 				
 				var p: Projectile = Scene.instantiate_global(Scene.projectile)
-				p.position = use_origin.global_position
+				p.set_pos(use_origin.global_position)
 				p.velocity = dir * speed
 				p.damage = damage
 				p.stun = stun

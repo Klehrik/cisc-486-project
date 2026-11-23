@@ -34,7 +34,7 @@ func use(use_origin: UseOrigin) -> bool:
 	var dir := (use_origin.target - use_origin.global_position).normalized()
 	var p: Projectile = Scene.instantiate_global(Scene.projectile)
 	p.scale_projectile(0.7)
-	p.position = use_origin.global_position
+	p.set_pos(use_origin.global_position)
 	p.velocity = dir * speed
 	p.damage = damage
 	p.stun = stun

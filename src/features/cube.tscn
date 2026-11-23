@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://bwe1i3pc2a17m"]
 
+[ext_resource type="Shader" uid="uid://pq2cv45k1y2x" path="res://assets/shaders/wallFade.gdshader" id="1_0al7b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wncxb"]
+render_priority = 0
+shader = ExtResource("1_0al7b")
+shader_parameter/bottom_color = Color(0.1804, 0.3451, 0.3882, 1)
+shader_parameter/top_color = Color(0.043, 0.051, 0.149, 1)
+
 [node name="Cube" type="CSGBox3D" unique_id=1945132013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
 use_collision = true
 collision_mask = 0
+material = SubResource("ShaderMaterial_wncxb")

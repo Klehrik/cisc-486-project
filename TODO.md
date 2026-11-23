@@ -20,6 +20,12 @@
 	- Component has `parent` that points to its owner; pass the component into Equipment `use()`/`stop()`
 
 Stencil color: 3a4466
+Light color:   e0eaff
+
+walls:
+	bottom	2e5863
+	top		0b0d26
+	floor	3e4a4d
 
 just use thin prisms for level walls
 - backface-culled walls facing inwards to the level so it doesn't block camera

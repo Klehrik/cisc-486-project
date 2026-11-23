@@ -78,7 +78,7 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c4mh"]
 next_pass = SubResource("StandardMaterial3D_yi0df")
-albedo_color = Color(0.30588236, 0.41960785, 0.4509804, 1)
+albedo_color = Color(0.16862746, 0.23137255, 0.2509804, 1)
 stencil_mode = 2
 stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
@@ -102,7 +102,7 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p2qdy"]
 next_pass = SubResource("StandardMaterial3D_0tyfe")
-albedo_color = Color(0.30588236, 0.41960785, 0.4509804, 1)
+albedo_color = Color(0, 0, 0, 1)
 stencil_mode = 2
 stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)
@@ -315,6 +315,11 @@ shape = SubResource("CapsuleShape3D_muk8e")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("8_eb65w")
 metadata/_custom_type_script = "uid://1ktfo8yao518"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1188877942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+light_color = Color(0.8784314, 0.91764706, 1, 1)
+light_energy = 0.125
 
 [node name="Physics" type="Node" parent="." unique_id=1862717885]
 script = ExtResource("2_wrxq6")

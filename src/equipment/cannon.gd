@@ -35,7 +35,7 @@ func use(use_origin: UseOrigin) -> bool:
 	var p: Projectile = Scene.instantiate_global(Scene.projectile)
 	p.scale_projectile(1.25)
 	p.trail_lifetime_scale = 2.0
-	p.position = use_origin.global_position
+	p.set_pos(use_origin.global_position)
 	p.velocity = dir * speed
 	p.damage = damage
 	p.stun = stun

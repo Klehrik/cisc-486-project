@@ -25,7 +25,7 @@ func _ready() -> void:
 	var camera := Camera.instance
 	camera.add_target(self, 100)
 	pitch = Camera.CameraOrientation.new(
-		Vector3(deg_to_rad(-75.0),
+		Vector3(deg_to_rad(-80.0),
 				camera.base_orientation.rotation.y,
 				camera.base_orientation.rotation.z)
 	)

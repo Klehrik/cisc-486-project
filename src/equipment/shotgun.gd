@@ -43,7 +43,7 @@ func use(use_origin: UseOrigin) -> bool:
 		
 		var p: Projectile = Scene.instantiate_global(Scene.projectile)
 		p.scale_projectile(randf_range(scale_min, scale_max))
-		p.position = use_origin.global_position
+		p.set_pos(use_origin.global_position)
 		p.velocity = dir * randf_range(speed_min, speed_max)
 		p.damage = damage
 		p.stun = stun
