@@ -205,7 +205,7 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 func _on_separation_collision(push: Vector3) -> void:
 	physics.kb_vec += push / 2.0
 
-func _on_pickup(equipment: Equipment) -> void:
+func _on_pickup(equipment: Equipment, pickup: Pickup) -> void:
 	# horrible shit
 	# check equipment existence by name
 	var index := self.equipment.find_custom(func(e: Equipment): return e.equipment_name == equipment.equipment_name)
@@ -219,7 +219,9 @@ func _on_pickup(equipment: Equipment) -> void:
 		self.equipment.append(equipment)
 		update_equipment_model()
 		EquipmentWheel.instance.update_data(self.equipment, equipment_current)
+		pickup.mark_acquired()
 		
 	else:
 		var e := self.equipment[index]
-		e.gain_uses()
+		if e.gain_uses() > 0:
+			pickup.mark_acquired()

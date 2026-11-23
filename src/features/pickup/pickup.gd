@@ -26,11 +26,13 @@ func _physics_process(delta: float) -> void:
 				break
 
 func _on_body_entered(body: Node3D) -> void:
+	Event.pickup.emit(equipment, self)
+	
+## To be called by acquirer if successful.
+func mark_acquired() -> void:
 	if acquired:
 		return
 	acquired = true
-	
-	Event.pickup.emit(equipment)
 	
 	# Animation
 	var tween := create_tween()

@@ -49,8 +49,9 @@ func consume_use() -> bool:
 ## Returns the amount of uses gained.
 func gain_uses(amount: float = 0.2) -> int:
 	var gain: int = max(round(uses_max * amount), 1)
+	var prev_uses := uses
 	uses += gain
-	return gain
+	return uses - prev_uses
 
 ## Called once (or every frame) whenever the equipment is being used.
 ## Returns [code]true[/code] if the equipment was successfully used.

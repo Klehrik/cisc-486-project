@@ -2,6 +2,7 @@ class_name HealthPickup
 extends Area3D
 
 @export var amount := 2.5	## Amount of health recovered from this pickup.
+var acquired := false
 
 const rot_speed     := PI/3		## Rotations per second.
 const y_speed_scale := 0.02
@@ -21,6 +22,10 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		hurtbox.health += amount
 		break
+		
+	if acquired:
+		return
+	acquired = true
 
 	# Animation
 	var tween := create_tween()

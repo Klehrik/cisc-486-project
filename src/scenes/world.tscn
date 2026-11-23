@@ -268,7 +268,6 @@ material = SubResource("ShaderMaterial_3mjtb")
 
 [node name="Cube3" parent="Map/TestChunk" unique_id=1261238932 instance=ExtResource("12_s6jqn")]
 transform = Transform3D(0.9999999, -3.4869237e-05, 0.0005363316, 3.5019828e-05, 0.99999994, -0.00029522448, -0.00053632184, 0.0002952423, 0.9999998, 6.5000176, 1, -5.500148)
-size = Vector3(1, 2, 1)
 material = SubResource("ShaderMaterial_3mjtb")
 
 [node name="Cube4" parent="Map/TestChunk" unique_id=470715918 instance=ExtResource("12_s6jqn")]
