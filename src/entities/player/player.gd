@@ -18,10 +18,11 @@ var acquired_equipment := false
 #var face_use_direction: float		## Face use direction for a bit when using (in seconds).
 #var face_use_direction_max := 1.0	## Face use direction for a bit when using (in seconds).
 
-@onready var model: PlayerModel	   = $Model
-@onready var physics: Physics 	   = $Physics
-@onready var use_origin: UseOrigin = $UseOrigin
-@onready var hurtbox: Hurtbox 	   = $Hurtbox
+@onready var model: PlayerModel	   		 = $Model
+@onready var physics: Physics 	   		 = $Physics
+@onready var use_origin: UseOrigin 		 = $UseOrigin
+@onready var hurtbox: Hurtbox 	   		 = $Hurtbox
+@onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
 	var camera := Camera.instance
@@ -63,7 +64,8 @@ func _physics_process(delta: float) -> void:
 	handle_equipment(delta)
 	
 	# Face use direction
-	rotate_to_look_at(use_origin.target, delta)
+	if hurtbox.health > 0:
+		rotate_to_look_at(use_origin.target, delta)
 	
 	#if face_use_direction > 0:
 	#	face_use_direction -= delta
@@ -174,17 +176,20 @@ func update_equipment_model() -> void:
 
 func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Apply knockback
-	physics.kb_vec += hitbox.kb_vec
+	if hurtbox.health > 0:
+		physics.kb_vec += hitbox.kb_vec
 	
 	# Update HUD
 	HUDHealth.instance.update(hurtbox.health)
 	
-	# DEBUG
+	# Check if dead
 	if hurtbox.health <= 0:
-		await get_tree().process_frame
-		var tree := get_tree()
-		if tree:
-			tree.reload_current_scene()
+		state_machine.push("Dead")
+		
+		#await get_tree().process_frame
+		#var tree := get_tree()
+		#if tree:
+		#	tree.reload_current_scene()
 
 func _on_separation_collision(push: Vector3) -> void:
 	physics.kb_vec += push / 2.0

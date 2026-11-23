@@ -14,7 +14,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("Right Mouse"):
 		var vp := get_viewport()
 		if vp:
-			$Player.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
+			var p = $Player
+			if p:
+				p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
 	#if Input.is_action_just_pressed("Debug 1"):
 	#	Event.noise.emit($Player.global_position, 9.0)

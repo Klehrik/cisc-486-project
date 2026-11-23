@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djjo1e28iabc4" path="res://src/entities/separation.tscn" id="5_n7e5a"]
 [ext_resource type="Script" uid="uid://dv54tpjrqyfsj" path="res://src/entities/player/roll.gd" id="6_0mfjg"]
 [ext_resource type="Script" uid="uid://1ktfo8yao518" path="res://src/entities/useOrigin.gd" id="8_eb65w"]
+[ext_resource type="Script" uid="uid://mveah08sjbeq" path="res://src/entities/player/dead.gd" id="12_kc3pt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4f0qm"]
 render_priority = 1
@@ -339,6 +340,10 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 
 [node name="Roll" type="Node" parent="StateMachine" unique_id=515694526]
 script = ExtResource("6_0mfjg")
+metadata/_custom_type_script = "uid://dpfrtwak0x200"
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=477206801]
+script = ExtResource("12_kc3pt")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
 
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

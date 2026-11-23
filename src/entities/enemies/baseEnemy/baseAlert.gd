@@ -31,6 +31,9 @@ func on_enter() -> void:
 
 func on_process(delta: float) -> void:
 	var target := _owner.target
+	if not target:
+		parent.switch("Search")
+		return
 	
 	# Track target if visible
 	var target_pos := target.global_position
