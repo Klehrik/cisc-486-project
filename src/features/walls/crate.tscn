@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://4rd5xbmey2cv"]
 
 [ext_resource type="Shader" uid="uid://pq2cv45k1y2x" path="res://assets/shaders/wallFade.gdshader" id="1_51mnt"]
+[ext_resource type="Script" uid="uid://wghqnflgfsag" path="res://src/features/walls/crate.gd" id="1_k8fhn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51mnt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mwjky"]
 render_priority = 0
@@ -8,12 +11,17 @@ shader = ExtResource("1_51mnt")
 shader_parameter/bottom_color = Color(0.399, 0.63478327, 0.7, 1)
 shader_parameter/top_color = Color(0.23760001, 0.37368008, 0.54, 1)
 
-[node name="Crate" type="Node3D" unique_id=1682368902]
+[node name="Crate" type="StaticBody3D" unique_id=980332367]
+collision_mask = 0
+script = ExtResource("1_k8fhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1257801404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
+shape = SubResource("BoxShape3D_51mnt")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1534273056]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
 material_override = SubResource("ShaderMaterial_mwjky")
-use_collision = true
 collision_mask = 0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=461811762]
