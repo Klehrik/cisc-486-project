@@ -17,10 +17,13 @@ var health = health_max:
 		return health
 	set(value):
 		health = clamp(value, 0, health_max)
+var is_active := true	## Should check this before applying anything.
 
 var hitboxes: Array[Hitbox] = []	## List of hitboxes that already hit this.
 
 func _on_area_entered(area: Area3D) -> void:
+	if not is_active:
+		return
 	if area is Hitbox and area not in hitboxes:
 		var hitbox := area as Hitbox
 		if hitbox.is_active:

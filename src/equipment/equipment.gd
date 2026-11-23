@@ -45,9 +45,12 @@ func consume_use() -> bool:
 	return false
 
 ## Gain uses on pickup for existing equipment. [br]
-## Defaults to 20% of max uses (rounded, minimum 1).
-func gain_uses(amount: float = 0.2) -> void:
-	uses += max(round(uses_max * amount), 1)
+## Defaults to 20% of max uses (rounded, minimum 1). [br]
+## Returns the amount of uses gained.
+func gain_uses(amount: float = 0.2) -> int:
+	var gain: int = max(round(uses_max * amount), 1)
+	uses += gain
+	return gain
 
 ## Called once (or every frame) whenever the equipment is being used.
 ## Returns [code]true[/code] if the equipment was successfully used.

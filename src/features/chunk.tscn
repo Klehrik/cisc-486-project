@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cser2vxuh44ym"]
 
 [ext_resource type="Texture2D" uid="uid://bl7o31ve7ye4p" path="res://assets/grid.png" id="1_a1tgf"]
+[ext_resource type="Script" uid="uid://kvgdsa872lwm" path="res://src/features/chunk.gd" id="1_xae44"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mymg0"]
 albedo_color = Color(0.24300002, 0.2886, 0.3, 1)
@@ -22,6 +23,7 @@ size = Vector2(24, 24)
 size = Vector3(24, 24, 1)
 
 [node name="Chunk" type="Node3D" unique_id=1359292382 groups=["chunk"]]
+script = ExtResource("1_xae44")
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1998131090]
 collision_mask = 0
@@ -42,6 +44,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, -12)
 shape = SubResource("BoxShape3D_ti7x4")
 
 [node name="Walls" type="Node3D" parent="." unique_id=1360344373]
+process_mode = 4
+visible = false
 
 [node name="Back" type="StaticBody3D" parent="Walls" unique_id=1509897324]
 collision_mask = 0

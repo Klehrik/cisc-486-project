@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://wbkoydw6wu1r" path="res://src/entities/enemies/baseEnemy/baseSearch.gd" id="9_fjad2"]
 [ext_resource type="Script" uid="uid://bjls8sr5s3m2u" path="res://src/entities/enemies/statusLabel.gd" id="12_nwpln"]
 [ext_resource type="Script" uid="uid://cssyywsnlu1nu" path="res://src/entities/enemies/baseEnemy/baseStunned.gd" id="14_u1qtc"]
+[ext_resource type="Script" uid="uid://ch82cd16j1ri8" path="res://src/entities/enemies/baseEnemy/baseDead.gd" id="16_wnuya"]
 
 [node name="BaseEnemy" type="CharacterBody3D" unique_id=1653461897 groups=["Team 2"]]
 collision_layer = 4
@@ -71,6 +72,10 @@ metadata/_custom_type_script = "uid://dpfrtwak0x200"
 
 [node name="Stunned" type="Node" parent="StateMachine" unique_id=1662161226]
 script = ExtResource("14_u1qtc")
+metadata/_custom_type_script = "uid://dpfrtwak0x200"
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1023898586]
+script = ExtResource("16_wnuya")
 metadata/_custom_type_script = "uid://dpfrtwak0x200"
 
 [connection signal="notify" from="." to="StateMachine/Patrol" method="_on_base_enemy_notify"]

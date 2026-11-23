@@ -97,7 +97,7 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3c4mh"]
 next_pass = SubResource("StandardMaterial3D_b4vrc")
-albedo_color = Color(0.17, 0.23266667, 0.25, 1)
+albedo_color = Color(0.16862746, 0.23137255, 0.2509804, 1)
 stencil_mode = 2
 stencil_flags = 2
 stencil_color = Color(0.22745098, 0.26666668, 0.4, 1)

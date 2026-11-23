@@ -44,18 +44,21 @@ func _on_hurtbox_hurt(hurtbox: Hurtbox, hitbox: Hitbox) -> void:
 	# Apply knockback
 	physics.kb_vec += hitbox.kb_vec
 	
-	# Add stun time
-	stun_time += hitbox.stun * stun_multiplier
-	if stun_time >= stun_threshold:
-		
-		# Kinda messy; might want to have each state handle this themselves
-		if state_machine.current == $StateMachine/Patrol:
-			state_machine.switch("Suspicion")
-			
-		state_machine.push("Stunned")
-	
+	# Check if dead
 	if hurtbox.health <= 0:
-		queue_free()
+		hurtbox.is_active = false
+		state_machine.push("Dead")
+		
+	else:
+		# Add stun time
+		stun_time += hitbox.stun * stun_multiplier
+		if stun_time >= stun_threshold:
+			
+			# Kinda messy; might want to have each state handle this themselves
+			if state_machine.current == $StateMachine/Patrol:
+				state_machine.switch("Suspicion")
+				
+			state_machine.push("Stunned")
 
 func _on_separation_collision(push: Vector3) -> void:
 	physics.kb_vec += push / 2.0

@@ -3,6 +3,10 @@ extends Node3D
 
 static var frame := 0	## Physics frames elapsed since game start.
 
+func _enter_tree() -> void:
+	# Consistent randomization for RNG-stuff in level gen
+	seed(42)
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Debug Reset"):
 		get_tree().reload_current_scene()
