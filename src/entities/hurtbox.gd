@@ -19,7 +19,7 @@ var health := health_max:
 		return health
 	set(value):
 		health = clamp(value, 0, health_max)
-var recoverable_health: float	## Remaining recoverable health; [br]initially equal to damage of last hit taken.
+var recoverable_health: float	## Remaining recoverable health. [br]Half of damage taken is added to this.
 var recover_delay_value: float
 var is_active := true	## Should check this before applying anything.
 
@@ -35,7 +35,7 @@ func _on_area_entered(area: Area3D) -> void:
 			hitbox.hit.emit(hitbox, self)
 			prehurt.emit(self, hitbox)
 			health -= hitbox.damage
-			recoverable_health = hitbox.damage
+			recoverable_health += hitbox.damage * 0.5
 			recover_delay_value = recover_delay
 			hurt.emit(self, hitbox)
 			
