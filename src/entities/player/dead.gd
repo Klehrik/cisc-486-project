@@ -20,6 +20,7 @@ func on_enter() -> void:
 		tween.tween_property(model, "rotation:x", PI/2, tween_time)
 		await tween.finished
 	do_flickering = false
+	Cutscene.player_death()
 
 func on_process(delta: float) -> void:
 	_owner.visible = true
