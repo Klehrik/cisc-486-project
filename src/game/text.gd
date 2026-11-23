@@ -68,5 +68,9 @@ const Intro: Array[String] = [
 	"Course.",
 	"[color=#8b9bb4]As usual, we are officially unaffiliated with this operation. \nYou will have to procure your own weapons on-site.",
 	"[color=#8b9bb4]If you get caught, there'll be no help coming.",
-	"Yeah, I got it. \nI'm heading in now.",
+	"Yeah, I get it. \nI'm heading in now.",
+]
+
+const Death: Array[String] = [
+	"Hello? What's going on? \nRespond!",
 ]

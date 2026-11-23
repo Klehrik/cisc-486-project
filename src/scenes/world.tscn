@@ -104,7 +104,6 @@ shadow_blur = 0.0
 [node name="Screen" type="CanvasLayer" parent="." unique_id=1713659681]
 
 [node name="HUD" type="Node2D" parent="Screen" unique_id=1786881466]
-visible = false
 metadata/_edit_lock_ = true
 
 [node name="Health" type="Node2D" parent="Screen/HUD" unique_id=1255965542]
@@ -126,9 +125,6 @@ offset_bottom = 8.0
 [node name="EquipmentWheel" parent="Screen/HUD" unique_id=171200968 instance=ExtResource("4_qi7wn")]
 position = Vector2(0, 180)
 
-[node name="Dialogue" parent="Screen" unique_id=1028921172 instance=ExtResource("5_k5joq")]
-position = Vector2(16, 146)
-
 [node name="Fade" type="ColorRect" parent="Screen" unique_id=1243741190]
 z_index = 100
 material = SubResource("ShaderMaterial_7s7ih")
@@ -137,6 +133,10 @@ offset_bottom = 180.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("7_k37mw")
 metadata/_edit_lock_ = true
+
+[node name="Dialogue" parent="Screen" unique_id=1028921172 instance=ExtResource("5_k5joq")]
+z_index = 101
+position = Vector2(16, 146)
 
 [node name="Player" parent="." unique_id=2050928230 instance=ExtResource("8_urb0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)

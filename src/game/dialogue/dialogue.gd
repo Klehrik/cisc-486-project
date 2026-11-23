@@ -9,6 +9,7 @@ const punctuation	   := ".,!?:;"
 
 var lines: Array[String]
 var chars: float
+var has_dialogue := false
 
 @onready var label: RichTextLabel = $Label
 @onready var arrow: Sprite2D 	  = $Arrow
@@ -19,8 +20,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	arrow.visible = false
+	has_dialogue = false
 	if not lines:
 		return
+	has_dialogue = true
 	
 	label.text = lines[0]
 	var line := label.get_parsed_text()
