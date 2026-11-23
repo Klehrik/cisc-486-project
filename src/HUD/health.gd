@@ -59,6 +59,7 @@ func _process(delta: float) -> void:
 		
 		# TODO: actually readjust white bar
 		# when healing instead of ending it
+		white_tween_value = 0
 		bar_white.size.x = 0
 		if white_tween:
 			white_tween.stop()

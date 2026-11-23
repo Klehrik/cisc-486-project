@@ -19,6 +19,7 @@ var health := health_max:
 		return health
 	set(value):
 		health = clamp(value, 0, health_max)
+		recoverable_health = min(recoverable_health, health_max - health)
 var recoverable_health: float	## Remaining recoverable health. [br]Half of damage taken is added to this.
 var recover_delay_value: float
 var is_active := true	## Should check this before applying anything.
