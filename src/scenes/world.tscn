@@ -15,10 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://bwe1i3pc2a17m" path="res://src/features/walls/cube.tscn" id="12_s6jqn"]
 [ext_resource type="Shader" uid="uid://pq2cv45k1y2x" path="res://assets/shaders/wallFade.gdshader" id="13_trq4x"]
 [ext_resource type="Script" uid="uid://kgnr0wr5uetg" path="res://src/game/camera/PoI.gd" id="14_lan02"]
-[ext_resource type="PackedScene" uid="uid://6rqxg1g4b108" path="res://src/features/noisy/noisy.tscn" id="15_eu8y7"]
 [ext_resource type="PackedScene" uid="uid://defd47ohcti6x" path="res://src/features/pickup/pickup.tscn" id="16_l280w"]
 [ext_resource type="Script" uid="uid://cnhbcbw4wo87t" path="res://src/equipment/burstPistol.gd" id="17_cirtn"]
 [ext_resource type="PackedScene" uid="uid://8q103lfiujb2" path="res://src/features/walls/cubeWithLight.tscn" id="17_vqtul"]
+[ext_resource type="PackedScene" uid="uid://dlbrh70x850xy" path="res://src/features/noisy/noisyFloor.tscn" id="18_k5joq"]
 [ext_resource type="PackedScene" uid="uid://4rd5xbmey2cv" path="res://src/features/walls/crate.tscn" id="18_qi7wn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hnva"]
@@ -364,14 +364,14 @@ transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.707
 size = Vector3(5, 3, 3)
 material = SubResource("ShaderMaterial_wncxb")
 
-[node name="Noisy" parent="Map/TestChunk" unique_id=1056041364 instance=ExtResource("15_eu8y7")]
-transform = Transform3D(3, 0, 0, 0, 0.5, 0, 0, 0, 2.25, 1, -0.4, -2)
-
 [node name="CubeWithLight" parent="Map/TestChunk" unique_id=1708018866 instance=ExtResource("17_vqtul")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.5, 0, -2)
 
 [node name="Crate" parent="Map/TestChunk" unique_id=1682368902 instance=ExtResource("18_qi7wn")]
 transform = Transform3D(1.7320508, 0, -1, 0, 2, 0, 1, 0, 1.7320508, 1.5, 0, -9)
+
+[node name="NoisyFloor" parent="Map/TestChunk" unique_id=1373098884 instance=ExtResource("18_k5joq")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 2, 1, 0, -2)
 
 [node name="Instantiated" type="Node3D" parent="." unique_id=695163067]
 

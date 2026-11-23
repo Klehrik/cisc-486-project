@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dlbrh70x850xy"]
+
+[ext_resource type="PackedScene" uid="uid://6rqxg1g4b108" path="res://src/features/noisy/noisy.tscn" id="1_858ab"]
+[ext_resource type="Texture2D" uid="uid://c3uhir5cgcsu0" path="res://assets/sprites/noisyFloor.png" id="1_do0j0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kny8t"]
+albedo_texture = ExtResource("1_do0j0")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_858ab"]
+size = Vector2(1, 1)
+
+[node name="NoisyFloor" type="Node3D" unique_id=1373098884]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=2109205555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.001, -0.5)
+material_override = SubResource("StandardMaterial3D_kny8t")
+mesh = SubResource("PlaneMesh_858ab")
+
+[node name="Noisy" parent="." unique_id=1056041364 instance=ExtResource("1_858ab")]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
