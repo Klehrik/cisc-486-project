@@ -1,11 +1,11 @@
-class_name Equipment_Cannon
+class_name Equipment_Sniper
 extends Equipment
 
 var damage 	  := 7.0
 var stun	  := 4.0
 var knockback := 15.0
 var speed 	  := 80.0
-var cooldown  := 5.0	## In seconds.
+var cooldown  := 4.0	## In seconds.
 var ammo	  := 5
 var noise	  := 12.0	## Noise strength.
 
@@ -28,6 +28,8 @@ func use(use_origin: UseOrigin) -> bool:
 	if is_on_cooldown():
 		return false
 	if not consume_use():
+		SFX.play("Empty", use_origin.global_position)
+		start_cooldown()
 		return false
 	
 	# Fire bullet
@@ -44,6 +46,7 @@ func use(use_origin: UseOrigin) -> bool:
 
 	if team == 1:
 		Event.noise.emit(p.global_position, noise)
-	
+		
+	SFX.play("Sniper", use_origin.global_position)
 	start_cooldown()
 	return true

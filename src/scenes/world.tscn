@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://br0q2y8tsubyk" path="res://src/game/fade.gd" id="7_k37mw"]
 [ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="8_urb0p"]
 [ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/enemies/guard/guard.tscn" id="9_1fyld"]
+[ext_resource type="PackedScene" uid="uid://djxtk7i30kygv" path="res://src/game/sfx.tscn" id="9_trq4x"]
 [ext_resource type="Script" uid="uid://be65y2oihe4a7" path="res://src/entities/enemies/path.gd" id="10_mxnng"]
 [ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="11_8l7mp"]
 [ext_resource type="Script" uid="uid://dby7skejha6vu" path="res://src/features/worldPopup.gd" id="12_7lpf8"]
@@ -26,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://ogxrbvo3th30" path="res://src/features/door/door.tscn" id="23_k37mw"]
 [ext_resource type="Script" uid="uid://kgnr0wr5uetg" path="res://src/game/camera/PoI.gd" id="24_urb0p"]
 [ext_resource type="Script" uid="uid://d06eo1to354mj" path="res://src/equipment/shotgun.gd" id="25_1fyld"]
-[ext_resource type="Script" uid="uid://d0hfji2vcotr2" path="res://src/equipment/cannon.gd" id="26_mxnng"]
+[ext_resource type="Script" uid="uid://d0hfji2vcotr2" path="res://src/equipment/sniper.gd" id="26_mxnng"]
 [ext_resource type="PackedScene" uid="uid://csi1026xfhsgy" path="res://src/features/package/package.tscn" id="27_8l7mp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1hnva"]
@@ -148,6 +149,8 @@ metadata/_edit_lock_ = true
 [node name="Dialogue" parent="Screen" unique_id=1028921172 instance=ExtResource("5_k5joq")]
 z_index = 20
 position = Vector2(16, 146)
+
+[node name="SFX" parent="." unique_id=1470720794 instance=ExtResource("9_trq4x")]
 
 [node name="Player" parent="." unique_id=2050928230 instance=ExtResource("8_urb0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -2)

@@ -324,6 +324,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 light_color = Color(0.8784314, 0.91764706, 1, 1)
 light_energy = 0.125
 
+[node name="AudioListener3D" type="AudioListener3D" parent="." unique_id=1604137228]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+current = true
+
 [node name="Physics" type="Node" parent="." unique_id=1862717885]
 script = ExtResource("2_wrxq6")
 metadata/_custom_type_script = "uid://csbqc7mofua04"

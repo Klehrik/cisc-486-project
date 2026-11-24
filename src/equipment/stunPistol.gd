@@ -28,6 +28,8 @@ func use(use_origin: UseOrigin) -> bool:
 	if is_on_cooldown():
 		return false
 	if not consume_use():
+		SFX.play("Empty", use_origin.global_position)
+		start_cooldown()
 		return false
 	
 	# Fire bullet
@@ -44,5 +46,6 @@ func use(use_origin: UseOrigin) -> bool:
 	if team == 1:
 		Event.noise.emit(p.global_position, noise)
 	
+	SFX.play("StunPistol", use_origin.global_position)
 	start_cooldown()
 	return true

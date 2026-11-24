@@ -21,7 +21,8 @@ func _process(delta: float) -> void:
 				p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
 	if Input.is_action_just_pressed("Debug 1"):
-		HUDPopup.add("Hello world!")
+		SFX.play("BurstPistol", $Player.global_position)
+		#HUDPopup.add("Hello world!")
 		#Event.noise.emit($Player.global_position, 9.0)
 		#Dialogue.instance.start_dialogue(Text.Intro)
 	#	
