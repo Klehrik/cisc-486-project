@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b03ic4uww0ci1"]
+
+[ext_resource type="Script" uid="uid://ddbqkle5uffym" path="res://src/scenes/music.gd" id="1_d8apn"]
+[ext_resource type="AudioStream" uid="uid://c4mycdhjs07ow" path="res://assets/music/Sneaking.mp3" id="2_tepve"]
+[ext_resource type="AudioStream" uid="uid://bllwcqje1kxr2" path="res://assets/music/Spotted.mp3" id="3_go28i"]
+
+[node name="Music" type="Node3D" unique_id=537544035]
+script = ExtResource("1_d8apn")
+
+[node name="Track1" type="AudioStreamPlayer" parent="." unique_id=476881332]
+stream = ExtResource("2_tepve")
+volume_db = -50.0
+
+[node name="Track2" type="AudioStreamPlayer" parent="." unique_id=1708837615]
+stream = ExtResource("3_go28i")
+volume_db = -50.0

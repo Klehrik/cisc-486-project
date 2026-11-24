@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ly8ueqxsp834" path="res://src/game/game.gd" id="1_pa1cl"]
 [ext_resource type="PackedScene" uid="uid://dyrpyquqcdtlu" path="res://src/game/camera/camera.tscn" id="2_25l4m"]
+[ext_resource type="Texture2D" uid="uid://be6ncn0ojh6rx" path="res://assets/sprites/cursor.png" id="3_l280w"]
 [ext_resource type="Script" uid="uid://qqsnihlg5pro" path="res://src/HUD/health.gd" id="3_vqtul"]
 [ext_resource type="Script" uid="uid://cx1ojc2mpbe0k" path="res://src/HUD/stamina.gd" id="4_25l4m"]
+[ext_resource type="Script" uid="uid://dwloujopa8geb" path="res://src/game/cursor.gd" id="4_cirtn"]
 [ext_resource type="PackedScene" uid="uid://dnyl55eut40lj" path="res://src/HUD/equipmentWheel/equipmentWheel.tscn" id="4_qi7wn"]
 [ext_resource type="PackedScene" uid="uid://xi3oq4138rfb" path="res://src/game/dialogue/dialogue.tscn" id="5_k5joq"]
 [ext_resource type="Shader" uid="uid://trfkpvg70wa8" path="res://assets/shaders/screenFade.gdshader" id="6_vvusi"]
@@ -11,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dpsggs70yyy5d" path="res://src/entities/player/player.tscn" id="8_urb0p"]
 [ext_resource type="PackedScene" uid="uid://3ewhlfmd0wte" path="res://src/entities/enemies/guard/guard.tscn" id="9_1fyld"]
 [ext_resource type="PackedScene" uid="uid://djxtk7i30kygv" path="res://src/game/sfx.tscn" id="9_trq4x"]
+[ext_resource type="PackedScene" uid="uid://b03ic4uww0ci1" path="res://src/game/music.tscn" id="10_lan02"]
 [ext_resource type="Script" uid="uid://be65y2oihe4a7" path="res://src/entities/enemies/path.gd" id="10_mxnng"]
 [ext_resource type="PackedScene" uid="uid://cser2vxuh44ym" path="res://src/features/chunk.tscn" id="11_8l7mp"]
 [ext_resource type="Script" uid="uid://dby7skejha6vu" path="res://src/features/worldPopup.gd" id="12_7lpf8"]
@@ -85,6 +88,11 @@ shadow_blur = 0.0
 
 [node name="Screen" type="CanvasLayer" parent="." unique_id=1713659681]
 
+[node name="Cursor" type="Sprite2D" parent="Screen" unique_id=552499261]
+z_index = 6
+texture = ExtResource("3_l280w")
+script = ExtResource("4_cirtn")
+
 [node name="HUD" type="Node2D" parent="Screen" unique_id=1786881466]
 z_index = 5
 metadata/_edit_lock_ = true
@@ -152,6 +160,8 @@ position = Vector2(16, 146)
 use_background = true
 
 [node name="SFX" parent="." unique_id=1470720794 instance=ExtResource("9_trq4x")]
+
+[node name="Music" parent="." unique_id=537544035 instance=ExtResource("10_lan02")]
 
 [node name="Player" parent="." unique_id=2050928230 instance=ExtResource("8_urb0p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5, 0, -2)

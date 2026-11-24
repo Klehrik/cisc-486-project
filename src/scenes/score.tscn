@@ -14,7 +14,7 @@ shader_parameter/fade_color = Color(0, 0, 0, 1)
 script = ExtResource("1_gkttm")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1351258821]
-offset_right = 319.0
+offset_right = 320.0
 offset_bottom = 180.0
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true

@@ -59,58 +59,58 @@ script = ExtResource("1_o5s7e")
 
 [node name="Empty" type="AudioStreamPlayer3D" parent="." unique_id=69235772]
 stream = ExtResource("2_dp85j")
-volume_db = -10.0
-max_db = -10.0
+volume_db = -5.0
+max_db = -5.0
 pitch_scale = 2.0
 max_distance = 30.0
 
 [node name="BurstPistol" type="AudioStreamPlayer3D" parent="." unique_id=312567358]
 stream = SubResource("AudioStreamRandomizer_jowcr")
-volume_db = -10.0
-max_db = -10.0
+volume_db = -5.0
+max_db = -5.0
 pitch_scale = 16.0
 max_distance = 30.0
 
 [node name="StunPistol" type="AudioStreamPlayer3D" parent="." unique_id=1819411147]
 stream = SubResource("AudioStreamRandomizer_bllic")
-volume_db = -6.0
-max_db = -6.0
+volume_db = -3.0
+max_db = -3.0
 pitch_scale = 1.75
 max_distance = 30.0
 
 [node name="Shotgun" type="AudioStreamPlayer3D" parent="." unique_id=2021599849]
 stream = SubResource("AudioStreamRandomizer_dp85j")
-volume_db = -8.0
-max_db = -8.0
+volume_db = -5.0
+max_db = -5.0
 pitch_scale = 2.0
 max_distance = 30.0
 
 [node name="Sniper" type="AudioStreamPlayer3D" parent="." unique_id=2794991]
 stream = SubResource("AudioStreamRandomizer_55u0i")
-volume_db = -12.0
-max_db = -12.0
+volume_db = -8.0
+max_db = -8.0
 pitch_scale = 1.5
 max_distance = 30.0
 
 [node name="Collect" type="AudioStreamPlayer3D" parent="." unique_id=1848095598]
 stream = SubResource("AudioStreamRandomizer_rhnih")
-volume_db = -10.0
-max_db = -10.0
+volume_db = -6.0
+max_db = -6.0
 pitch_scale = 1.2
 max_distance = 30.0
 bus = &"Reverb"
 
 [node name="Dash" type="AudioStreamPlayer3D" parent="." unique_id=1883634955]
 stream = SubResource("AudioStreamRandomizer_peipg")
-volume_db = -20.0
-max_db = -20.0
+volume_db = -15.0
+max_db = -15.0
 pitch_scale = 2.0
 max_distance = 30.0
 
 [node name="Footstep" type="AudioStreamPlayer3D" parent="." unique_id=94843510]
 stream = SubResource("AudioStreamRandomizer_luo4m")
-volume_db = -4.0
-max_db = -4.0
+volume_db = -3.0
+max_db = -3.0
 max_distance = 30.0
 
 [node name="Error" type="AudioStreamPlayer3D" parent="." unique_id=403127200]
@@ -123,8 +123,8 @@ bus = &"Reverb"
 
 [node name="Success" type="AudioStreamPlayer3D" parent="." unique_id=1798535821]
 stream = ExtResource("11_eoxgv")
-volume_db = -12.0
-max_db = -12.0
+volume_db = -8.0
+max_db = -8.0
 pitch_scale = 1.5
 max_distance = 30.0
 bus = &"Reverb"

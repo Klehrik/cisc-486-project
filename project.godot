@@ -10,11 +10,16 @@ config_version=5
 
 [application]
 
-config/name="CISC486Project"
-run/main_scene="uid://co7qrtbgq4kl8"
+config/name="Exfiltration"
+run/main_scene="uid://bcdgoco2xd5lx"
 config/features=PackedStringArray("4.8", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://4egrsjpy6a4c"
+
+[audio]
+
+buses/default_bus_layout="uid://cws58shctnptt"
 
 [autoload]
 
@@ -30,6 +35,7 @@ window/size/viewport_height=180
 window/size/window_width_override=1600
 window/size/window_height_override=900
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://d2617jms81qbe"
 
 [input]
 

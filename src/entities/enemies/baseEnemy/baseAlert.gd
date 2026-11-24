@@ -29,6 +29,7 @@ func on_push() -> void:
 	
 func on_enter() -> void:
 	_owner.status_label.set_status(StatusLabel.Status.ALERT)
+	Game.alert_current_count += 1
 
 func on_process(delta: float) -> void:
 	var target := _owner.target
@@ -73,6 +74,7 @@ func on_process(delta: float) -> void:
 func on_exit() -> void:
 	_owner.rotate_while_moving = true
 	track = 0
+	Game.alert_current_count -= 1
 
 func _on_base_enemy_notify(target: Node3D, last_seen_pos: Vector3 = Vector3.INF) -> void:
 	if is_current_state:

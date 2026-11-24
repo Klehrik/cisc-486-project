@@ -3,11 +3,22 @@ extends Node3D
 
 static var frame := 0	## Physics frames elapsed since game start.
 static var count_time_taken := true
+static var alert_current_count := 0:	## Current number of enemies alerted
+	get():
+		return alert_current_count
+	set(value):
+		alert_current_count = value
+		if alert_current_count <= 0:
+			Music.crossfade(Music.NORMAL, Music.MUTED, 1.0)
+		else:
+			Music.crossfade(Music.MUTED, Music.NORMAL, 1.0)
 
 func _enter_tree() -> void:
 	# Consistent randomization for RNG-stuff in level gen
 	seed(42)
 	Stats.reset()
+	count_time_taken = true
+	#print("Game enter tree")
 
 func _process(delta: float) -> void:
 	pass
@@ -15,20 +26,22 @@ func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("Debug Reset"):
 	#	get_tree().reload_current_scene()
 		
-	if Input.is_action_pressed("Right Mouse"):
-		var vp := get_viewport()
-		if vp:
-			var p = $Player
-			if p:
-				p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
+	#if Input.is_action_pressed("Right Mouse"):
+	#	var vp := get_viewport()
+	#	if vp:
+	#		var p = $Player
+	#		if p:
+	#			p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
 	#if Input.is_action_just_pressed("Debug 1"):
+	#	Music.crossfade(Music.NORMAL, Music.MUTED, 2.0)
 	#	SFX.play("BurstPistol", $Player.global_position)
 		#HUDPopup.add("Hello world!")
 		#Event.noise.emit($Player.global_position, 9.0)
 		#Dialogue.instance.start_dialogue(Text.Intro)
 	#	
 	#if Input.is_action_just_pressed("Debug 2"):
+	#	Music.crossfade(Music.MUTED, Music.NORMAL, 2.0)
 	#	# Spawn hitbox
 	#	var vp := get_viewport()
 	#	if vp:
