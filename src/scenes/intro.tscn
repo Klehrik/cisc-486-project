@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://yknsay3uvy7c" path="res://src/scenes/intro.gd" id="1_4dsld"]
 [ext_resource type="PackedScene" uid="uid://xi3oq4138rfb" path="res://src/game/dialogue/dialogue.tscn" id="1_d0wo7"]
+[ext_resource type="PackedScene" uid="uid://djxtk7i30kygv" path="res://src/game/sfx.tscn" id="3_e40mb"]
 
 [node name="Intro" type="Node2D" unique_id=1106878964]
 script = ExtResource("1_4dsld")
@@ -13,3 +14,5 @@ color = Color(0, 0, 0, 1)
 
 [node name="Dialogue" parent="." unique_id=1028921172 instance=ExtResource("1_d0wo7")]
 position = Vector2(16, 146)
+
+[node name="SFX" parent="." unique_id=1470720794 instance=ExtResource("3_e40mb")]

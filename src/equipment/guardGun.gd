@@ -62,6 +62,9 @@ func _physics_process(delta: float) -> void:
 
 				if team == 1:
 					Event.noise.emit(p.global_position, noise)
+					
+				SFX.play("BurstPistol", use_origin.global_position)
 
 			else:
 				shots = 0
+				SFX.play("Empty", use_origin.global_position)

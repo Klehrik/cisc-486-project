@@ -12,6 +12,8 @@ func on_enter() -> void:
 	physics.move_vec = Vector3.ZERO
 	physics.kb_vec += _owner.last_move_dir * roll_speed
 	
+	SFX.play("Dash", _owner.global_position)
+	
 	# Placeholder animation
 	#var mesh: MeshInstance3D = _owner.get_node("Mesh")
 	#mesh.look_at(mesh.global_position + _owner.last_move_dir)

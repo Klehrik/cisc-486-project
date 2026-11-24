@@ -22,6 +22,7 @@ func on_push() -> void:
 	if not _owner.alerted_once:
 		_owner.alerted_once = true
 		Stats.enemies_alerted += 1
+		SFX.play("Alert")
 	
 	# Alert nearby allies
 	Event.noise.emit(_owner.global_position, 30.0)

@@ -12,6 +12,7 @@ func _physics_process(delta: float) -> void:
 	rotation.y += rot_speed * delta
 
 func play_animation() -> void:
+	SFX.play("Collect", global_position)
 	var tween := create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)

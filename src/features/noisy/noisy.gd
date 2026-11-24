@@ -4,7 +4,6 @@ extends Node3D
 # Should be added as a child scene of other features.
 
 @export var sound_range := 10.0	## Range of noise when entered (in metres).
-## TODO: Add sound resource export here too when the time comes
 
 var bodies: Dictionary[Node3D, bool] = {}	## Dict of bodies currently in hitbox.
 
@@ -33,4 +32,4 @@ func _on_hitbox_body_exited(body: Node3D) -> void:
 func _on_event_footstep(entity: Node3D, pos: Vector3) -> void:
 	if bodies.has(entity):
 		Event.noise.emit(pos, sound_range)
-		## TODO: Play sound
+		SFX.play("Footstep", pos)

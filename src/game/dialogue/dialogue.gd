@@ -9,6 +9,7 @@ const punctuation	   := ".,!?:;"
 
 var lines: Array[String]
 var chars: float
+var char_whole: int
 var has_dialogue := false
 
 @onready var label: RichTextLabel = $Label
@@ -31,12 +32,17 @@ func _process(delta: float) -> void:
 		chars += text_speed_punct * delta
 	else:
 		chars += text_speed * delta
+		var whole_number := int(chars)
+		if whole_number - char_whole >= 2:
+			char_whole = whole_number
+			SFX.play("Blip")
 	label.visible_characters = int(chars)
 		
 	if Input.is_action_just_pressed("Progress"):
 		if label.visible_ratio >= 1.0:
 			lines.remove_at(0)
 			chars = 0
+			char_whole = 0
 			label.text = ""
 			if not lines:
 				Event.dialogue_end.emit()

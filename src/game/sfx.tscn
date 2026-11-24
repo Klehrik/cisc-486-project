@@ -6,6 +6,11 @@
 [ext_resource type="AudioStream" uid="uid://csglxpnby077f" path="res://assets/sfx/shotgun.wav" id="4_eabpa"]
 [ext_resource type="AudioStream" uid="uid://boudoukj8j8od" path="res://assets/sfx/stunPistol.wav" id="4_orclc"]
 [ext_resource type="AudioStream" uid="uid://yrk1m6ult41o" path="res://assets/sfx/sniper.mp3" id="5_nmeg6"]
+[ext_resource type="AudioStream" uid="uid://bsdmtevd6n7m0" path="res://assets/sfx/collect.wav" id="7_jqota"]
+[ext_resource type="AudioStream" uid="uid://com8u7x51smgr" path="res://assets/sfx/dash.wav" id="8_nnfla"]
+[ext_resource type="AudioStream" uid="uid://dej8m7k0hbcy8" path="res://assets/sfx/alert.wav" id="8_qw7om"]
+[ext_resource type="AudioStream" uid="uid://1gqh0n0n45bw" path="res://assets/sfx/footstep.wav" id="9_41mhx"]
+[ext_resource type="AudioStream" uid="uid://du6wmdsejqwyi" path="res://assets/sfx/blip.wav" id="11_4a4ql"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jowcr"]
 random_pitch = 1.2599211
@@ -27,6 +32,26 @@ random_pitch = 1.2599211
 streams_count = 1
 stream_0/stream = ExtResource("5_nmeg6")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhnih"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("7_jqota")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_peipg"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("8_nnfla")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_luo4m"]
+random_pitch = 1.2599211
+streams_count = 1
+stream_0/stream = ExtResource("9_41mhx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lahb5"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("11_4a4ql")
+
 [node name="SFX" type="Node3D" unique_id=1470720794]
 script = ExtResource("1_o5s7e")
 
@@ -46,8 +71,8 @@ max_distance = 30.0
 
 [node name="StunPistol" type="AudioStreamPlayer3D" parent="." unique_id=1819411147]
 stream = SubResource("AudioStreamRandomizer_bllic")
-volume_db = -10.0
-max_db = -10.0
+volume_db = -6.0
+max_db = -6.0
 pitch_scale = 1.75
 max_distance = 30.0
 
@@ -64,3 +89,35 @@ volume_db = -12.0
 max_db = -12.0
 pitch_scale = 1.5
 max_distance = 30.0
+
+[node name="Collect" type="AudioStreamPlayer3D" parent="." unique_id=1848095598]
+stream = SubResource("AudioStreamRandomizer_rhnih")
+volume_db = -10.0
+max_db = -10.0
+pitch_scale = 1.2
+max_distance = 30.0
+bus = &"Reverb"
+
+[node name="Dash" type="AudioStreamPlayer3D" parent="." unique_id=1883634955]
+stream = SubResource("AudioStreamRandomizer_peipg")
+volume_db = -20.0
+max_db = -20.0
+pitch_scale = 2.0
+max_distance = 30.0
+
+[node name="Footstep" type="AudioStreamPlayer3D" parent="." unique_id=94843510]
+stream = SubResource("AudioStreamRandomizer_luo4m")
+volume_db = -4.0
+max_db = -4.0
+max_distance = 30.0
+
+[node name="Alert" type="AudioStreamPlayer" parent="." unique_id=881207793]
+stream = ExtResource("8_qw7om")
+volume_db = -8.0
+pitch_scale = 0.65
+bus = &"Reverb"
+
+[node name="Blip" type="AudioStreamPlayer" parent="." unique_id=932138943]
+stream = SubResource("AudioStreamRandomizer_lahb5")
+volume_db = -8.0
+pitch_scale = 0.9
