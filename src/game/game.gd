@@ -17,7 +17,9 @@ func _enter_tree() -> void:
 	# Consistent randomization for RNG-stuff in level gen
 	seed(42)
 	Stats.reset()
+	frame = 0
 	count_time_taken = true
+	alert_current_count = 0
 	#print("Game enter tree")
 
 func _process(delta: float) -> void:
