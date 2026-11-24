@@ -10,7 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://com8u7x51smgr" path="res://assets/sfx/dash.wav" id="8_nnfla"]
 [ext_resource type="AudioStream" uid="uid://dej8m7k0hbcy8" path="res://assets/sfx/alert.wav" id="8_qw7om"]
 [ext_resource type="AudioStream" uid="uid://1gqh0n0n45bw" path="res://assets/sfx/footstep.wav" id="9_41mhx"]
+[ext_resource type="AudioStream" uid="uid://c8fq1lyjosw3u" path="res://assets/sfx/error.wav" id="10_87xy1"]
 [ext_resource type="AudioStream" uid="uid://du6wmdsejqwyi" path="res://assets/sfx/blip.wav" id="11_4a4ql"]
+[ext_resource type="AudioStream" uid="uid://s44u24fgjn5t" path="res://assets/sfx/success.mp3" id="11_eoxgv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jowcr"]
 random_pitch = 1.2599211
@@ -110,6 +112,22 @@ stream = SubResource("AudioStreamRandomizer_luo4m")
 volume_db = -4.0
 max_db = -4.0
 max_distance = 30.0
+
+[node name="Error" type="AudioStreamPlayer3D" parent="." unique_id=403127200]
+stream = ExtResource("10_87xy1")
+volume_db = -2.0
+max_db = -2.0
+pitch_scale = 0.75
+max_distance = 30.0
+bus = &"Reverb"
+
+[node name="Success" type="AudioStreamPlayer3D" parent="." unique_id=1798535821]
+stream = ExtResource("11_eoxgv")
+volume_db = -12.0
+max_db = -12.0
+pitch_scale = 1.5
+max_distance = 30.0
+bus = &"Reverb"
 
 [node name="Alert" type="AudioStreamPlayer" parent="." unique_id=881207793]
 stream = ExtResource("8_qw7om")

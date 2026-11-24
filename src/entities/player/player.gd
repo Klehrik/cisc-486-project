@@ -61,12 +61,12 @@ func _ready() -> void:
 	HUDStamina.instance.player = self
 	
 	# DEBUG
-	equipment = [
-		Equipment_BurstPistol.new(1),
-		Equipment_StunPistol.new(1),
-		Equipment_Sniper.new(1),
-		Equipment_Shotgun.new(1),
-	]
+	#equipment = [
+	#	Equipment_BurstPistol.new(1),
+	#	Equipment_StunPistol.new(1),
+	#	Equipment_Sniper.new(1),
+	#	Equipment_Shotgun.new(1),
+	#]
 	#var uo := model.set_equipment(equipment[equipment_current])
 	#if uo:
 	#	use_origin.follow = uo

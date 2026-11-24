@@ -8,6 +8,14 @@
 [node name="Dialogue" type="Node2D" unique_id=1028921172]
 script = ExtResource("1_ys5bq")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1236679000]
+visible = false
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 288.0
+offset_bottom = 22.0
+color = Color(0, 0, 0, 0.7529412)
+
 [node name="Label" type="RichTextLabel" parent="." unique_id=593307916]
 offset_right = 288.0
 offset_bottom = 24.0

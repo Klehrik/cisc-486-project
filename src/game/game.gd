@@ -10,8 +10,10 @@ func _enter_tree() -> void:
 	Stats.reset()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Debug Reset"):
-		get_tree().reload_current_scene()
+	pass
+	
+	#if Input.is_action_just_pressed("Debug Reset"):
+	#	get_tree().reload_current_scene()
 		
 	if Input.is_action_pressed("Right Mouse"):
 		var vp := get_viewport()
@@ -20,8 +22,8 @@ func _process(delta: float) -> void:
 			if p:
 				p.global_position = Camera.instance.project_position_to_ground(vp.get_mouse_position())
 	
-	if Input.is_action_just_pressed("Debug 1"):
-		SFX.play("BurstPistol", $Player.global_position)
+	#if Input.is_action_just_pressed("Debug 1"):
+	#	SFX.play("BurstPistol", $Player.global_position)
 		#HUDPopup.add("Hello world!")
 		#Event.noise.emit($Player.global_position, 9.0)
 		#Dialogue.instance.start_dialogue(Text.Intro)

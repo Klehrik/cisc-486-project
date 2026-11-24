@@ -17,9 +17,11 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	if not p.acquired_keycard:
 		HUDPopup.add("[color=red]Access denied[/color]")
+		SFX.play("Error", global_position)
 		return
 	
 	HUDPopup.add("[color=#0095e9]Access granted[/color]")
+	SFX.play("Success", global_position)
 	is_open = true
 	
 	# Animation

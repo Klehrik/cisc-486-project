@@ -59,7 +59,7 @@ const Status = {
 }
 
 const Intro: Array[String] = [
-	"Alright, I'm here. Building's in sight.",
+	"Alright, I'm here. Building's in sight. \n                                                                                [color=#fee761](Space)",
 	"[color=#8b9bb4]Good. Once again, your mission is to infiltrate the site and retrieve the Package.",
 	"[color=#8b9bb4]Stay alert, and well-hidden. Security is at a maximum, and even for you there is no chance of fighting your way through.",
 	"Heh... well, if it comes to it, I think I can deal.",

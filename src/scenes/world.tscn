@@ -149,6 +149,7 @@ metadata/_edit_lock_ = true
 [node name="Dialogue" parent="Screen" unique_id=1028921172 instance=ExtResource("5_k5joq")]
 z_index = 20
 position = Vector2(16, 146)
+use_background = true
 
 [node name="SFX" parent="." unique_id=1470720794 instance=ExtResource("9_trq4x")]
 
